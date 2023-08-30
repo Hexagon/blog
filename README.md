@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to the source code repository for hexagon.56k.guru, a blog powered by Deno and Lume. This blog is designed to be portable, capable of running both in the browser and various runtime environments. Feel free to dive into the code, contribute, or even guest blog!
+Welcome to the source code repository for hexagon.56k.guru, a blog powered by Deno and Lume. Feel free to dive into the code, contribute, or even guest blog!
 
 ## Getting Started
 
