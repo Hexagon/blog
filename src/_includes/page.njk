@@ -1,0 +1,46 @@
+---
+layout: base.njk
+---
+
+<div class="row">
+  <div class="col-md-9">
+    <section>
+        {{ content | safe }}
+    </section>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="col-md-3">
+
+    <!--Recommended posts -->
+    <section>
+      <p>Recommended posts</p>
+      <ul>
+        {% for subpost in search.pages("standalone") %}
+          <li class="nav-item">
+            <a class="nav-link {% if subpost.data.url == url %}active{% endif %}" href="{{ subpost.data.url }}">{{ subpost.data.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <!-- More series -->
+    <section>
+      {% if page.data.series %}
+        <p>Consider reading my other series</p>
+      {% else %}
+        <p>Want to read more? Have a look at my series:</p>
+      {% endif %}
+      <ul>
+        {% for subpost in search.pages("part=1") %}
+          {% if not page.data.series or not subpost.series.parent == page.data.series.parent %}
+            <li class="nav-item">
+              <a class="nav-link {% if subpost.data.url == url %}active{% endif %}" href="{{ subpost.data.url }}">{{ subpost.data.series.title }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </section>
+
+  </div>
+</div>

@@ -1,0 +1,11 @@
+layout: post.njk
+title: The guide to JavaScript
+description: Hexagon's guide to JavaScript
+series: 
+  title: The guide to JavaScript
+  tag: guide-to-js
+tags:
+ - javascript
+ - guide
+ - post
+ - guide-to-js

@@ -1,0 +1,10 @@
+metas:
+  site: Hexagon's blog - Articles on JavaScript, TypeScript and Deno
+  lang: en
+  description: Hexagon's blog delves deep into TypeScript, JavaScript, and Deno. Join me for cutting-edge insights, and invaluable tutorials tailored for enthusiasts ranging from novices to experts.
+lang: en
+priority: 5
+author:
+  name: Hexagon
+  email: hexagon@56k.guru
+  url: https://hexagon.56k.guru

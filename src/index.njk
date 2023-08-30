@@ -1,0 +1,27 @@
+---
+layout: page.njk
+title: Hexagon's Blog
+tags: index
+---
+<section class="mb-5">
+    <h1 class="content-title mb-3">Hello there, I'm Hexagon</h1>
+    <p class="lead-text">Greetings! I'm Hexagon. My relationship with JavaScript began in 1995, and since then, I've been an active participant in its dynamic journey. My passion has not only been about using this powerful language but also contributing to its vast ecosystem. Over the years, I've created libraries such as <strong>Croner</strong>, <strong>@hexagon/base64</strong>, the process manager <strong>Pup</strong>, and more.</p>
+    <p>My blog is where I share my extensive experience, covering JavaScript, TypeScript, and intriguing runtimes like Deno. For those looking to dive right in, I recommend starting with my detailed <a href="/posts/guide-to-js/introduction/">JavaScript Guide</a>. And while this guide serves as a solid foundation, there's a lot more to explore! So, gear up for deep dives into TypeScript, advanced JavaScript topics, and the wonders of modern runtimes.</p>
+    <p><strong>Fun Fact:</strong> This blog also doubles up as my digital sandbox. It's meticulously built using <a href="https://deno.land" target="_blank">Deno</a> with <a href="https://lume.land" target="_blank">Lume</a>, echoing my relentless pursuit of refining and mastering my craft.</p>
+</section>
+<hr>
+<section class="mt-4 mb-5">
+    <h2 class="h4 mb-4">Recent posts</h2>
+    <ul class="list-unstyled">
+    {% for post in search.pages() %}
+        {% if loop.index0 < 10 and post.data.title != "Home" %}    
+            <li class="mb-3">
+                <article>
+                    <time class="text-muted small" datetime="{{ post.data.date }}">{{ post.data.date | date }}</time>
+                    <h3><a href="{{ post.data.url }}">{{ post.data.title }}</a></h3>
+                </article>
+            </li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+</section>
