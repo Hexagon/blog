@@ -3,7 +3,7 @@ layout: base.njk
 ---
 
 <div class="row">
-  <div class="col-lg-9">
+  <div class="col-md-9">
     <section>
       <article lang="{{ language }}">
         {% include "partials/post-details.njk" %}
@@ -11,11 +11,13 @@ layout: base.njk
       </article>
     </section>
     <hr>
+    {% include "partials/next-previous.njk" %}
+    <hr>
     {% include "disqus.njk" %}
   </div>
 
   <!-- Sidebar -->
-  <div class="col-lg-3">
+  <div class="col-md-3">
     {% include "partials/series-toc.njk" %}
     {% include "partials/recommended.njk" %}
     {% include "partials/more-series.njk" %}

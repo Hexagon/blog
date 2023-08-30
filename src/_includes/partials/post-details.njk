@@ -1,20 +1,28 @@
-<div class="post-details">
-  <h1>{{page.data.title}}</h1>
-  <p>
-    {% if author %}
-        By <strong>{{ page.data.author.name }}</strong>, 
-    {% endif %}
-    <time class="mb-1" datetime="{{ date }}">
-        {{ date | date }}
-    </time>
-  </p>
-  <!--
-  <span class="reading-time">{{ page.data.readingTime.minutes }} minutes</span>
+<a href="{{ page.data.url }}" class="link-dark"><h1>{{page.data.title}}</h1></a>
+<p>
 
-  <div class="post-tags">
-    {% for tag in tags %}
-      <span class="tag">{{tag}}</span>
-    {% endfor %}
-  </div>
-  -->
-</div>
+  <!-- Author -->
+  {% if page.data.author %}
+      By <strong>{{ page.data.author.name }}</strong>, 
+  {% endif %}
+
+  <!-- Date -->
+  <time class="mb-1" datetime="{{ page.data.date }}">
+      {{ page.data.date | date }}
+  </time>
+  
+  <!-- Reading time -->
+  <span class="badge text-bg-info">{{ page.data.readingTime.minutes }} minutes read</span>
+
+  <!-- License -->
+  {% if page.data.license %}
+    <span class="badge text-bg-success">{{ page.data.license }}</span>
+  {% endif %}
+
+  <!-- Tags -->
+  {% for tag in tags %}
+    {% if tag not in ["standalone","index","guide-to-js","post"] %}
+      <span class="badge text-bg-dark">{{tag}}</span>
+    {% endif %}
+  {% endfor %}
+</p>
