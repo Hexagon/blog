@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to the source code repository for hexagon.56k.guru, a blog powered by Deno and Lume. Feel free to dive into the code, contribute, or even guest blog!
+Welcome to the source code repository for my blog - [hexagon.56k.guru](https://hexagon.56k.guru), powered by Deno and Lume. Feel free to dive into the code, contribute, or even guest blog!
 
 ## Getting Started
 
