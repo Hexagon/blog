@@ -8,8 +8,3 @@
 h1,h2,h3,h4 {
     margin-bottom: var(--bs-spacer-4);
 }
-
-.footer {
-    min-height: 75px;
-    border-top: 1px solid hsla(var(--bs-dark-subtle-hsl), 1);
-}
