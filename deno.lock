@@ -294,6 +294,7 @@
     "https://deno.land/x/xml@2.1.1/utils/streamable.ts": "1603a5f10c859b95d4e9502365a0fba0b19d5d068356e20d5a6813cd37fee780",
     "https://deno.land/x/xml@2.1.1/utils/stringifier.ts": "c701b506835237c0c6c0a08fd94e0a012b644def3f4c819c64788daf2e649ea3",
     "https://deno.land/x/xml@2.1.1/utils/types.ts": "ecaf7785e54a6f1da6f8e56da2bce9853407ceb7d5b3b70f0a60a0890151fe4c",
+    "https://raw.githubusercontent.com/lumeland/experimental-plugins/main/reading_time/mod.ts": "45035c1c7e7ce6a10b4715a32eee65133eca8b8be7e01a2799f7e8586265a873",
     "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/bash.min.js": "c68e0c10c8e21aa56ae617cea288b30215bc3941c36d11821f89f350628bf377",
     "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/javascript.min.js": "1987b5a890a8e5cea9db74c41483fc1bb00923d0bf390a9e866d6cfeebe1c430",
     "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/json.min.js": "bbbfc6fd51b5204335b95c6cead659da73ddc50e8ce38d1bd0aa4aade198f397",

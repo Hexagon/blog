@@ -12,8 +12,6 @@ tags:
 priority: 4
 ---
 
-# Using Lume: A Static Site Generator for Deno
-
 If you're like me, you appreciate the efficiency and elegance of using a static site generator for your blog or website. Today, I want to share with you the beauty of Lume, a static site generator built for Deno.
 
 ## What is Lume?

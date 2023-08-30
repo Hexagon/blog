@@ -3,8 +3,6 @@ title: "Objects in JavaScript"
 part: 6
 ---
 
-# Objects in JavaScript
-
 After mastering control structures, let's move on to another concept in JavaScript: objects. Objects help you bundle related data and functions together, making it easier to organize and work with code. I will also cover JSON, and how to convert between JavaScript objects and JSON.
 
 ## What Are Objects?

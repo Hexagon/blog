@@ -3,8 +3,6 @@ title: "Control Structures in JavaScript"
 part: 4
 ---
 
-# Control Structures in JavaScript
-
 Control structures in JavaScript dictate how your code runs. They decide the flow of operations based on conditions and can repeat sections of code multiple times. Let's get a better understanding of these structures.
 
 But first things first - before looking at control structures, it's important to know how conditions work. 

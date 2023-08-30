@@ -3,8 +3,6 @@ title: Embracing Modern Practices in JavaScript
 part: 2
 ---
 
-# Embracing Modern Practices in JavaScript
-
 Before we dive deeper into JavaScript, it's crucial to talk about some big changes in the field: the role of polyfills and the move away from old libraries. Knowing what's happening now helps you make smarter choices in your projects.
 
 ## What Are Polyfills?

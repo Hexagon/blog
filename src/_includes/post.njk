@@ -6,14 +6,7 @@ layout: base.njk
   <div class="col-lg-9">
     <section>
       <article lang="{{ language }}">
-        <header>
-          <h1>{{ post.title }}</h1>
-        </header>
-        <p>
-          <time datetime="{{ date }}">
-            {{ date | date }}
-          </time>
-        </p>
+        {% include "partials/post-details.njk" %}
         {{ content | safe }}
       </article>
     </section>
@@ -23,49 +16,8 @@ layout: base.njk
 
   <!-- Sidebar -->
   <div class="col-lg-3">
-    <!-- Current Series TOC -->
-    {% if page.data.series %}
-      <section>
-        <p>This article is part {{ page.data.part }} of the series <strong>{{ page.data.series.title }}</strong></p>
-        <ul>
-          {% for subpost in search.pages(page.data.series.tag) %}
-            <li class="nav-item">
-              <a class="nav-link {% if subpost.data.url == url %}active{% endif %}" href="{{ subpost.data.url }}">{{ subpost.data.title }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      </section>
-    {% endif %}
-
-    <!--Recommended posts -->
-    <section>
-      <p>Recommended posts</p>
-      <ul>
-        {% for subpost in search.pages("standalone") %}
-          <li class="nav-item">
-            <a class="nav-link {% if subpost.data.url == url %}active{% endif %}" href="{{ subpost.data.url }}">{{ subpost.data.title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    </section>
-
-    <!-- More series -->
-    <section>
-      {% if page.data.series %}
-        <p>Consider reading my other series</p>
-      {% else %}
-        <p>Want to read more? Have a look at my series:</p>
-      {% endif %}
-      <ul>
-        {% for subpost in search.pages("part=1") %}
-          {% if not page.data.series or not subpost.series.parent == page.data.series.parent %}
-            <li class="nav-item">
-              <a class="nav-link {% if subpost.data.url == url %}active{% endif %}" href="{{ subpost.data.url }}">{{ subpost.data.series.title }}</a>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </section>
-
+    {% include "partials/series-toc.njk" %}
+    {% include "partials/recommended.njk" %}
+    {% include "partials/more-series.njk" %}
   </div>
 </div>

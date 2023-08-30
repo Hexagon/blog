@@ -4,8 +4,6 @@ part: 1
 priority: 2
 ---
 
-# The Guide to JavaScript - Introduction
-
 Welcome to the first chapter of my JavaScript series! Whether you're just starting out in web development or you're a seasoned developer looking for a refresher, you're in the right spot.
 
 I'm Hexagon. I've been coding front-end JavaScript since its early days and jumped into back-end development with the rise of Node.js. Nowadays, I'm all about Deno; it's got all the developer experience built right in, making it a joy to work with. I've contributed to a bunch of Node.js and Deno libraries, and you might even have stumbled upon some of my open-source projects.

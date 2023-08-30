@@ -1,0 +1,20 @@
+<div class="post-details">
+  <h1>{{page.data.title}}</h1>
+  <p>
+    {% if author %}
+        By <strong>{{ page.data.author.name }}</strong>, 
+    {% endif %}
+    <time class="mb-1" datetime="{{ date }}">
+        {{ date | date }}
+    </time>
+  </p>
+  <!--
+  <span class="reading-time">{{ page.data.readingTime.minutes }} minutes</span>
+
+  <div class="post-tags">
+    {% for tag in tags %}
+      <span class="tag">{{tag}}</span>
+    {% endfor %}
+  </div>
+  -->
+</div>

@@ -1,0 +1,17 @@
+<!-- More series -->
+<section class="mb-4">
+    {% if page.data.series %}
+    <h4>Other article series</h5>
+    {% else %}
+    <h4>Article series</h5>
+    {% endif %}
+    <ul class="list-unstyled">
+    {% for subpost in search.pages("part=1") %}
+        {% if not page.data.series or not subpost.series.parent == page.data.series.parent %}
+        <li class="mb-2">
+            <a class="link-primary {% if subpost.data.url == url %}link-dark{% endif %}" href="{{ subpost.data.url }}">{{ subpost.data.series.title }}</a>
+        </li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+</section>

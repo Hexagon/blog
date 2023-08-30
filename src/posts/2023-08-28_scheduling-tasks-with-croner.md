@@ -14,8 +14,6 @@ tags:
 priority: 4
 ---
 
-# Scheduling Tasks in JavaScript or TypeScript with Croner
-
 Managing time-based tasks in JavaScript has never been easier with Croner, a
 powerful tool designed to trigger functions or evaluate cron expressions in
 various platforms. Whether you're working in Node.js, Deno, Bun, or even

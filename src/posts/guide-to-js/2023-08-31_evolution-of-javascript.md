@@ -1,9 +1,7 @@
 ---
-title: The Evolution of JavaScript and Its Modern Best Practices
+title: The Evolution of JavaScript and Why It Matters
 part: 7
 ---
-
-# The Evolution of JavaScript and Why It Matters
 
 Understanding the past and how we got here can give us good hints about where we're going. Let's dig into JavaScript's history and how it's grown over time. Knowing this stuff will help us when we move on to more complicated topics like Promises, async/await, and the latest JavaScript features.
 

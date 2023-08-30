@@ -7,6 +7,8 @@ import slugify_urls from "lume/plugins/slugify_urls.ts";
 import nav from "lume/plugins/nav.ts";
 import date from "lume/plugins/date.ts";
 
+import readingTime from "https://raw.githubusercontent.com/lumeland/experimental-plugins/main/reading_time/mod.ts";
+
 import lang_javascript from "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/javascript.min.js";
 import lang_bash from "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/bash.min.js";
 import lang_xml from "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/xml.min.js";
@@ -35,6 +37,7 @@ site.use(
     },
   }),
 );
+site.use(readingTime());
 site.use(date());
 site.use(feed());
 site.use(metas());

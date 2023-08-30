@@ -1,0 +1,11 @@
+<!--Recommended posts -->
+<section class="mb-4">
+    <h4>Recommended posts</h4>
+    <ul class="list-unstyled">
+    {% for subpost in search.pages("standalone") %}
+        <li class="mb-2">
+            <a class="link-primary {% if subpost.data.url == url %}link-dark{% endif %}" href="{{ subpost.data.url }}">{{ subpost.data.title }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+</section>
