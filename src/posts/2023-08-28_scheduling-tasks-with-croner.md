@@ -1,7 +1,7 @@
 ---
 layout: post.njk
 title: Scheduling Tasks in JavaScript or TypeScript with Croner
-description: A deep dive into the potentials of Croner, the task scheduler for JavaScript and TypeScript.
+description: A deep dive into the potential of Croner, the task scheduler for JavaScript and TypeScript.
 tags:
  - javascript
  - typescript
@@ -15,14 +15,14 @@ priority: 4
 ---
 
 Managing time-based tasks in JavaScript has never been easier with Croner, a
-powerful tool designed to trigger functions or evaluate cron expressions in
+powerful tool designed to trigger functions or evaluate cron expressions on
 various platforms. Whether you're working in Node.js, Deno, Bun, or even
 directly within a browser, Croner has you covered. In this article, we'll dive
 deep into how you can leverage Croner to schedule your tasks effectively.
 
 ## Introduction to Croner
 
-Croner stands out as a robust JavaScript and TypeScript tool for:
+Croner is a robust JavaScript and TypeScript tool for:
 
 - Triggering functions using the familiar Cron syntax.
 - Evaluating cron expressions to get a list of upcoming run times.
@@ -31,12 +31,12 @@ Croner stands out as a robust JavaScript and TypeScript tool for:
 - Pausing, resuming, or stopping tasks once scheduled.
 - All these without needing a database or any configuration files.
 
-[**Try Croner Live on jsfiddle**](https://jsfiddle.net/) or delve into the
+[**Try Croner Live on JSFiddle**](https://jsfiddle.net/) or delve into the
 [**Full Documentation**](https://croner.56k.guru).
 
 ## Quick Start with Croner
 
-Here's a taste of what you can do with Croner:
+Here are some examples of what you can do with Croner:
 
 ```javascript
 // Basic scheduling: Run a function every fifth second

@@ -3,28 +3,36 @@ title: "Control Structures in JavaScript"
 part: 4
 ---
 
-Control structures in JavaScript dictate how your code runs. They decide the flow of operations based on conditions and can repeat sections of code multiple times. Let's get a better understanding of these structures.
+Control structures in JavaScript dictate how your code runs. They decide the
+flow of operations based on conditions and can repeat sections of code multiple
+times. Let's get a better understanding of these structures.
 
-But first things first - before looking at control structures, it's important to know how conditions work. 
+But first things first - before looking at control structures, it's important to
+know how conditions work.
 
 ## Basic Conditions
 
 Here are common conditions you'll use:
 
- * **Equality (==)**: Checks if values are the same but ignores the type.
- * **Strict Equality (===):** Checks if values and their types are the same.
- * **Inequality (!=):** Checks if values are not the same.
- * **Strict Inequality (!==):** Checks if values and their types aren't the same.
- * **Greater Than (>):** Checks if the left value is bigger than the right one.
- * **Less Than (<):** Checks if the left value is smaller than the right one.
- * **Greater Than or Equal (>=):** Checks if the left value is bigger than or the same as the right one.
- * **Less Than or Equal (<=):** Checks if the left value is smaller than or the same as the right one.
- * **Logical AND (&&):** Both conditions must be true for the whole condition to be true.
- * **Logical OR (||):** If one condition is true, the whole condition is true.
+- **Equality (==)**: Checks if values are the same but ignores the type.
+- **Strict Equality (===):** Checks if values and their types are the same.
+- **Inequality (!=):** Checks if values are not the same.
+- **Strict Inequality (!==):** Checks if values and their types aren't the same.
+- **Greater Than (>):** Checks if the left value is bigger than the right one.
+- **Less Than (<):** Checks if the left value is smaller than the right one.
+- **Greater Than or Equal (>=):** Checks if the left value is bigger than or the
+  same as the right one.
+- **Less Than or Equal (<=):** Checks if the left value is smaller than or the
+  same as the right one.
+- **Logical AND (&&):** Both conditions must be true for the whole condition to
+  be true.
+- **Logical OR (||):** If one condition is true, the whole condition is true.
 
-As you see, in JavaScript, there are two main ways to compare values: `==` and `===`. It's important to know the difference.
+As you see, in JavaScript, there are two main ways to compare values: `==` and
+`===`. It's important to know the difference.
 
- * **Double Equals (==)**: Compares values, but not their types. This can sometimes lead to unexpected results.
+- **Double Equals (==)**: Compares values, but not their types. This can
+  sometimes lead to unexpected results.
 
 ```javascript
 let number = 5;
@@ -35,24 +43,25 @@ if (number == string) {
 }
 ```
 
- * **Triple Equals (===)**: Compares both value and type. This is more predictable and is generally recommended.
+- **Triple Equals (===)**: Compares both value and type. This is more
+  predictable and is generally recommended.
 
- ```javascript
- if (number === string) {
+```javascript
+if (number === string) {
   // This block won't run
 } else {
   console.log("These are not equal with ===");
 }
 ```
 
-The same applies to ineqality and strict inequality. 
-
+The same applies to ineqality and strict inequality.
 
 ## Conditional Statements
 
 Now, conditional statements let your code make decisions:
 
-1. **If Statement**: Tests a condition. If the condition is true, the code inside its block runs.
+1. **If Statement**: Tests a condition. If the condition is true, the code
+   inside its block runs.
 
 ```javascript
 let age = 25;
@@ -61,7 +70,8 @@ if (age > 18) {
 }
 ```
 
-2. **If...else**: This adds an alternative. If the condition in the 'if' part isn't met, the 'else' part runs.
+2. **If...else**: This adds an alternative. If the condition in the 'if' part
+   isn't met, the 'else' part runs.
 
 ```javascript
 if (age > 18) {
@@ -84,7 +94,8 @@ if (age < 13) {
 ```
 
 4. **Switch Statement**: A cleaner way to check multiple conditions, especially
-   when dealing with many potential outcomes. Also lets you combine multiple conditions for a single outcome.
+   when dealing with many potential outcomes. Also lets you combine multiple
+   conditions for a single outcome.
 
 ```javascript
 let fruit = "apple";
@@ -105,7 +116,8 @@ switch (fruit) {
 
 Loops run the same section of code multiple times:
 
-1. **For Loop**: This loop uses a counter. It keeps running as long as a condition is true.
+1. **For Loop**: This loop uses a counter. It keeps running as long as a
+   condition is true.
 
 ```javascript
 for (let i = 0; i < 5; i++) {
@@ -113,7 +125,8 @@ for (let i = 0; i < 5; i++) {
 }
 ```
 
-2. **While Loop**: This will keep going as long as its condition is true. It checks the condition before each iteration.
+2. **While Loop**: This will keep going as long as its condition is true. It
+   checks the condition before each iteration.
 
 ```javascript
 let i = 0;
@@ -155,6 +168,9 @@ for (let key in person) {
 
 ## A Call to Action
 
-Control structures are tools to make your code smarter. Play around with the examples given, tweak the conditions, and watch the results. The best way to grasp these structures is by practice.
+Control structures are tools to make your code smarter. Play around with the
+examples given, tweak the conditions, and watch the results. The best way to
+grasp these structures is by practice.
 
-Next time, we'll delve into more advanced aspects of JavaScript. Keep experimenting and learning!
+Next time, we'll delve into more advanced aspects of JavaScript. Keep
+experimenting and learning!

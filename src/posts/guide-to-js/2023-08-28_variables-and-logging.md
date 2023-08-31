@@ -9,7 +9,10 @@ Let's dive in!
 
 ## Variables in JavaScript
 
-Think of variables in JavaScript as buckets that hold data. JavaScript is **loosely typed**, which simply means you don't have to specify what type of data will go into the bucket when you create it. The type of data a variable holds can also change as you go along.
+Think of variables in JavaScript as buckets that hold data. JavaScript is
+**loosely typed**, which simply means you don't have to specify what type of
+data will go into the bucket when you create it. The type of data a variable
+holds can also change as you go along.
 
 You can declare variables using keywords like `var`, `let`, and `const`.
 
@@ -29,7 +32,7 @@ Now, you can change the username variable to a number later if you want:
 name = 42;
 ```
 
-But `pi`` can't change because it's a `const`.
+But `pi` can't change because it's a``const`.
 
 ## Comments in JavaScript
 
@@ -56,11 +59,15 @@ comment */
 let y = 10;
 ```
 
-Comments are great for clarity, but if your code is simple and self-explanatory, you don't always not need them. Always aim for code that's easy to understand without needing a bunch of comments.
+Comments are great for clarity, but if your code is simple and self-explanatory,
+you don't always not need them. Always aim for code that's easy to understand
+without needing a bunch of comments.
 
 ## Console Logging
 
-`console.log()` is often the first thing you'll learn for debugging. It's a way to check variable values or just show messages. And guess what? It works the same whether you're coding for a browser, Node.js, or Deno.
+`console.log()` is often the first thing you'll learn for debugging. It's a way
+to check variable values or just show messages. And guess what? It works the
+same whether you're coding for a browser, Node.js, or Deno.
 
 ```javascript
 let greeting = "Hello, World!";
@@ -80,12 +87,13 @@ console.log(greeting); // Outputs: Hello, World!
 
 - **In Deno**: Similar to Node.js, save your JavaScript code into a file. Then,
   in your terminal or command prompt, navigate to the directory and run
-  `deno run script.js`. Again, the output from `console.log()` will show in
-  the terminal.
+  `deno run script.js`. Again, the output from `console.log()` will show in the
+  terminal.
 
 ### Expanding on Console Logging Functions
 
-Besides `console.log()`, the console object has other useful methods to make debugging easier.
+Besides `console.log()`, the console object has other useful methods to make
+debugging easier.
 
 The `console.`-functions take any object as parameter, outputting it the best
 way it can.
@@ -118,4 +126,6 @@ console.table(users);
 
 ## In Summary
 
-Grasping variables and the range of debugging tools like console methods sets the foundation for your JavaScript adventures. Keep an eye out for the next part in this series, where we'll dig into even more JavaScript basics!
+Grasping variables and the range of debugging tools like console methods sets
+the foundation for your JavaScript adventures. Keep an eye out for the next part
+in this series, where we'll dig into even more JavaScript basics!

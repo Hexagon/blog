@@ -2,7 +2,9 @@
 
 ## Introduction
 
-Welcome to the source code repository for my blog - [hexagon.56k.guru](https://hexagon.56k.guru), powered by Deno and Lume. Feel free to check out the code, contribute, or even guest blog!
+Welcome to the source code repository for my blog -
+[hexagon.56k.guru](https://hexagon.56k.guru), powered by Deno and Lume. Feel
+free to check out the code, contribute, or even guest blog!
 
 ## Getting Started
 
@@ -28,12 +30,13 @@ deno task lume
 ```
 
 ## Directory Structure
+
 - `/_config.ts`: Lume configuration
 - `/src`: The core source code
-    - `/_includes`: Templates for site partials
-    - `/css`: Copied to `_site` at build time
-    - `/posts`: Markdown files for individual blog posts
-    - `/posts/my-series`: Series of related blog posts
+  - `/_includes`: Templates for site partials
+  - `/css`: Copied to `_site` at build time
+  - `/posts`: Markdown files for individual blog posts
+  - `/posts/my-series`: Series of related blog posts
 - `/_site`: The generated site (ignored in git)
 
 ## How to Contribute
@@ -41,9 +44,11 @@ deno task lume
 1. Fork this repository.
 2. Clone your fork.
 3. Create a new branch for your work.
-4. Make your changes, or add your blog post in `/src/posts` or series in `/src/posts/my-series`.
+4. Make your changes, or add your blog post in `/src/posts` or series in
+   `/src/posts/my-series`.
 5. Push your changes and make a pull request.
-6. Your pull request will be manually reviewed, only quality content matching the blog's niche will be accepted.
+6. Your pull request will be manually reviewed, only quality content matching
+   the blog's niche will be accepted.
 
 ### For Guest Blogging
 
@@ -61,6 +66,7 @@ tags:
     - tag1
     - tag2
 ---
+
 Write post
 
 ## Using
@@ -74,6 +80,7 @@ For series, add an additional `part` key:
 ---
 part: 1
 ---
+
 Write post
 
 ## Using
@@ -84,7 +91,8 @@ Write post
 ## License
 
 - Code: MIT License
-- Posts: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+- Posts: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA
+  4.0)
 
 ## Questions
 

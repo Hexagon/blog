@@ -33,7 +33,7 @@ site.use(
       html: lang_xml,
       xml: lang_xml,
       json: lang_json,
-      yaml: lang_yaml
+      yaml: lang_yaml,
     },
   }),
 );
@@ -42,7 +42,7 @@ site.use(date());
 site.use(feed());
 site.use(metas());
 site.use(sitemap({
-  priority: "priority"
+  priority: "priority",
 }));
 site.use(slugify_urls());
 site.use(nav());
