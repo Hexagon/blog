@@ -1,8 +1,8 @@
-# README for hexagon.56k.guru Blog
+# Hexagon's Blog
 
 ## Introduction
 
-Welcome to the source code repository for my blog - [hexagon.56k.guru](https://hexagon.56k.guru), powered by Deno and Lume. Feel free to dive into the code, contribute, or even guest blog!
+Welcome to the source code repository for my blog - [hexagon.56k.guru](https://hexagon.56k.guru), powered by Deno and Lume. Feel free to check out the code, contribute, or even guest blog!
 
 ## Getting Started
 
@@ -61,9 +61,11 @@ tags:
     - tag1
     - tag2
 ---
-# Title
+Write post
 
-text
+## Using
+
+**Markdown**
 ```
 
 For series, add an additional `part` key:
@@ -72,10 +74,11 @@ For series, add an additional `part` key:
 ---
 part: 1
 ---
+Write post
 
-# Title
+## Using
 
-text
+**Markdown**
 ```
 
 ## License

@@ -12,19 +12,19 @@ tags:
 priority: 4
 ---
 
-If you're like me, you appreciate the efficiency and elegance of using a static site generator for your blog or website. Today, I want to share with you the beauty of Lume, a static site generator built for Deno.
+If you're like me, you probably appreciate the simplicity of using a static site generator for your blog or website. Today, I want to share the beauty of Lume, a static site generator built for Deno.
 
 ## What is Lume?
 
-Lume is a minimalist static site generator (SSG) specifically designed for Deno. It's not WordPress; you won't find a ton of built-in features or a graphical interface. However, it gives you more control over your codebase and configurations.
+Lume is a minimalist static site generator specifically designed for Deno. It's not WordPress; you won't find a ton of built-in features or a graphical interface. However, it gives you full control over your code and configuration.
 
 ### Why Lume?
 
-1. **Less Code**: With Lume, you won't be bogged down by unnecessary code or plugins. Everything is simple and to the point.
+1. **Less Code**: With Lume, you won't be affected by unnecessary code or plugins. Everything is simple and to the point.
   
-2. **Full Control**: You get to control every aspect of your site without the bloat of unnecessary features.
+2. **Full Control**: You get to control every aspect of your site.
   
-3. **Deno-Powered**: Being built on Deno, you'll manage dependencies more securely and effectively.
+3. **Deno-Powered**: Being built on Deno, you get all tools you need in a single executable.
   
 4. **Multiple File and Template Support**: Lume supports various file types like Markdown, YAML, and even TypeScript. It's also compatible with multiple template engines, including Nunjucks.
 
@@ -175,7 +175,7 @@ layout: base.njk
   <div class="col-md">
     <article lang="{{ language }}">
       <header>
-        <h1>{{ post.title }}</h1>
+        <h1>{{ title }}</h1>
       </header>
       <p>
         <time datetime="{{ date }}">
@@ -185,7 +185,6 @@ layout: base.njk
       {{ content | safe }}
     </article>
   </div>
-
 </div>
 ```
 
@@ -203,13 +202,12 @@ title: Page title for my series articles (overridable)
 description: Description of my series
 series: 
   title: Title for the series in the series listing
-  tag: guide-to-js
+  tag: my-series-tag
 tags:
+ - my-series-tag
  - javascript
  - guide
  - post
- - guide-to-js
-
 ```
 
 ### Showing an in-series listing in the sidebar
@@ -251,6 +249,7 @@ import date from "lume/plugins/date.ts";
 // Markdown plugin configuration
 const markdown = {};
 
+// Initialize site
 const site = lume({
         src: "./src",
         location: new URL("https://hexagon.56k.guru"),
@@ -258,6 +257,7 @@ const site = lume({
         markdown,
 });
 
+// Add plugins
 site.use(date());
 site.use(feed());
 site.use(metas());

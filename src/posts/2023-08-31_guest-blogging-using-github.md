@@ -14,7 +14,7 @@ tags:
 priority: 3
 ---
 
-If you're into tech, coding, or writing, you probably enjoy sharing your thoughts and ideas. Guest blogging is a fantastic way to reach a broader audience. In this post, we'll discuss the benefits of guest blogging and how static site generators like [Lume](https://lume.land) can make your life easier.
+If you're into tech, coding, or writing, you probably enjoy sharing your thoughts and ideas. Guest blogging is a fantastic way to reach a broader audience. In this post, I'll go through the benefits of guest blogging and why static site generators like [Lume](https://lume.land) can make your life easier.
 
 ## Why Guest Blogging is Awesome
 
