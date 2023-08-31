@@ -11,8 +11,8 @@ Make sure Deno is installed on your computer.
 Clone the repo:
 
 ```bash
-git clone https://github.com/Hexagon/hexagon.56k.guru.git
-cd hexagon.56k.guru
+git clone https://github.com/Hexagon/blog.git
+cd blog
 ```
 
 To run the blog locally:
