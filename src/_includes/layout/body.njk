@@ -1,16 +1,16 @@
 ---
-layout: head.njk
+layout: layout/html.njk
 ---
 
 <body>
 
-  {% include "nav.njk" %}
+  {% include "partials/nav.njk" %}
 
   <!-- content -->
   <div class="container restricted">
     {{ content | safe }}
   </div>
     
-  {% include "footer.njk" %}
+  {% include "partials/footer.njk" %}
 
 </body>

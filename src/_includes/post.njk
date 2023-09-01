@@ -1,5 +1,5 @@
 ---
-layout: base.njk
+layout: layout/body.njk
 ---
 
 <div class="row">
@@ -9,7 +9,7 @@ layout: base.njk
         {% include "partials/post-details.njk" %}
         {{ intro | md | safe }}
         <br>
-        {% include "ads/article.njk" %}
+        {% include "components/ads/article.njk" %}
         <br>
         {{ content | safe }}
       </article>
@@ -17,9 +17,9 @@ layout: base.njk
     <hr>
     {% include "partials/next-previous.njk" %}
     <hr>
-    {% include "ads/plex.njk" %}
+    {% include "components/ads/plex.njk" %}
     <hr>
-    {% include "disqus.njk" %}
+    {% include "components/disqus.njk" %}
   </div>
 
   <!-- Sidebar -->
@@ -27,7 +27,6 @@ layout: base.njk
     {% include "partials/series-toc.njk" %}
     {% include "partials/recommended.njk" %}
     {% include "partials/more-series.njk" %}
-    {% include "ads/plex.njk" %}
-    
+    {% include "components/ads/plex.njk" %}
   </div>
 </div>
