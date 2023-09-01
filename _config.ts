@@ -39,7 +39,19 @@ site.use(
 );
 site.use(readingTime());
 site.use(date());
-site.use(feed());
+site.use(feed({
+  output: ["/feed.rss", "/feed.json"],
+  query: "post",
+  info: {
+    title: "=site.title",
+    description: "=site.description",
+  },
+  items: {
+    title: "=title",
+    description: "=description",
+    content: "=intro",
+  },
+}));
 site.use(metas());
 site.use(sitemap({
   priority: "priority",
@@ -48,5 +60,6 @@ site.use(slugify_urls());
 site.use(nav());
 
 site.copy("css");
+site.copy("img");
 
 export default site;

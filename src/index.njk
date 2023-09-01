@@ -5,34 +5,50 @@ tags: index
 ---
 <section class="mb-5">
     <h1 class="mb-3">Hello, I'm Hexagon</h1>
-    <p class="lead-text">I've been immersed in JavaScript since 1995, creating libraries like <strong>Croner</strong> and <strong>@hexagon/base64</strong>. My blog covers everything from JavaScript and TypeScript to modern runtimes like Deno.</p>
-    <p>For a solid foundation in JavaScript, start with my <a href="/posts/guide-to-js/introduction/">JavaScript Guide</a>. </p>
+    <img src="/img/419737.png" title="Hexagon's Avatar" class="index-avatar float-end">
+    <p class="lead-text">I've been immersed in JavaScript since 1996, having created libraries like <a href="https://croner.56k.guru" target="_blank">Croner</a>, a cross-runtime cron scheduler, and <a href="https://pup.56k.guru" target="_blank">Pup</a>, a process manager similar to pm2 for Deno. My blog covers everything from JavaScript and TypeScript to modern runtimes like Deno. I'm all about Open Source, portable code and minimal bloat.</p>
+    <p>For a solid foundation in pure JavaScript, check out my article series <a href="/posts/guide-to-js/introduction/">The guide to JavaScript</a>.</p>
     <p>This blog is built using <a href="https://deno.land" target="_blank">Deno</a> and <a href="https://lume.land" target="_blank">Lume</a>, and the source code is available at <a href="https://github.com/hexagon/blog">github.com/hexagon/blog</a>.</p>
+    <br>
+    <hr>
+    {% include "ads/article.njk" %}
+    <hr>
     <h2 class="mb-4 mt-5">Recent posts</h2>
     <ul class="list-unstyled">
     {% for page in search.pages("","date=desc") %}
         {% if loop.index0 < 20 and page.data.title != "Home" %}    
             <li>
                 <article>
-                    <h3 class="mb-1 mt-0"><a href="{{ page.data.url }}">{{ page.data.title }}</a></h3>
-                    <p class="text-body-secondary mb-4">
-
-                    <!-- Author -->
-                    {% if page.data.author %}
-                        By <strong>{{ page.data.author.name }}</strong>, 
-                    {% endif %}
-
-                    <!-- Date -->
-                    <time class="mb-1" datetime="{{ page.data.date }}">
-                        {{ page.data.date | date }}
-                    </time>
                     
-                    <!-- Reading time -->
-                    <span>, {{ page.data.readingTime.minutes }} minutes read</span>
+                    <h3 class="mb-1 mt-0">
+                        <a href="{{ page.data.url }}">{{ page.data.title }}</a>
+                    </h3>
+
+                    <p class="text-body-secondary mb-3">
+
+                        <!-- Author -->
+                        {% if page.data.author %}
+                            By <strong>{{ page.data.author.name }}</strong>, 
+                        {% endif %}
+
+                        <!-- Date -->
+                        <time class="mb-1" datetime="{{ page.data.date }}">
+                            {{ page.data.date | date }}
+                        </time>
+                        
+                        <!-- Reading time -->
+                        <span>, {{ page.data.readingTime.minutes }} minutes read</span>
+
                     </p>
+                    <p class="text-body-secondary mb-5">
+                        {{ page.data.intro }}
+                    <p>
                 </article>
             </li>
         {% endif %}
     {% endfor %}
     </ul>
+    <hr>
+    {% include "ads/plex.njk" %}
+    <br>
 </section>

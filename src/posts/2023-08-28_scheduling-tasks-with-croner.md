@@ -12,13 +12,12 @@ tags:
  - guide
  - standalone
 priority: 4
----
-
-Managing time-based tasks in JavaScript has never been easier with Croner, a
+intro: "Managing time-based tasks in JavaScript has never been easier with Croner, a
 powerful tool designed to trigger functions or evaluate cron expressions on
 various platforms. Whether you're working in Node.js, Deno, Bun, or even
 directly within a browser, Croner has you covered. In this article, we'll dive
-deep into how you can leverage Croner to schedule your tasks effectively.
+deep into how you can leverage Croner to schedule your tasks effectively."
+---
 
 ## Introduction to Croner
 

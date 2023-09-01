@@ -1,11 +1,10 @@
 ---
 title: Fundamental Concepts of JavaScript
-part: 3
----
-
-In this section we'll cover the key elements that are essential to working with
+part: 2
+intro: "In this section we'll cover the key elements that are essential to working with
 JavaScript. We'll touch on variables, debugging methods, and core principles.
-Let's dive in!
+Let's dive in!"
+---
 
 ## Variables in JavaScript
 

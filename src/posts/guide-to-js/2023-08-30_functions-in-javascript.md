@@ -1,11 +1,10 @@
 ---
 title: "Functions in JavaScript"
-part: 5
----
-
-Now that we've covered control structures, let's step into another cornerstone
+part: 4
+intro: "Now that we've covered control structures, let's step into another cornerstone
 of JavaScript: functions. Functions allow us to bundle code into reusable
-pieces. This helps reduce repetition and makes our code neater.
+pieces. This helps reduce repetition and makes our code neater."
+---
 
 ## What's a Function?
 

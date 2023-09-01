@@ -1,13 +1,13 @@
 ---
 title: Strings and Numbers in JavaScript
-part: 8
----
-
-In this post, we will explore two of the most common data types in JavaScript:
+part: 7
+intro: "In this post, we will explore two of the most common data types in JavaScript:
 strings and numbers. Strings are used to store text, while numbers are used to
 store numerical values. We will also learn how to manipulate strings and numbers
 using various methods and operators, how to avoid overflows using BigInts, and
-how to represent binary and hexadecimal numbers.
+how to represent binary and hexadecimal numbers."
+
+---
 
 There is a lot to cover here, from simple string manipulation to advanced
 bitwise operations. But take your time and experiment with each section using

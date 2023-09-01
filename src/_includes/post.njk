@@ -7,11 +7,17 @@ layout: base.njk
     <section>
       <article lang="{{ language }}">
         {% include "partials/post-details.njk" %}
+        {{ intro | md | safe }}
+        <br>
+        {% include "ads/article.njk" %}
+        <br>
         {{ content | safe }}
       </article>
     </section>
     <hr>
     {% include "partials/next-previous.njk" %}
+    <hr>
+    {% include "ads/plex.njk" %}
     <hr>
     {% include "disqus.njk" %}
   </div>
@@ -21,5 +27,7 @@ layout: base.njk
     {% include "partials/series-toc.njk" %}
     {% include "partials/recommended.njk" %}
     {% include "partials/more-series.njk" %}
+    {% include "ads/plex.njk" %}
+    
   </div>
 </div>

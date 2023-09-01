@@ -10,11 +10,10 @@ tags:
  - guide
  - standalone
 priority: 4
----
-
-If you're like me, you probably appreciate the simplicity of using a static site
+intro: "If you're like me, you probably appreciate the simplicity of using a static site
 generator for your blog or website. Today, I want to share the beauty of Lume, a
-static site generator built for Deno.
+static site generator built for Deno."
+---
 
 ## What is Lume?
 

@@ -24,6 +24,7 @@ h1,h2,h3 {
 
 p {
     margin-bottom: 1rem;
+    line-height: 1.6;
 }
 
 h1 { font-size: 1.5rem; font-weight:500; }
@@ -34,4 +35,22 @@ h5 { font-size: 0.9rem; font-weight:500; }
 
 a {
     text-decoration: none !important;
+}
+
+article li {
+    margin-bottom: 0.25rem;
+}
+
+article ul {
+    margin-bottom: 2rem;
+}
+
+.hljs {
+    border-radius: 3px;
+}
+
+.index-avatar {
+    border-radius: 50%;
+    width: 150px;
+    margin-left: 25px;
 }

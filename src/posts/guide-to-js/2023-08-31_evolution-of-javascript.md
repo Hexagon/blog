@@ -1,12 +1,11 @@
 ---
 title: The Evolution of JavaScript and Why It Matters
-part: 7
----
-
-Understanding the past and how we got here can give us good hints about where
+part: 6
+intro: "Understanding the past and how we got here can give us good hints about where
 we're going. Let's dig into JavaScript's history and how it's grown over time.
 Knowing this stuff will help us when we move on to more complicated topics like
-Promises, template literals, async/await, and the latest JavaScript features.
+Promises, template literals, async/await, and the latest JavaScript features."
+---
 
 ## How Did JavaScript Start?
 
@@ -53,34 +52,6 @@ runtime/browser is to check MDN, this is an example of `async` browser/runtime
 compability
 [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function#browser_compatibility](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function#browser_compatibility)
 
-## Keep Learning and Stay Current
-
-It's important to keep up with the latest changes to ECMAScript. New features
-not only add new abilities but can also make your code run faster and be more
-secure. So, make it a habit to read official documentation and try out new
-stuff.
-
-Have a look at [tc39.es](https://tc39.es/) for full history and current
-proposals.
-
-## Why Polyfills Aren't as Important Anymore
-
-There was a time when we had to use lots of third-party packages and code
-snippets called polyfills to make sure our JavaScript worked on different
-browsers. This often made our code more complicated than it needed to be.
-
-```javascript
-// Polyfill for Array.prototype.includes in older environments
-if (!Array.prototype.includes) {
-  Array.prototype.includes = function (element) {
-    // implementation here
-  };
-}
-```
-
-These days, thanks to more consistent browser support and ECMAScript updates, we
-usually don't need these workarounds anymore.
-
 ## CommonJS to ES Modules: Time to Switch
 
 CommonJS was the go-to way to include modules in JavaScript, especially in
@@ -99,3 +70,52 @@ Switching to ES modules will make your code cleaner and easier to manage,
 especially as you work on larger projects. It also optimizes for both static
 analysis and tree shaking. This can lead to better-optimized bundles and cleaner
 codebases, making it easier to get rid of outdated dependencies and polyfills.
+
+## A note on polyfills
+
+In the world of web development, compatibility has always been a primary
+concern. Due to the inconsistencies between browser versions and their support
+for JavaScript features, developers often turned to polyfills. A polyfill is a
+piece of code that provides modern functionality on older browsers that do not
+natively support it. They essentially "fill in" the gaps where browser support
+is lacking.
+
+There was a time when polyfills were essential, but now, most modern browsers
+have gotten their act together and offer consistent JavaScript support. So, the
+need for polyfills has gone down.
+
+Likewise, people used to rely a lot on libraries to make JavaScript easier. But
+as JavaScript got better, many of these libraries fell by the wayside. Nowadays,
+you can often get the job done using just built-in JavaScript features.
+
+## Embrace Built-in Features
+
+One example of a big shift in JavaScript is the transition from custom AJAX
+libraries to the native `fetch` API in JavaScript. Earlier, developers might
+have leaned on jQuery's `$.ajax` or other similar custom solutions to make
+asynchronous HTTP requests. Today, the built-in `fetch` function gives a more
+standardized way to achieve the same, without relying on any external libraries.
+
+Here's why focusing on built-in features in JavaScript is a good idea:
+
+- **More Optimized:** Native features are generally faster and more efficient
+  than their library counterparts.
+
+- **Well-Supported:** Being part of the language specification, you can expect
+  consistent support across all modern browsers.
+
+- **Less Redundant:** Using built-in features reduces the need for external
+  libraries, ensuring faster page loads and optimized performance.
+
+## Staying Updated
+
+As you continue to work with JavaScript, it's important to stay in the loop
+about the latest features and updates. The JavaScript landscape is always
+changing, and what was considered a best practice yesterday might not hold up
+today. Make a habit of checking out official documentation, following key
+developers on social media, and participating in coding communities. This will
+not only keep your skills fresh but also let you take advantage of new and more
+efficient ways of doing things.
+
+Have a look at [tc39.es](https://tc39.es/) for full history of ECMAScript, and
+current proposals.
