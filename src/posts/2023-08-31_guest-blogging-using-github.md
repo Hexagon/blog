@@ -11,7 +11,7 @@ tags:
   - Lume
   - Deno
   - standalone
-priority: 3
+priority: 0.7
 intro: "If you're into tech, coding, or writing, you probably enjoy sharing your
 thoughts and ideas. Guest blogging is a fantastic way to reach a broader
 audience. In this post, I'll go through the benefits of guest blogging and why

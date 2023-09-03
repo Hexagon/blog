@@ -13,15 +13,15 @@ title: hexagon.56k.guru
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
  
-    {% include "components/google-ads.njk" %}
-
     <!-- Halfmoon CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/halfmoon@2.0.0/css/halfmoon.min.css" rel="stylesheet" integrity="sha256-pfT/Otf/lK1xFNInb5QQR1uRF9cOP/8zDICH+QQ6o2c=" crossorigin="anonymous">
+    <link href="/css/vendor/halfmoon-2.0.0.min.css" rel="stylesheet">
+
+    {% include "components/google-ads.njk" %}
 
     <!-- Specific -->
     <title>{{ title }}</title>
  
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" inline>
 
   </head>
   {{ content | safe }}

@@ -3,7 +3,7 @@
 
   <!-- Author -->
   {% if page.data.author %}
-      By <strong>{{ page.data.author.name }}</strong>, 
+      by <strong>{{ page.data.author.name }}</strong>, 
   {% endif %}
 
   <!-- Date -->
@@ -26,3 +26,13 @@
     {% endif %}
   {% endfor %}
 </p>
+{% if page.data.updated %}
+<p>
+  <i>
+    Updated: 
+    <time class="mb-1" datetime="{{ page.data.updated }}">
+      {{ page.data.updated | date }}
+    </time>
+  </i>
+</p>
+{% endif %}

@@ -52,5 +52,21 @@ article ul {
 .index-avatar {
     border-radius: 50%;
     width: 150px;
+    height: 150px;
     margin-left: 25px;
 }
+
+/* Search component */
+:root {
+    --pagefind-ui-scale: 1;
+    --pagefind-ui-primary: none;
+    --pagefind-ui-text: none;
+    --pagefind-ui-background: none;
+    --pagefind-ui-border: none;
+    --pagefind-ui-tag: none;
+    --pagefind-ui-border-width: none;
+    --pagefind-ui-border-radius: none;
+    --pagefind-ui-image-border-radius: none;
+    --pagefind-ui-image-box-ratio: none;
+    --pagefind-ui-font: none;
+  }

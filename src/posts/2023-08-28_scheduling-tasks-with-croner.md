@@ -2,6 +2,7 @@
 layout: post.njk
 title: Scheduling Tasks in JavaScript or TypeScript with Croner
 description: A deep dive into the potential of Croner, the task scheduler for JavaScript and TypeScript.
+updated: "2023-09-03T22:41:00Z"
 tags:
  - javascript
  - typescript
@@ -11,12 +12,12 @@ tags:
  - scheduling
  - guide
  - standalone
-priority: 4
+priority: 0.9
 intro: "Managing time-based tasks in JavaScript has never been easier with Croner, a
 powerful tool designed to trigger functions or evaluate cron expressions on
 various platforms. Whether you're working in Node.js, Deno, Bun, or even
-directly within a browser, Croner has you covered. In this article, we'll dive
-deep into how you can leverage Croner to schedule your tasks effectively."
+directly within a browser, Croner has you covered. In this article, I'll give you
+a brief introduction on how to use Croner."
 ---
 
 ## Introduction to Croner
@@ -36,51 +37,6 @@ Croner is a robust JavaScript and TypeScript tool for:
 ## Quick Start with Croner
 
 Here are some examples of what you can do with Croner:
-
-```javascript
-// Basic scheduling: Run a function every fifth second
-const job = Cron("*/5 * * * * *", () => {
-  console.log("This will run every fifth second");
-});
-
-// Get dates for the next 100 Sundays
-const nextSundays = Cron("0 0 0 * * 7").nextRuns(100);
-console.log(nextSundays);
-
-// Days left to the next Christmas Eve
-const msLeft = Cron("59 59 23 24 DEC *").nextRun() - new Date();
-console.log(
-  Math.floor(msLeft / 1000 / 3600 / 24) + " days left to next christmas eve",
-);
-
-// Schedule a function at a specific date/time in a different timezone
-Cron("2024-01-23T00:00:00", { timezone: "Asia/Kolkata" }, () => {
-  console.log("Yay!");
-});
-```
-
-# Scheduling Tasks in JavaScript with Croner
-
-Managing time-based tasks in JavaScript has never been easier with Croner, a
-powerful tool designed to trigger functions or evaluate cron expressions in
-various platforms. Whether you're working in Node.js, Deno, Bun, or even
-directly within a browser, Croner has you covered. In this article, we'll dive
-deep into how you can leverage Croner to schedule your tasks effectively.
-
-## Introduction to Croner
-
-Croner stands out as a robust JavaScript and TypeScript tool for:
-
-- Triggering functions using the familiar Cron syntax.
-- Evaluating cron expressions to get a list of upcoming run times.
-- Scheduling tasks targeting different time zones.
-- Including TypeScript typings and handling asynchronous functions.
-- Pausing, resuming, or stopping tasks once scheduled.
-- All these without needing a database or any configuration files.
-
-## Quick Start with Croner
-
-Here's a taste of what you can do with Croner:
 
 ```javascript
 // Basic scheduling: Run a function every fifth second
@@ -162,7 +118,7 @@ because:
 - Offers features like over-run protection, error handling, and more that some
   other libraries lack.
 - For an in-depth comparison of various libraries, check the detailed comparison
-  [here]().
+  at [croner.56k.guru](https://croner.56k.guru/).
 
 ### Wrapping Up
 

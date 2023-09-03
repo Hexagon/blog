@@ -9,7 +9,7 @@ tags:
  - lume
  - guide
  - standalone
-priority: 4
+priority: 0.9
 intro: "If you're like me, you probably appreciate the simplicity of using a static site
 generator for your blog or website. Today, I want to share the beauty of Lume, a
 static site generator built for Deno."

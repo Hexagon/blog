@@ -9,7 +9,7 @@ tags:
 - tz
 - library
 - standalone
-priority: 4
+priority: 0.9
 intro: "Minitz is a minimal utility that allows you to convert to or from any timezone. It is compatible with Deno, Node, and browsers, and is less than 2KB when minified. The library is MIT-licensed, which means you can use it any way you want."
 ---
 

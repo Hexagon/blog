@@ -3,7 +3,7 @@ metas:
   lang: en
   description: Immersed in JavaScript since 1995, I’ve created libraries like Croner and @hexagon/base64. My blog covers everything from JavaScript and TypeScript to modern runtimes like Deno. Join me for cutting-edge insights, invaluable tutorials, and general ramblings.
 lang: en
-priority: 5
+priority: 1.0
 author:
   name: Hexagon
   email: hexagon@56k.guru

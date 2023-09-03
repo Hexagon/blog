@@ -1,7 +1,8 @@
 ---
 title: The Guide to JavaScript - Introduction
 part: 1
-priority: 2
+priority: 1.0
+updated: "2023-09-03T21:44:00Z"
 intro: "I’m Hexagon. I’ve been coding front-end JavaScript since its early days and
 jumped into back-end and library development with the rise of Node.js. Nowadays,
 I’m all about Deno; it’s got all the developer experience built right in, making
