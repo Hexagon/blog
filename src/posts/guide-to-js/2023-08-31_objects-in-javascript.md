@@ -1,7 +1,7 @@
 ---
-title: "Objects in JavaScript"
-part: 5
-intro: "After mastering control structures, let's move on to another concept in
+title: "Working with Objects in JavaScript"
+part: 6
+intro: "After mastering control structures and arrays, let's move on to another concept in
 JavaScript: objects. Objects help you bundle related data and functions
 together, making it easier to organize and work with code. I will also cover
 JSON, and how to convert between JavaScript objects and JSON."
@@ -34,11 +34,42 @@ You can access properties in two ways:
 console.log(person.name); // Output: "Alice"
 ```
 
+Dot notation is the most common and straightforward way to access object
+properties. It involves using a dot followed by the property name to retrieve
+the value associated with that property.
+
+This is preferred when you know the property name at the time of coding, and the
+property name is a valid JavaScript identifier (consisting of letters, digits,
+underscores, and dollar signs, but not starting with a digit).
+
+I always prefer dot notation when possible, as it gives more readable code. But
+no rules without exceptions:
+
 2. Bracket Notation
 
 ```javascript
 console.log(person["name"]); // Output: "Alice"
 ```
+
+Bracket notation provides a more flexible way to access object properties. It
+involves enclosing the property name in square brackets. This notation is
+particularly useful when:
+
+- The property name contains special characters, spaces, or starts with a digit.
+- The property name is determined dynamically, such as through a variable or an
+  expression:
+
+### Dynamic Property Access
+
+```javascript
+let propertyName = "age";
+console.log(person[propertyName]); // Output: 30
+```
+
+Here, the variable `propertyName` holds the string "age," and we use bracket
+notation to access the age property of the person object. This allows you to
+access object properties based on runtime conditions, making your code more
+flexible.
 
 ## Adding and Updating Properties
 

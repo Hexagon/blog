@@ -24,13 +24,14 @@ new Date().toLocaleString("sv-SE", { timeZone: "Asia/Tokyo" });
 // -> 2022-09-15 17:23:45
 ```
 
-However, I needed a simple and lightweight utility that could convert dates
-between different timezones in JavaScript, both to **and from**. I found that
-existing libraries were either too complex, too heavy for my needs or didn't
-support module imports.
+However, I needed a simple and lightweight utility for
+[croner](https://github.com/hexagon/croner) that could convert dates between
+different timezones in JavaScript, both to **and from**. I found that existing
+libraries were either too complex, too heavy for my needs or didn't support
+module imports.
 
-Using minitz, that is possible. Let's see some examples on converting from a
-time zone:
+Minitz is the solution to these problems. Let's see some examples on converting
+from a time zone:
 
 ```javascript
 // Get local time from time in Asia/Tokyo, using minitz and vanilla js
@@ -58,9 +59,15 @@ conversions. It uses current best practices and is designed to work in all
 environments, including Node, Deno, and browsers. Minitz is compatible with ESM,
 UMD, and CommonJS.
 
+For those interested in the details, the code in
+[these lines](https://github.com/Hexagon/minitz/blob/36f82ad67df7268ecf5cc9df214cc29b04ba8da5/src/minitz.js#L94-L142)
+within the GitHub repository works its magic.
+
 ## Using minitz
 
 Minitz can be installed through [NPM](https://npmjs.com/package/minitz), or
-imported from [deno.land/x](https://deno.land/x/minitz). Once you have installed
-or imported Minitz, you can use it to convert dates between different timezones
-in JavaScript using the examples above.
+imported from [deno.land/x](https://deno.land/x/minitz). The source code is
+available at [github.com/hexagon/minitz](https://github.com/hexagon/minitz).
+
+Once you have installed or imported Minitz, you can use it to convert dates
+between different timezones in JavaScript using the examples above.

@@ -1,6 +1,6 @@
 ---
 title: Building a Default Settings System Using the Spread Operator
-part: 8
+part: 10
 intro: "Today, We'll have a look at how the spread operator works by building a small system for managing default settings and overrides."
 ---
 
@@ -35,9 +35,9 @@ URL, timeout duration, and a debug mode flag.
 Now, let's create a function that merge in user-defined settings while
 preserving the defaults:
 
-```javscript
+```javascript
 function applySettings(defaultSettings, userSettings) {
-    return { ...defaultSettings, ...userSettings };
+  return { ...defaultSettings, ...userSettings };
 }
 ```
 

@@ -14,23 +14,54 @@ with input values (arguments), and they can return results.
 
 ## Creating and Calling Functions
 
-1. Regular Function:
-
 Here's a basic function:
 
 ```javascript
-function sayHello(name) {
-  console.log("Hello, " + name + "!");
+function sayHello() {
+  console.log("Hello JavaScript!");
 }
 ```
 
 To run this function:
 
 ```javascript
-sayHello("Bob");
+sayHello();
 ```
 
-The output is: "Hello, Bob!".
+The output is: "Hello JavaScript!";
+
+## Working with Parameters
+
+Parameters allow you to pass values into a function so that it can perform
+actions based on those values. Parameters make your functions flexible and
+reusable, as you can customize their behavior by providing different values when
+calling them.
+
+### Declaring Parameters
+
+When you define a function, you can declare parameters inside the parentheses.
+These parameters act as placeholders for the values you'll pass when calling the
+function. Here's an example:
+
+```javascript
+function greet(name) {
+  console.log("Hello, " + name + "!");
+}
+```
+
+In this `greet()` function, `name` is a parameter. When you call the function,
+you can provide a value for name, and that value will be used within the
+function's code.
+
+### Passing Arguments
+
+Arguments are the actual values you pass to a function when you call it. These
+values are then assigned to the corresponding parameters within the function.
+Here's how you pass arguments to the greet function:
+
+```javascript
+greet("Bob");
+```
 
 There is more ways to define functions, but before going through these, we'll
 look at how functions return the result back to you.
@@ -90,11 +121,17 @@ let greet = function (name) {
 ### Arrow Functions:
 
 Introduced in ES6 (more on this later), arrow functions provide a more concise
-way to write functions, especially for short one-liners.
+way to write functions, especially for short one-liners or functions within
+functions.
 
 ```javascript
 let add = (a, b) => a + b;
 ```
+
+Contrary to normal functions, arrow functions do never have their own scope.
+`this` is always inherited from where the array function were defined. Do not
+worry if you do not get "scope" and `this` yet, it will be covered in detail
+later in the series, but I think it's worth mentioning.
 
 ### Constructor Functions:
 

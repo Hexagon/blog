@@ -4,8 +4,8 @@ part: 8
 intro: "In this lesson, we will explore asynchronous code in JavaScript, learn what promises is, and how they relate to async/await."
 ---
 
-Asynchronous operations are those that do not block the execution of the code,
-such as fetching data from an API, reading a file, or performing a computation.
+Asynchronous operations are those that do not block the current code path, such
+as fetching data from an API, reading a file, or performing a computation.
 
 There are two ways of handling asynchronous operations in JavaScript:
 
@@ -145,11 +145,32 @@ async function fetchAllData() {
 }
 ```
 
-In conclusion, understanding both promises and async/await gives you the power
-to write beautiful asynchronous code in JavaScript, if you avoid using any
-helper libraries, your code will be fully portable between browsers and runtimes
-like Deno and Node.js.
+## Async/await and promises are single threaded
 
-For a deep dive into what's hidden in the `Promise`-object, check out the MDN
-Reference on
-[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+Async/await and promises are great to keep a website responsive while waiting
+for requests to finish, or in the back-end waiting for a disk write to be done.
+However, it's crucial to note that JavaScript's event loop operates on a single
+thread. This means that even with asynchronous constructs, the code execution
+remains single-threaded, as an example - if you block javascript with a
+while-loop, nothing else will happen until the loop is done.
+
+For true parallelism and utilization of multi-core processors there is Web
+Workers, which will be covered in a later article.
+
+## Wrapping Up
+
+Understanding both promises and async/await gives you the power to write
+beautiful asynchronous code in JavaScript. I’ll conclude this with two
+additional tips:
+
+- Avoid using any helper libraries. Your code will be easy to read for anyone
+  and fully portable between browsers and runtimes like Deno and Node.js.
+
+- Try to be consistent. If you use async/await, use it as far as possible and
+  only work with pure promises when you need to. If you primarily use the
+  Promise/callback pattern in a project, never mix in async/await.
+
+For a deep dive into these topics, check out the MDN Reference on
+[Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+and
+[async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function).

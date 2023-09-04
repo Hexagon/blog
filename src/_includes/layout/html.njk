@@ -12,7 +12,25 @@ title: hexagon.56k.guru
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
  
+    <!-- Dark mode toggler -->
+    <!--
+    <script>
+      const setTheme = (theme) => {
+        if (
+          theme === "auto" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+          document.documentElement.setAttribute("data-bs-theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-bs-theme", theme);
+        }
+      };
+      setTheme("auto");
+    </script>
+    -->
+
     <!-- Halfmoon CSS -->
     <link href="/css/vendor/halfmoon-2.0.0.min.css" rel="stylesheet">
 

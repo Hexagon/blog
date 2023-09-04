@@ -5,7 +5,7 @@
     <ul class="list-unstyled">
         {% for subpost in search.pages("part=1") %}
             <li class="mb-2">
-                <a class="link-primary {% if subpost.data.url == url %}link-dark{% endif %}" href="{{ subpost.data.url }}">{{ subpost.data.series.title }}</a>
+                <a class="link-primary {% if subpost.data.url == url %}link-secondary{% endif %}" href="{{ subpost.data.url }}">{{ subpost.data.series.title }}</a>
             </li>
         {% endfor %}
     </ul>

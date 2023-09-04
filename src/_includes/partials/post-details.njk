@@ -1,4 +1,4 @@
-<a href="{{ page.data.url }}" class="link-dark"><h1>{{page.data.title}}</h1></a>
+<a href="{{ page.data.url }}" class="link-secondary"><h1>{{page.data.title}}</h1></a>
 <p>
 
   <!-- Author -->
@@ -15,10 +15,12 @@
   <span class="badge text-bg-info">{{ page.data.readingTime.minutes }} minutes read</span>
 
   <!-- License -->
+  <!--
   {% if page.data.license %}
     <span class="badge text-bg-success">{{ page.data.license }}</span>
   {% endif %}
-
+  -->
+  
   <!-- Tags -->
   {% for tag in tags %}
     {% if tag not in ["standalone","index","guide-to-js","post"] %}
