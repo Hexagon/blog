@@ -140,12 +140,13 @@ Now, you just have to run `deno run -A scripts/build_npm.ts 0.0.1` to build
 version 0.0.1 of your npm package. All related fikes will be generated in
 `./npm`.
 
-The final step is to navigate to the `./npm`-directory, and run `npm publish`, voila!
+The final step is to navigate to the `./npm`-directory, and run `npm publish`,
+voila!
 
 #### Updating the build pipeline with deno.json
 
 To document this build step, you can modify the `task` section of `deno.json` to
-include the new NPM build step. Here's an example configuration to set up 
+include the new NPM build step. Here's an example configuration to set up
 testing and a NPM build:
 
 ```javascript
@@ -169,9 +170,9 @@ either be achieved manually, or be handled with a build tool. The code base
 should optimally be non transpiled javascript or typescript, ready to be
 processed by Rollup or a similar tool.
 
-Let's examine the `@hexagon/base64` library as an example. This library 
-utilizes Rollup to generate ESM and CommonJS versions of the code using 
-the following configuration:"
+Let's examine the `@hexagon/base64` library as an example. This library utilizes
+Rollup to generate ESM and CommonJS versions of the code using the following
+configuration:"
 
 **rollup.config.js**
 

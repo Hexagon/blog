@@ -341,6 +341,102 @@ doesn't await each call before running the next.
 
 ## Copying arrays
 
+In JavaScript, arrays are reference types, meaning that when you assign an array
+to another variable, you're actually pointing to the same array in memory. As a
+result, modifying one will affect the other. To avoid this, you'll often need to
+make a copy of an array. Let's explore various ways to achieve this.
+
+### Shallow Copying
+
+Shallow copies duplicate the top-level elements but won't duplicate nested
+objects or arrays. There are several ways to create a shallow copy:
+
+**Using the `slice()` method**
+
+```javascript
+const originalArray = [1, 2, 3];
+const copiedArray = originalArray.slice();
+```
+
+**Using the `concat()` method**
+
+```javascript
+const originalArray = [1, 2, 3];
+const copiedArray = [].concat(originalArray);
+```
+
+**Using the Spread Operator**
+
+```javascript
+const originalArray = [1, 2, 3];
+const copiedArray = [...originalArray];
+```
+
 ## Common array methods and their usage
 
-### Map/Filter/Reduce
+Arrays in JavaScript come with a rich set of built-in methods that make it
+easier to manipulate and interact with them. We've already discussed some like
+push, pop, shift, unshift, and splice. Let's explore some more:
+
+**`map()`**
+
+The map() method creates a new array by applying a function to every element of
+an existing array.
+
+```javascript
+const numbers = [1, 2, 3];
+const doubledNumbers = numbers.map((num) => num * 2);
+// doubledNumbers is now [2, 4, 6]
+```
+
+**`filter()`**
+
+The filter() method returns a new array containing only the elements that
+satisfy a certain condition.
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+const evenNumbers = numbers.filter((num) => num % 2 === 0);
+// evenNumbers is now [2, 4]
+```
+
+**`reduce()`**
+
+The reduce() method applies a function to each element of an array to produce a
+single output value.
+
+```javascript
+const numbers = [1, 2, 3];
+const sum = numbers.reduce((total, num) => total + num, 0);
+// sum is now 6
+```
+
+**`some()` and `every()`**
+
+Both some() and every() are used to test elements in an array. some() returns
+true if at least one element satisfies the provided condition, while every()
+returns true only if all elements satisfy the condition.
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+const hasEven = numbers.some((num) => num % 2 === 0);
+// hasEven is true
+
+const allEven = numbers.every((num) => num % 2 === 0);
+// allEven is false
+```
+
+**`join()` and `split()`**
+
+The join() method converts an array into a string by joining its elements using
+a specified separator. Conversely, split() turns a string into an array by
+splitting it based on a separator.
+
+```javascript
+const fruits = ["apple", "banana", "cherry"];
+const fruitsString = fruits.join(", ");
+// fruitsString is "apple, banana, cherry"
+
+const fruitsArray = fruitsString.split(", ");
+// fruitsArray is ["apple", "banana", "cherry"]
+```
