@@ -3,16 +3,9 @@ title: The Guide to JavaScript - Introduction
 part: 1
 priority: 1.0
 updated: "2023-09-03T21:44:00Z"
-intro: "I’m Hexagon. I’ve been coding front-end JavaScript since its early days and
-jumped into back-end and library development with the rise of Node.js. Nowadays,
-I’m all about Deno; it’s got all the developer experience built right in, making
-it purely awesome to work with. So, whether you’re just starting out in web development 
-or you’re a seasoned developer looking for a refresher, you’re in the right spot.
+intro: "I’m Hexagon. I’ve been coding in front-end JavaScript since its inception and transitioned to back-end and library development when Node.js came onto the scene. Nowadays, I’m deeply invested in Deno. It provides a great developer experience right out of the box, making it a pleasure to work with. Whether you’re just starting out in web development or you're a seasoned developer seeking a refresher, you're in the right place.
 
-
-The goal of this series is to give you a solid and extensive understanding of pure
-JavaScript and its features. There won't be any libraries involved, and all the code 
-will be portable, working seamlessly from the browser to runtimes like Node.js or Deno."
+The aim of this series is to impart a thorough understanding of vanilla JavaScript and its many features. We won't be using any external libraries, and all the code will be versatile. It'll work seamlessly whether you're in a browser or using runtimes like Node.js or Deno."
 ---
 
 A selection of the topics you'll read about:
@@ -29,6 +22,11 @@ A selection of the topics you'll read about:
 - **Promises and Async/Await**: Explore how to handle asynchronous code in
   JavaScript using promises and async/await, which are key for working with
   APIs, databases, and other external sources.
+
+- **Error Handling, Debugging, and the Event Loop**: Dive into the mechanisms
+  JavaScript provides for handling errors, effective debugging techniques, and
+  the intricate workings of the event loop, ensuring your code runs smoothly and
+  efficiently.
 
 Each article takes about 5-10 minutes to read, and spare at least 20 minutes for
 laboration after each.

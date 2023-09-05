@@ -12,71 +12,76 @@ tags:
 - import
 - npm
 priority: 1.0
-intro: "In this article, I'll guide you through two methods for publishing packages that seamlessly support both ESM and CommonJS and at the same time work across multiple runtimes, including Node.js, Deno, and web browsers."
+intro: "This article will guide you through publishing dual-mode, cross-runtime JavaScript packages. Learn to create libraries compatible with both ESM and CommonJS, as well as different runtimes like Node.js, Deno, and browsers."
 ---
 
-As the world of JavaScript development continues to evolve, the need for good
-packages that work in multiple environments becomes increasingly important. In
-this article, we'll explore how to publish cross-runtime dual-mode JavaScript
-packages that bridge the gap between ESM and CJS, enabling developers to use the
-same packages and documentation regardless of environment.
+As JavaScript development continues to evolve, there's a growing need for robust
+packages that function in multiple environments. In this article, we'll explore
+how to publish cross-runtime, dual-mode JavaScript packages. These bridge the
+gap between ESM and CommonJS, letting developers use the same package and
+documentation, regardless of the environment.
 
-Before diving into the publishing process, it's essential to grasp the core
-concepts here. I may not have all the terminology perfectly defined, but here's
-how I understand them:
+Before diving in, let's get familiar with some key concepts:
 
 ## Dual-Mode packages
 
-Dual-Mode packages are designed to provide compatibility with different
-JavaScript module systems, primarily ES Modules (ESM) and CommonJS (CJS). This
-allows developers to utilize the same package in various environments, ensuring
-code reusability and flexibility. However, it's worth noting that being
-dual-mode doesn't necessarily imply that the package can run in different
-runtimes. This leads us to the concept of:
+Dual-Mode packages are designed to work with multiple JavaScript module systems,
+particularly ES Modules (ESM) and CommonJS (CJS). This ensures code reusability
+and flexibility across various environments. Creating a dual-mode package has
+several benefits:
+
+- **Broader Compatibility**: Not all projects have transitioned to using ESM.
+  Dual-mode ensures that your package can be consumed in projects that still
+  rely on CommonJS.
+
+- **Seamless Transition:** As the JavaScript ecosystem gradually moves toward
+  ESM, having a dual-mode package ensures that users can seamlessly transition
+  without having to swap out packages or refactor their codebase.
+
+- **Reduced Maintenance:** Instead of maintaining separate packages for ESM and
+  CJS, a dual-mode package allows you to manage a single codebase.
+
+However, dual-mode doesn't guarantee that a package will work in different
+runtimes, which brings us to:
 
 ## Cross-Runtime packages
 
-Cross-Runtime packages are JavaScript libraries designed to operate in multiple
-environments, including Deno, Browsers, Node.js, and potentially others. They
-aim to provide a consistent API experience regardless of the runtime being used.
-A comprehensive Cross-Runtime package must support both ESM and CJS,
-particularly since the Node.js ecosystem still heavily relies on CommonJS.
+Cross-Runtime packages work in multiple environments like Deno, web browsers,
+and Node.js. They aim to provide a consistent API across different runtimes. A
+comprehensive Cross-Runtime package should support both ESM and CJS, especially
+since Node.js still largely uses CommonJS.
 
-If we ignore the legacy of the Node.js ecosystem, we could of course build a
-Cross-Runtime package without Dual-Mode.
+If we ignore the legacy constraints of Node.js, which heavily relies on
+CommonJS, we could build a Cross-Runtime package using only ES Modules. This
+would simplify the package but limit its compatibility with older Node.js
+projects.
 
 ## Node first, or Deno first?
 
-There are at least two ways to approach this, where the first one utilizes
-Deno's full set of built-in tools for managing the build process, along with a
-package called DNT (Deno-to-Node-tool).
-
-The other way is to start with Node.js first, where you use more conventional
-build tools for testing, linting, bundling, and manually piece together a
-package.json. This is probably preferred if you're converting a pre-existing NPM
-library.
+You have two main approaches: starting with Deno or Node.js. The Deno-first
+approach uses Deno's built-in tools and the Deno-to-Node-Tool (DNT). On the
+other hand, the Node-first approach uses conventional build tools for tasks like
+testing, linting, and bundling. This approach is preferred for converting an
+existing NPM library.
 
 ### The Deno-First Approach
 
-The deno-first approch uses a tool called DNT (Deno-to-Node-Tool), which is
-available at [github.com/denoland/dnt](https://github.com/denoland/dnt). This is
-used through a custom build script residing in your repository.
+The Deno-first approach relies on DNT (Deno-to-Node-Tool), which you can find on
+[GitHub](https://github.com/denoland/dnt).
 
-The first step is is to set up a basic Deno library ready to publish to
-deno.land/x. When you have that, you can proceed with setting up DNT.
+This tool is used through a custom build script in your repository.
 
-Let's use the example of my small library ready made `entsoe-api-client` which
-is has a `deno.json` already.
+The first step is to set up a basic Deno library ready for publishing to
+deno.land/x. After that, you can proceed with DNT.
 
 #### Adding the DNT build script
 
-The heart of the Deno-first approach lies in the build process. The following
-script, I call it `scripts/build_npm.ts`, will make use of DNT to create a
-`/npm`-folder containing a full NPM package, ready to be published.
+The core of the Deno-first approach is the build process. The following script,
+called `scripts/build_npm.ts`, uses DNT to create a `/npm`-folder containing a
+complete NPM package, ready to be published.
 
 The script handles tasks like clearing the NPM directory, copying test data, and
-building the package. It also creates a package.json file with relevant
-information.
+building the package. It also creates a complete package.json file.
 
 Let's check it out, make sure to read the comments.
 
@@ -89,7 +94,7 @@ import { build, copy, emptyDir } from "./deps.ts";
 await emptyDir("./npm");
 
 // (optional) Copy test data, if you have some
-// await copy("tests/data", "npm/esm/tests/data", { overwrite: true });S
+// await copy("tests/data", "npm/esm/tests/data", { overwrite: true });
 
 // This assumes that the entrypoint of your module is ./mod.ts
 await build({
@@ -137,7 +142,7 @@ await Deno.writeTextFile(
 ```
 
 Now, you just have to run `deno run -A scripts/build_npm.ts 0.0.1` to build
-version 0.0.1 of your npm package. All related fikes will be generated in
+version 0.0.1 of your npm package. All related files will be generated in
 `./npm`.
 
 The final step is to navigate to the `./npm`-directory, and run `npm publish`,
@@ -163,11 +168,12 @@ Now, the npm package will ge generated when running `deno task build 0.0.1`.
 
 ### The node-first approach
 
-The other way to create a Cross-Runtime package, is to start out from the
-Node-side. The first step in creating our Node-first, Dual-Mode, Cross-runtime
-package, is to make sure your setup supports both ESM and CommonJS. This could
-either be achieved manually, or be handled with a build tool. The code base
-should optimally be non transpiled javascript or typescript, ready to be
+Alternatively, you can opt for a Node-first approach to create your
+Cross-Runtime package.
+
+The first step is to make sure your project supports both ESM and CommonJS. This
+could either be achieved manually, or be handled with a build tool. The code
+base should optimally be non transpiled javascript or typescript, ready to be
 processed by Rollup or a similar tool.
 
 Let's examine the `@hexagon/base64` library as an example. This library utilizes
@@ -227,10 +233,10 @@ export default base64;
 
 ### The package.json
 
-Now, `package.json` file is a crucial component of setting up a cross-runtime
-dual-mode JavaScript package. It determines how your package is structured and
-behaves in different environments. Let's take a closer look at the key sections
-and their significance:
+The `package.json` file is key to setting up a dual-mode, cross-runtime
+JavaScript package. It determines how your package is structured and behaves in
+different environments. Let's take a closer look at the key sections and their
+significance:
 
 ```
 {
@@ -293,21 +299,44 @@ tailor and test this file, to ensure that it functions correctly when published.
 
 ## The Cross-Runtime part
 
-The above is promarily to get the Dual-Mode part working in node. While Deno can
-use npm packages out of the box, to create a complete Cross-Runtime package, you
-should also adapt it to Deno.
+The steps mentioned so far focus on setting up dual-mode compatibility in
+Node.js. While Deno can use npm packages out of the box, to create a complete
+Cross-Runtime package, you should also adapt it to Deno.
 
 This includes reading up on how a
 [Deno library works](https://deno.land/manual@v1.36.4/introduction),
 [publishing the package to deno.land/x](https://deno.land/manual@v1.36.4/advanced/publishing).
 
+### My Experience with Dual-Mode, Cross-Runtime Packages
+
+I'm passionate about modern JavaScript and portable packages. I love code that
+runs both in the browser and server runtimes like Node.js and Deno.
+
+Because of that, my own packages, Croner, Minitz, @hexagon/base64, Proper-Tags,
+and Entsoe-API-Client all work with both CommonJS and ESM, on Deno as well as
+Node.js and browsers.
+
+### Helping Other Projects
+
+I have also helped other projects, for example fido2-lib and openpgpjs to move
+from CommonJS to ESM with Deno-support.
+
+### The Ripple Effect
+
+My library `@hexagon/base64`, initially built to support fido2-lib is now part
+of the SimpleWebauthn project. It helped the project transition to be Dual-Mode
+and also support Deno. So, making your packages dual-mode can really help other
+projects as well.
+
 ## Conclusion
 
-Whether you opt for the Deno-first or Node-first approach, you should now have a
-better understanding of how to develop packages that are more future-proof and
-usable by a broader range of developers.
+Creating dual-mode, cross-runtime JavaScript packages can be a rewarding
+experience. It makes your code portable and reusable, allowing you to reach a
+wider audience across different JavaScript environments. While there are a few
+hurdles and considerations, such as managing compatibility and working with
+different module systems and runtimes, the pros outweigh the cons.
 
 If you have insights, questions, or suggestions on this topic, please feel free
 to leave comments below.
 
-Happy coding, and may your packages bring value to the javascript community!
+Happy coding!

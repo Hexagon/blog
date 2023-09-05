@@ -1,6 +1,9 @@
 layout: post.njk
-title: The guide to JavaScript
-description: Hexagon's guide to JavaScript
+title: The guide to JavaScript by Hexagon
+description: "Hexagon's guide to JavaScript, learn pure JavaScript."
+header: "/img/og_image_header.webp"
+metas:
+  image: https://hexagon.56k.guru/img/og_image_header.webp
 series: 
   title: The guide to JavaScript
   tag: guide-to-js
