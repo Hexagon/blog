@@ -1,6 +1,6 @@
 ---
 layout: post.njk
-title: "Show Multiple Mouse Pointers on a Webpage"
+title: "Show All Visitor's Pointers on a Webpage"
 description: "Learn how to visualize mouse movement from every visitor on your webpage using Deno, WebSockets, and optional tools like Pup and Nginx."
 tags:
 - standalone
@@ -11,14 +11,9 @@ tags:
 - pup
 - nginx
 priority: 1.0
-intro: "In this step-by-step guide, you'll learn how to create a simple but cool webpage that shows mouse pointers of all its visitors. From setting up a Deno server to optional perks like keeping your app alive with Pup and serving it securely through Nginx, we've got you covered."
+intro: "In this step-by-step guide, you'll learn how to create a simple but cool webpage that shows mouse pointers of all its visitors. From setting up a Deno server to optional perks like keeping your app alive with Pup and serving it securely through Nginx."
 extra: "multi-pointer"
 ---
-
-Hey there! Ever wanted to visualize mouse movement from every visitor on your
-webpage? Sounds cool, right? Today, we’re going to build a simple webpage that
-does just that. We'll cover everything from installing Deno to setting up Nginx.
-If you'd like to see the full source code, check it out on GitHub.
 
 ## Install Deno
 
@@ -272,6 +267,8 @@ Open your terminal and navigate to your project folder. Run the server with:
 
 Your server should start running, and you can visit http://localhost:19192/ to
 see it in action.
+
+The full source code for this tutorial is available at GitHub, check it out on [github.com/Hexagon/deno-pointer-tutorial](https://github.com/Hexagon/deno-pointer-tutorial).
 
 ## (Optional) Keep It Running With Pup
 

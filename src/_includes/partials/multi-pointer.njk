@@ -1,12 +1,4 @@
 <script>
-    function wsUrl(s) {
-    const l = window.location;
-    const dir = l.pathname.substring(0, l.pathname.lastIndexOf("/"));
-
-    return ((l.protocol === "https:") ? "wss://" : "ws://") + l.host + dir + s;
-    }
-</script>
-<script>
     document.addEventListener("DOMContentLoaded", function(event) {
         const ws = new WebSocket("wss://56k.guru/pointer/ws");
 
