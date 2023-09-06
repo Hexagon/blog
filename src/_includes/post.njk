@@ -1,7 +1,9 @@
 ---
 layout: layout/body.njk
 ---
-
+{% if extra == "multi-pointer" %}
+  {% include "partials/multi-pointer.njk" %}
+{% endif %}
 <div class="row">
   <div class="col-md-9">
     <section>

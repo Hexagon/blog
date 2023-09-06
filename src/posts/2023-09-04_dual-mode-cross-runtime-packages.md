@@ -312,11 +312,12 @@ This includes reading up on how a
 I'm passionate about modern JavaScript and portable packages. I love code that
 runs both in the browser and server runtimes like Node.js and Deno.
 
-Because of that, my own packages, Croner, Minitz, @hexagon/base64, Proper-Tags,
-and Entsoe-API-Client all work with both CommonJS and ESM, on Deno as well as
-Node.js and browsers.
-
-### Helping Other Projects
+Because of that, my own packages, [Croner](https://github.com/hexagon/croner),
+[Minitz](https://github.com/hexagon/minitz),
+[@hexagon/base64](https://github.com/hexagon/base64),
+[proper-tags](https://github.com/hexagon/proper-tags), and
+[entsoe-api-client](https://github.com/hexagon/entsoe-api-client) all work with
+both CommonJS and ESM, on Deno as well as Node.js and browsers.
 
 I have also helped other projects, for example fido2-lib and openpgpjs to move
 from CommonJS to ESM with Deno-support.
