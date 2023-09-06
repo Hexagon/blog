@@ -17,14 +17,14 @@ extra: "multi-pointer"
 
 ## Install Deno
 
-First off, you need to install Deno on your computer. Follow the steps given on
+First, to start, you need to install Deno on your computer. Follow the steps
+given on
 [this page](https://deno.land/manual@v1.36.4/getting_started/installation).
 
 ### Create Main TypeScript File (main.ts)
 
-Create a project folder, and new TypeScript file called main.ts. Then paste the
-code you've got there. This sets up your server and handles the WebSocket
-connections.
+Create a project folder, and new TypeScript file called main.ts. Paste your code
+there. This sets up your server and handles the WebSocket connections.
 
 ```javascript
 import {
@@ -128,11 +128,11 @@ app.use(router.routes())
       ctx.request.url.pathname.replace(ROOT_PATH, ""),
     );
 
-    const fExists = await exists(localFilePath, {
+    const fileExists = await exists(localFilePath, {
       isFile: true,
       isReadable: true,
     });
-    if (fExists) {
+    if (fileExists) {
       await send(ctx, filePath, { root: STATIC_DIR });
     } else {
       await next();
@@ -144,7 +144,7 @@ app.use(router.routes())
     ctx.response.body = "Not Found";
   });
 
-// Start an interval for broadcasing mouse positions
+// Start an interval for broadcasting mouse positions
 const broadcastInterval = setInterval(broadcastPositions, 150);
 // but dont keep the main loop running just because of this
 Deno.unrefTimer(broadcastInterval);
@@ -259,6 +259,78 @@ display.
 </html>
 ```
 
+## Add This to an Existing Site
+
+If you want multiple pointers on your existing site, you can insert this
+JavaScript code anywhere on the page. Just make sure to expose the service
+publicly, like shown below, and replace `your.domain`.
+
+```javascript
+document.addEventListener("DOMContentLoaded", function (event) {
+  const ws = new WebSocket(wsUrl("wss://your.domain/pointer/ws"));
+
+  const pointerId = Math.random().toString(36).substr(2, 9); // unique identifier for this pointer
+
+  ws.onopen = function (event) {
+    console.log("Connection established");
+  };
+
+  ws.onclose = function (event) {
+    console.log("Connection closed");
+  };
+
+  ws.onerror = function (event) {
+    console.error("WebSocket error observed:", event);
+  };
+
+  let mousePos = { x: 0, y: 0, id: pointerId };
+  let lastPos = { x: 0, y: 0, id: pointerId };
+
+  document.onmousemove = function (e) {
+    mousePos.x = (e.clientX / window.innerWidth) * 100;
+    mousePos.y = (e.clientY / window.innerHeight) * 100;
+  };
+
+  setInterval(function () {
+    if (ws.readyState === ws.OPEN) {
+      if (!lastPos || lastPos.x !== mousePos.x || lastPos.y !== mousePos.y) {
+        lastPos.x = mousePos.x;
+        lastPos.y = mousePos.y;
+        ws.send(JSON.stringify(mousePos));
+      }
+    }
+  }, 150); // Send mouse position every second
+
+  const cursors = {};
+
+  ws.onmessage = function (event) {
+    const positions = JSON.parse(event.data);
+    positions.forEach((pos) => {
+      if (pos.id === pointerId) return; // skip own pointer
+
+      let cursor = cursors[pos.id];
+      if (!cursor) {
+        cursor = document.createElement("img");
+        cursor.src = "cur/arrow.cur";
+        cursor.style.position = "absolute";
+        document.body.appendChild(cursor);
+        cursors[pos.id] = cursor;
+      }
+      cursor.style.left = pos.x + "%";
+      cursor.style.top = pos.y + "%";
+    });
+
+    // remove any extra cursors
+    Object.keys(cursors).forEach((id) => {
+      if (!positions.find((pos) => pos.id === id)) {
+        document.body.removeChild(cursors[id]);
+        delete cursors[id];
+      }
+    });
+  };
+});
+```
+
 ### Run the Server
 
 Open your terminal and navigate to your project folder. Run the server with:
@@ -268,12 +340,14 @@ Open your terminal and navigate to your project folder. Run the server with:
 Your server should start running, and you can visit http://localhost:19192/ to
 see it in action.
 
-The full source code for this tutorial is available at GitHub, check it out on [github.com/Hexagon/deno-pointer-tutorial](https://github.com/Hexagon/deno-pointer-tutorial).
+The full source code for this tutorial is available at GitHub, check it out on
+[github.com/Hexagon/deno-pointer-tutorial](https://github.com/Hexagon/deno-pointer-tutorial).
 
 ## (Optional) Keep It Running With Pup
 
-Want your server to stay up when you close the terminal? Use Pup, a process
-manager. Follow the installation steps and usage guide at Pup.
+Want your server to stay up when you close the terminal? Use Pup, which is a
+process manager for Deno. Follow the installation steps and usage guide at
+[pup.56k.guru](https://pup.56k.guru).
 
 Create a pup.json file with the specified content and run the following commands
 to keep your server alive:
@@ -293,7 +367,7 @@ And to verify the process:
 Level up by serving your app behind an Nginx reverse proxy. This adds extra
 layers of security and features.
 
-First, if you doesn't altready have it installed, install Nginx. If you're using
+First, if you doesn't already have it installed, install Nginx. If you're using
 Ubuntu, you can do so with:
 
 `sudo apt update sudo apt install nginx`
@@ -315,11 +389,15 @@ location /pointer/ {
 }
 ```
 
-Don't forget to reload Nginx after editing:
+This will serve the webpage and socker server through
+`http(s)://your.domain/pointer/`.
+
+Don't forget to reload Nginx after you edit the config:
 
 `sudo nginx -s reload`
 
-And that’s a wrap! You've now got a live webpage that tracks and displays all
-the mouse pointers of the visitors. Plus, you can keep it running 24/7 and serve
-it through a secure reverse proxy. Go ahead, add this super cool feature to your
-website. Happy coding! 🚀
+And that's it! You now have a live webpage that tracks and shows all the mouse
+pointers of its visitors. Plus, you can keep it running 24/7 and serve it
+securely.
+
+Happy coding!
