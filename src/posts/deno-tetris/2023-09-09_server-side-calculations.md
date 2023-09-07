@@ -7,26 +7,33 @@ intro: "Welcome back to part four of our Detris series, where we're constructing
 
 # Implementing Single-Player Mode: Server-Side Calculations
 
-To implement the server-side logic and single-player mode, we mainly use the following files:
+To implement the server-side logic and single-player mode, we mainly use the
+following files:
 
-- `game/game.ts`: Contains the base game class that we extend to handle the single-player mode.
+- `game/game.ts`: Contains the base game class that we extend to handle the
+  single-player mode.
 - `game/grid.ts`: Fefines the game grid, where all the Tetris action happens.
 - `game/tetromino.ts`: This is where the Tetromino pieces are defined.
 
-- `game/modes/singleplayer.ts`: Contains the logic specific to the single-player mode.
+- `game/modes/singleplayer.ts`: Contains the logic specific to the single-player
+  mode.
 
 - `server/baseplayer.ts`: Contains the basic class for any player (AI or human)
 - `server/player.ts`: Contains the specifics of a human player.
 
-The actual files are found at [https://github.com/Hexagon/detris/tree/main/game](https://github.com/Hexagon/detris/tree/main/game)
+The actual files are found at
+[https://github.com/Hexagon/detris/tree/main/game](https://github.com/Hexagon/detris/tree/main/game)
 
 ## The Basics of Game Logic
 
-In single-player mode, the game logic is pretty simple. You control a falling piece made up of blocks. You can move it left, right, or down and also rotate it. The goal is to fill up rows with blocks to clear them and score points.
+In single-player mode, the game logic is pretty simple. You control a falling
+piece made up of blocks. You can move it left, right, or down and also rotate
+it. The goal is to fill up rows with blocks to clear them and score points.
 
 ## Server-Side Calculations
 
-The real magic happens on the server side. It takes care of updating the game board, checking for row clears, and tracking your score.
+The real magic happens on the server side. It takes care of updating the game
+board, checking for row clears, and tracking your score.
 
 ### The SinglePlayerGame Class
 
@@ -46,15 +53,18 @@ constructor(code?: string) {
 
 #### Game Grid
 
-The GameGrid object represents the Tetris board, including any blocks that have been locked into place.
+The GameGrid object represents the Tetris board, including any blocks that have
+been locked into place.
 
 ```javascript
-grid: GameGrid;
+grid:
+GameGrid;
 ```
 
 #### Tetrominos
 
-The TetrominoFactory generates new Tetrominos (the shapes). We keep an array called Tetrominoes to hold the current and upcoming Tetrominos.
+The TetrominoFactory generates new Tetrominos (the shapes). We keep an array
+called Tetrominoes to hold the current and upcoming Tetrominos.
 
 ```javascript
 Tetrominoes: Tetromino[];
@@ -63,7 +73,8 @@ factory: TetrominoFactory;
 
 #### The Game Loop
 
-The game loop on the server keeps everything moving. It's responsible for updating the game board and then sending that updated state to the frontend.
+The game loop on the server keeps everything moving. It's responsible for
+updating the game board and then sending that updated state to the frontend.
 
 ```javascript
 iterate(): boolean {
@@ -78,7 +89,8 @@ iterate(): boolean {
 
 #### Moving The Tetromino Down
 
-The moveDown() method tries to move the Tetromino down by one unit. If it can't, it returns false.
+The moveDown() method tries to move the Tetromino down by one unit. If it can't,
+it returns false.
 
 ```javascript
 moveDown(): boolean {
@@ -98,7 +110,8 @@ moveDown(): boolean {
 
 #### Locking the Tetromino
 
-When a Tetromino can't move down anymore, it's time to lock it in place and update the game board. That's what the lockdown() method does.
+When a Tetromino can't move down anymore, it's time to lock it in place and
+update the game board. That's what the lockdown() method does.
 
 ```javascript
 lockdown(): boolean {
@@ -115,6 +128,8 @@ lockdown(): boolean {
 }
 ```
 
-And that's it for the single-player mode! The server handles all these calculations to make sure the game runs smoothly.
+And that's it for the single-player mode! The server handles all these
+calculations to make sure the game runs smoothly.
 
-In the next article, we'll take a look at implementing multiplayer mode. See you then!
+In the next article, we'll take a look at implementing multiplayer mode. See you
+then!

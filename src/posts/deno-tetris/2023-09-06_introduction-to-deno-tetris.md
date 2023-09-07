@@ -7,11 +7,15 @@ intro: "Welcome to the first part of our journey in building Detris, a web-based
 
 ## What's Tetris?
 
-Tetris is a classic video game where you stack different shapes made of four blocks. The goal is to form complete lines, which then disappear, giving you points. The game gets faster as you go along, making it a fun challenge!
+Tetris is a classic video game where you stack different shapes made of four
+blocks. The goal is to form complete lines, which then disappear, giving you
+points. The game gets faster as you go along, making it a fun challenge!
 
 ## Why Deno?
 
-Deno is a JavaScript and TypeScript runtime, kinda like Node.js. But it has some cool features like better security and a built-in package manager. We chose Deno for this project because it's modern and super easy to use.
+Deno is a JavaScript and TypeScript runtime, kinda like Node.js. But it has some
+cool features like better security and a built-in package manager. We chose Deno
+for this project because it's modern and super easy to use.
 
 ## What's Special About Detris?
 
@@ -23,9 +27,11 @@ Detris is not just any Tetris clone. It's got:
 
 ## What's in This Series?
 
-This series will guide you through creating your own version of Detris, step-by-step. Here's the plan:
+This series will guide you through creating your own version of Detris,
+step-by-step. Here's the plan:
 
-1. **Setting Up the Project**: How to get Deno up and running and what are the main files in the project.
+1. **Setting Up the Project**: How to get Deno up and running and what are the
+   main files in the project.
 2. **Building the Frontend**: How the game looks and how it talks to the server.
 3. **Implementing Single-Player Mode**: Making the basic game work.
 4. **Adding Multiplayer**: How to play with others online.

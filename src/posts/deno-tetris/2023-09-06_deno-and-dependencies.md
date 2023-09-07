@@ -9,30 +9,35 @@ intro: "Welcome to the second part of our series on building Detris, a web-based
 
 ## Installing Deno
 
-First thing's first, you need to have Deno installed on your machine. It's super simple:
+First thing's first, you need to have Deno installed on your machine. It's super
+simple:
 
 1. For macOS, open Terminal and run:
-    ```bash
-    brew install deno
-    ```
+   ```bash
+   brew install deno
+   ```
 2. For Windows, open PowerShell and run:
-    ```powershell
-    iwr https://deno.land/x/install/install.ps1 -useb | iex
-    ```
+   ```powershell
+   iwr https://deno.land/x/install/install.ps1 -useb | iex
+   ```
 3. For Linux, open the terminal and run:
-    ```bash
-    curl -fsSL https://deno.land/x/install/install.sh | sh
-    ```
+   ```bash
+   curl -fsSL https://deno.land/x/install/install.sh | sh
+   ```
 
 ## Checking Out the Main Files
 
-We'll start with the basics, setting up the HTTP server, starting the game loop, and adding routes to the server.
+We'll start with the basics, setting up the HTTP server, starting the game loop,
+and adding routes to the server.
 
-All files we go through is available at the [Detris GitHub repository](https://github.com/Hexagon/detris/tree/main/).
+All files we go through is available at the
+[Detris GitHub repository](https://github.com/Hexagon/detris/tree/main/).
 
 ### deps.ts
 
-In Deno, `deps.ts` is like a central place where you manage your project's dependencies. Think of it as the `package.json`` but for Deno. It's a neat way to keep all your imports in one place so you can easily manage them.
+In Deno, `deps.ts` is like a central place where you manage your project's
+dependencies. Think of it as the `package.json`` but for Deno. It's a neat way
+to keep all your imports in one place so you can easily manage them.
 
 ```javascript
 export { serve } from "https://deno.land/std@0.190.0/http/server.ts";
@@ -42,19 +47,23 @@ export { join, resolve } from "https://deno.land/std@0.190.0/path/mod.ts";
 
 Here, we're importing three main dependencies:
 
-* **serve**: Used to create an HTTP server.
-* **serveFile**: Used for serving files over HTTP.
-* **join, resolve**: These are path manipulation utilities.
+- **serve**: Used to create an HTTP server.
+- **serveFile**: Used for serving files over HTTP.
+- **join, resolve**: These are path manipulation utilities.
 
 ### main.ts
 
-The main.ts file is where the magic happens. This is your server's entry point, and it's where you'll put most of your backend logic.
+The main.ts file is where the magic happens. This is your server's entry point,
+and it's where you'll put most of your backend logic.
 
-There is some imports here that doesn't exist in your project yet, we will add these later.
+There is some imports here that doesn't exist in your project yet, we will add
+these later.
 
-The `MainLoop` function is where our game logic will reside. It's going to be called repeatedly to update the game state.
+The `MainLoop` function is where our game logic will reside. It's going to be
+called repeatedly to update the game state.
 
-The `serve` function is used to set up an HTTP server that listens for incoming requests.
+The `serve` function is used to set up an HTTP server that listens for incoming
+requests.
 
 ```javascript
 import { serve } from "./deps.ts";

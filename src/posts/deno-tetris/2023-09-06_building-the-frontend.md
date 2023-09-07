@@ -16,9 +16,12 @@ The `assets` folder is where all our frontend files live. Inside, you'll find:
 
 ## assets/index.html
 
-This file is the starting point of our game. It includes the game board and other UI elements. When you open it in a browser, it connects to our Deno backend.
+This file is the starting point of our game. It includes the game board and
+other UI elements. When you open it in a browser, it connects to our Deno
+backend.
 
-We will only cover the important parts here, the full file is available at [https://github.com/Hexagon/detris/blob/main/assets/index.html](https://github.com/Hexagon/detris/blob/main/assets/index.html)
+We will only cover the important parts here, the full file is available at
+[https://github.com/Hexagon/detris/blob/main/assets/index.html](https://github.com/Hexagon/detris/blob/main/assets/index.html)
 
 ```xml
 <!doctype html>
@@ -105,23 +108,34 @@ We will only cover the important parts here, the full file is available at [http
 
 ## The CSS Files
 
-Inside the [assets/static/css/](https://github.com/Hexagon/detris/tree/main/assets/static/css) folder, we've got a few different files:
+Inside the
+[assets/static/css/](https://github.com/Hexagon/detris/tree/main/assets/static/css)
+folder, we've got a few different files:
 
 - `main.css`: This is where the main styling for the game lives.
-- `normalize.css`: Makes sure our styling looks consistent across different browsers.
-- `skeleton.css`: A lightweight CSS framework we're using to make our life easier.
+- `normalize.css`: Makes sure our styling looks consistent across different
+  browsers.
+- `skeleton.css`: A lightweight CSS framework we're using to make our life
+  easier.
 - `tetrominos.css`: Style of the tetrominoes.
 
-These are very dependent on how you want the game to look and feel, so we won't go through them in detail. Just copy and modify them to your liking.
+These are very dependent on how you want the game to look and feel, so we won't
+go through them in detail. Just copy and modify them to your liking.
 
 ## Connecting Frontend to Backend
 
-The frontend communicates with the backend using JavaScript. When you make a move in the game, it sends a message to the server. The server processes the move, updates the game state, and then sends it back to be displayed on the frontend.
+The frontend communicates with the backend using JavaScript. When you make a
+move in the game, it sends a message to the server. The server processes the
+move, updates the game state, and then sends it back to be displayed on the
+frontend.
 
-So most of the front end code is lazy, it's displaying the menus, passing key presses, and displaying the game.
+So most of the front end code is lazy, it's displaying the menus, passing key
+presses, and displaying the game.
 
-All required files reside in [assets/static/js](https://github.com/Hexagon/detris/tree/main/assets/static/js).
+All required files reside in
+[assets/static/js](https://github.com/Hexagon/detris/tree/main/assets/static/js).
 
-That's it for this article! In the next one, we'll get into how to implement the single-player mode.
+That's it for this article! In the next one, we'll get into how to implement the
+single-player mode.
 
 See you there!
