@@ -24,7 +24,8 @@ One of Deno's biggest selling points is its focus on security. Unlike Node.js,
 where you have to manually restrict permissions, Deno is secure by default. That
 means no random package can mess with your system unless you give it the OK.
 
-An example on how to run main.ts, and allow it to access `api.openai.com`.
+For example, to run main.ts and allow it to access  `api.openai.com`, you'd run:
+
 `deno run --allow-net=api.openai.com main.ts`
 
 **Simplicity**
@@ -35,11 +36,15 @@ TypeScript, and Deno takes care of the rest. Out of the box, it supports
 TypeScript, code formatting, linting, type checking, and even compiling your
 code to a binary.
 
-**Build in Key/Value store**
+**Built-in Key/Value store**
 
-It has a build in KV-store, which allow you to access a JavaScript friendly
+It has a built-in Key/Value-store, which allows you to access a JavaScript friendly
 database with only a few lines of code. In custom deployments, it's based on
-SQLite, if using Deno Deploy, it's using a cloud based store.
+SQLite, if using Deno Deploy, it uses a cloud based store.
+
+**Backwards Compatible**
+
+One of the cool things about Deno is that it's backwards compatible with npm packages. This means you can still use all those npm libraries you know and love. For those who don't want to be weighed down by what's known as the [heaviest object in the universe](https://www.reddit.com/r/ProgrammerHumor/comments/6s0wov/heaviest_objects_in_the_universe/?rdt=41500) (node_modules), there is an `--no-npm` flag.
 
 ## How to Install
 
@@ -53,7 +58,7 @@ Installing Deno is a breeze:
 
 `irm https://deno.land/install.ps1 | iex`
 
-If you prefer outer ways to install, check out the
+If you prefer other ways to install, check out the
 [official documentation](https://deno.land/manual@v1.36.4/getting_started/installation).
 
 ## Hello Deno!
@@ -70,14 +75,14 @@ console.log("Hello, Deno!");
 Run your program with `deno run hello.ts`. You should see the output "Hello,
 Deno!"
 
-If you're new to JavaScript (or TypeScript for that part), consider checking out
+If you're new to JavaScript (or TypeScript for that matter), consider checking out
 [The Guide to JavaScript](https://hexagon.56k.guru/guide-to-js/introduction)
 covering everything from the basics to advanced topics.
 
 ## Importing Packages
 
 Deno can use any JavaScript/TypeScript module simply by importing them directly
-from an url, and has it's own package register at
+from an url, and has its own package register at
 [deno.land/x](https://deno.land/x).
 
 Let's take a basic example:
@@ -114,16 +119,17 @@ this year. We can't wait to see what new features and improvements it'll bring.
 
 ## Deno resources
 
-If you're looking for inspiration, you can check out some of my other write ups
+If you're looking for inspiration, you can check out some other write ups
 on Deno:
 
-- [Building a blog using Lume and Deno](https://hexagon.56k.guru/posts/building-a-blog-using-lume/)
-- [Building a Web-based Tetris game using Deno](https://hexagon.56k.guru/posts/deno-tetris/introduction-to-deno-tetris/)
+- [Building a blog using Lume and Deno](https://hexagon.56k.guru/posts/building-a-blog-using-lume/)(hexagon.56k.guru)
+- [Building a Web-based Tetris game using Deno](https://hexagon.56k.guru/posts/deno-tetris/introduction-to-deno-tetris/)(hexagon.56k.guru)
+- [Building a Discord Bot with Deno and Harmony.](https://pinta.land/posts/deno-discord-bot/)(pinta.land)
 
 Other good Deno resources to check out:
 
-- [Official Deno Manual](https://deno.land/manual/introduction)
-- [Setting up Visual Studio Code for Deno](https://deno.land/manual@v1.36.4/references/vscode_deno)
+- [Official Deno Manual](https://deno.land/manual/introduction)(deno.land)
+- [Setting up Visual Studio Code for Deno](https://deno.land/manual@v1.36.4/references/vscode_deno)(deno.land)
 
 ## Wrapping Up
 
