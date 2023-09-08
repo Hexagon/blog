@@ -124,10 +124,10 @@ go through them in detail. Just copy and modify them to your liking.
 
 ## Connecting Frontend to Backend
 
-The frontend communicates with the backend using JavaScript. When you make a
-move in the game, it sends a message to the server. The server processes the
-move, updates the game state, and then sends it back to be displayed on the
-frontend.
+The frontend communicates with the backend using JavaScript, WebSockets to be
+exact. When you make a move in the game, it sends a message to the server. The
+server processes the move, updates the game state, and then sends it back to be
+displayed on the frontend.
 
 So most of the front end code is lazy, it's displaying the menus, passing key
 presses, and displaying the game.
@@ -135,7 +135,7 @@ presses, and displaying the game.
 All required files reside in
 [assets/static/js](https://github.com/Hexagon/detris/tree/main/assets/static/js).
 
-That's it for this article! In the next one, we'll get into how to implement the
-single-player mode.
+That's it for this article! In the next one, we'll get into the main loop of the
+game, and start exploring the single-player game mode.
 
 See you there!

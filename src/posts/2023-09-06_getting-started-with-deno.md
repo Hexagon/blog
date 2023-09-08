@@ -3,6 +3,7 @@ layout: post.njk
 title: "Getting Started with Deno: A Secure Runtime for JavaScript and TypeScript"
 description: "In this blog post, you'll find out what makes Deno awesome and how you can start using it today. We'll cover installing Deno, writing your first app, and using cool features like a built-in key/value database and npm compatibility."
 tags:
+  - standalone
   - deno
   - javascript
   - typescript
@@ -94,7 +95,7 @@ Let's take a basic example:
 ```javascript
 import { Cron } from "https://deno.land/x/croner@7.0.1/dist/croner.js";
 
-// Basic: Run a function at the interval defined by a cron expression
+// Run a function at the interval defined by a cron expression
 const job = Cron("*/5 * * * * *", () => {
   console.log("This will run every fifth second");
 });

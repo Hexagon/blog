@@ -97,6 +97,8 @@ private calculateAIControls(): { [key: string]: boolean } {
   }
   ...
 }
-
-And there you have it! Your Tetris game can now pit players against a computer-controlled opponent. In the next part, we'll add some polish to our game and discuss future enhancements. Stay tuned!
 ```
+
+And there you have it! Your Tetris game can now pit players against a
+computer-controlled opponent. In the next part, we'll wrap it up and discuss
+future enhancements. Stay tuned!

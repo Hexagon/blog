@@ -1,37 +1,21 @@
 ---
-title: "Setting Up the Project: Deno and Dependencies"
+title: "Setting Up the Project: Main files and Dependencies"
 part: 2
 priority: 2.0
-intro: "Welcome to the second part of our series on building Detris, a web-based Tetris game using Deno. In this article, we'll take you through the initial steps of setting up your project environment. You'll learn how to install Deno on your machine and understand the core files that make up the Detris project. We'll cover the importance of the `deps.ts` and `main.ts` files, setting the foundation for the game development that lies ahead. By the end of this article, you'll have a functional project setup and be ready to dive into the exciting world of frontend development!"
+intro: "Welcome to the second part of our series on building Detris, a web-based Tetris game using Deno. In this article, we'll take you through the initial steps of setting up your project environment. We'll cover the importance of the `deps.ts` and `main.ts` files, setting the foundation for the game development that lies ahead. By the end of this article, you'll have a base for the project and be ready to dive into the exciting world of frontend development!"
 ---
 
-# Setting Up the Project: Deno and Dependencies
+# Setting Up the Project: Main files and Dependencies
 
-## Installing Deno
-
-First thing's first, you need to have Deno installed on your machine. It's super
-simple:
-
-1. For macOS, open Terminal and run:
-   ```bash
-   brew install deno
-   ```
-2. For Windows, open PowerShell and run:
-   ```powershell
-   iwr https://deno.land/x/install/install.ps1 -useb | iex
-   ```
-3. For Linux, open the terminal and run:
-   ```bash
-   curl -fsSL https://deno.land/x/install/install.sh | sh
-   ```
-
-## Checking Out the Main Files
+## Adding the Main Files
 
 We'll start with the basics, setting up the HTTP server, starting the game loop,
 and adding routes to the server.
 
 All files we go through is available at the
-[Detris GitHub repository](https://github.com/Hexagon/detris/tree/main/).
+[Detris GitHub repository](https://github.com/Hexagon/detris/tree/main/), but
+adding them manually, and carefully examining the code will make it easier to
+customize it later.
 
 ### deps.ts
 
