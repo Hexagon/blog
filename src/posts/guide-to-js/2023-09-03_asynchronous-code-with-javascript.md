@@ -1,6 +1,6 @@
 ---
 title: Asynchronous code with JavaScript
-part: 8
+part: 9
 intro: "In this lesson, we will explore asynchronous code in JavaScript, learn what promises is, and how they relate to async/await."
 ---
 
@@ -11,7 +11,7 @@ There are two ways of handling asynchronous operations in JavaScript:
 
 - **Promises:** objects that represent the eventual completion or failure of an
   asynchronous operation.
-- **Async/await:** conveniece features to manage promises without getting into
+- **Async/await:** convenience features to manage promises without getting into
   callback hell.
 
 ## The History of Asynchronous Code in JavaScript
@@ -38,7 +38,7 @@ fetchData()
     // An error were catched (rejected), we got an error insted of data.
   })
   .finally(() => {
-    // This is called wether the promise do resolve, or reject
+    // This is called whether the promise do resolve, or reject
   });
 ```
 
@@ -156,6 +156,17 @@ while-loop, nothing else will happen until the loop is done.
 
 For true parallelism and utilization of multi-core processors there is Web
 Workers, which will be covered in a later article.
+
+## Importance of Proper Error Handling
+
+Error handling is crucial when dealing with asynchronous code. Whether you're
+using Promises or async/await, knowing how to catch and handle errors properly
+can save you from a lot of headaches.
+
+In this article, we've touched on error handling briefly. For a more in-depth
+understanding, including common pitfalls like forgetting to use await in a
+try/catch block, check out my dedicated article on
+[Error Handling in JavaScript](/posts/guide-to-js/error-handling/).
 
 ## Wrapping Up
 

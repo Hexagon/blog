@@ -3,7 +3,7 @@ title: "Control Structures in JavaScript"
 part: 3
 intro: "Control structures in JavaScript dictate how your code runs. They decide the
 flow of operations based on conditions and can repeat sections of code multiple
-times. Let's get a better understanding of these structures, and their conditions."
+times. Let's get a better understanding of these structures and their uses."
 ---
 
 But first things first - before looking at control structures, it's important to
@@ -27,8 +27,8 @@ Here are common conditions you'll use:
   be true.
 - **Logical OR (||):** If one condition is true, the whole condition is true.
 
-As you see, in JavaScript, there are two main ways to compare values: `==` and
-`===`. It's important to know the difference.
+As you can see, in JavaScript, there are two main ways to compare values: `==`
+and `===`. It's important to know the difference.
 
 - **Double Equals (==)**: Compares values, but not their types. This can
   sometimes lead to unexpected results.
@@ -53,11 +53,11 @@ if (number === string) {
 }
 ```
 
-The same applies to ineqality and strict inequality.
+The same applies to inequality and strict inequality.
 
 ## Conditional Statements
 
-Now, conditional statements let your code make decisions:
+Now, let's see how conditional statements help your code make decisions:
 
 1. **If Statement**: Tests a condition. If the condition is true, the code
    inside its block runs.
@@ -113,7 +113,7 @@ switch (fruit) {
 
 ## Loops
 
-Loops run the same section of code multiple times:
+Loops allow you to run the same section of code multiple times:
 
 1. **For Loop**: This loop uses a counter. It keeps running as long as a
    condition is true.
@@ -169,7 +169,42 @@ for (let key in person) {
 
 Control structures are tools to make your code smarter. Play around with the
 examples given, tweak the conditions, and watch the results. The best way to
-grasp these structures is by practice.
+grasp these structures is by practice. This is an example covering what we've
+learned so far:
 
-Next time, we'll delve into more advanced aspects of JavaScript. Keep
-experimenting and learning!
+```javascript
+// Declare a variable for the traffic light color
+// It could be "red", "yellow", or "green"
+let trafficLight = "red";
+
+// Log the current light color
+console.log("The traffic light is " + trafficLight + ".");
+
+// Use if...else if...else statements to decide what the car should do
+if (trafficLight === "red") {
+  console.log("Stop the car!");
+} else if (trafficLight === "yellow") {
+  console.log("Slow down, get ready to stop.");
+} else if (trafficLight === "green") {
+  console.log("Go, you're good to go!");
+} else {
+  console.log("Invalid traffic light color. Be cautious!");
+}
+
+// Let's show how the advice changes if the light were yellow
+trafficLight = "yellow";
+console.log("The traffic light is now " + trafficLight + ".");
+if (trafficLight === "red") {
+  console.log("Stop the car!");
+} else if (trafficLight === "yellow") {
+  console.log("Slow down, get ready to stop.");
+} else if (trafficLight === "green") {
+  console.log("Go, you're good to go!");
+} else {
+  console.log("Invalid traffic light color. Be cautious!");
+}
+```
+
+You might notice that the if...else if...else... control structure appears
+twice, using exactly the same code. In the next lesson, we'll learn how to
+optimize this.

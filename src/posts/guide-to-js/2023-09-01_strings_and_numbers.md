@@ -80,7 +80,7 @@ console.log(name.replace("c", "k")); // Output: "Alike"
 ## Numbers
 
 Numbers in JavaScript are numerical values that can be integers or decimals. You
-can use the standard arithmetic operators (`+`, `-`, `*`, `/\`,``%`) to perform
+can use the standard arithmetic operators (`+`, `-`, `*`, `/\`,`%`) to perform
 calculations with numbers.
 
 ```javascript

@@ -151,7 +151,7 @@ fruits.push("cherry");
 ```javascript
 let fruits = ["apple", "banana"];
 
-fruits.push("cherry");
+fruits.unshift("cherry");
 // fruits is now ['apple', 'banana', 'cherry']
 ```
 

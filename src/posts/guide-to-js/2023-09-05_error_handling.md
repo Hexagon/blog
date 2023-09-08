@@ -86,26 +86,112 @@ console.timeEnd("Array initialize");
 
 ## Error Handling Mechanisms
 
-### Using `try-catch` with Async/Await
+How you handle errors will vary based on whether you're using synchronous code,
+Promises, or async/await. Let's dive into the alternatives.
+
+### Error Handling in Synchronous Code
+
+In synchronous code, you typically use try/catch blocks to catch exceptions.
+Here's a simple example:
 
 ```javascript
-async function fetchData() {
-  try {
-    const response = await fetch("some/api/endpoint");
-    const data = await response.json();
-  } catch (error) {
-    console.error("API fetch failed:", error);
+try {
+  // Your code here
+  let x = 10;
+  let y = 0;
+  if (y === 0) {
+    throw new Error("Cannot divide by zero");
   }
+  let result = x / y;
+} catch (error) {
+  console.error(`Caught an error: ${error.message}`);
 }
 ```
 
-### Listening for Unhandled Promise Rejections
+### Error Handling with Promises
+
+With Promises, you use `.then()` for success cases and `.catch()` for errors.
+Here's how you can handle errors:
 
 ```javascript
-window.addEventListener("unhandledrejection", function (event) {
-  console.error("Unhandled Promise Rejection:", event);
-});
+fetchData()
+  .then((data) => {
+    // Handle success
+  })
+  .catch((error) => {
+    // Handle error
+    console.error(`Error fetching data: ${error.message}`);
+  });
 ```
+
+### Error Handling with Async/Await
+
+In async/await, you can use try/catch blocks, just like with synchronous code.
+The difference is you **must** place await inside the try block:
+
+```javascript
+try {
+  const response = await fetchData();
+  // Handle success
+} catch (error) {
+  // Handle error
+  console.error(`Error fetching data: ${error.message}`);
+}
+```
+
+If you forget to use `await` inside a `try`/`catch` block in an `async`
+function, or deliberately don't want to wait, you should know that the function
+will not behave as you might expect. Specifically, the Promise will not be
+caught by the catch block, because it won't have resolved or rejected at the
+time the catch block is executed.
+
+Here's a quick example:
+
+```javascript
+async function fetchData() {
+  // This should be awaited, but it's not.
+  return new Promise((resolve, reject) => {
+    setTimeout(() => reject(new Error("Something went wrong")), 1000);
+  });
+}
+
+async function main() {
+  try {
+    fetchData(); // Missing 'await' here
+    console.log("This will run.");
+  } catch (error) {
+    console.error("This will NOT run", error);
+  }
+}
+
+main();
+```
+
+In this example, `'This will run.'` will be printed, but `'This will NOT run'`
+will not, because the Promise rejection is not caught.
+
+To handle this, you can explicitly catch the Promise:
+
+```javascript
+async function main() {
+  try {
+    fetchData().catch((error) =>
+      console.error("Caught by Promise.catch", error)
+    );
+    console.log("This will still run.");
+  } catch (error) {
+    console.error("This will NOT run", error);
+  }
+}
+
+main();
+```
+
+Here, the error is caught by the `.catch()` method attached to the Promise
+returned by `fetchData()`.
+
+So, if you're not using `await`, make sure to attach a `.catch()` to the Promise
+to handle any errors.
 
 ## Debugging Best Practices
 

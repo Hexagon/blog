@@ -11,9 +11,8 @@ Promises, template literals, async/await, and the latest JavaScript features."
 
 JavaScript was created back in 1995 by Brendan Eich while he was working at
 Netscape. It was meant to be a simple language to add interactivity to websites.
-Eich put together the first version in just 10 days. Since then, the first grew
-to be very important for front end web development right next to HTML and CSS,
-and then it grow to be just as important in the back end.
+Eich put together the first version in just 10 days. Since then, it quickly
+became a cornerstone for both front-end and back-end web development.
 
 ## ECMAScript: The Rule Book
 

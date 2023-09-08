@@ -8,17 +8,24 @@ Let's dive in!"
 
 ## Variables in JavaScript
 
+### What are variables?
+
 Think of variables in JavaScript as buckets that hold data. JavaScript is
-**loosely typed**, which simply means you don't have to specify what type of
+**dynamically typed**, which simply means you don't have to specify what type of
 data will go into the bucket when you create it. The type of data a variable
 holds can also change as you go along.
 
-You can declare variables using keywords like `var`, `let`, and `const`.
+## How to declare variables?
 
-- `var`: The old way to declare variables. Still works, but should be avoided.
+You declare variables using one of the keywords `var`, `let`, and `const`.
+
 - `let`: Allows you to declare a block-level variable.
 - `const`: Declares a block-level constant, meaning its value can't be
   reassigned.
+- `var`: The old way to declare variables that is most similar to `let`. Still
+  works, but should be avoided.
+
+## Setting and changing the value of variables
 
 ```javascript
 let name = "Hexagon"; // Storing a string
@@ -31,7 +38,10 @@ Now, you can change the username variable to a number later if you want:
 name = 42;
 ```
 
-But `pi` can't change because it's a``const`.
+But `pi` can't change because it's a `const`. If you try to change the value if
+a `const`, your program will stop and display a message like
+`Uncaught TypeError: Assignment to constant variable.`. In a later article,
+we'll look in to how you can handle cases like this without the code stopping.
 
 ## Comments in JavaScript
 
@@ -59,7 +69,7 @@ let y = 10;
 ```
 
 Comments are great for clarity, but if your code is simple and self-explanatory,
-you don't always not need them. Always aim for code that's easy to understand
+you don't always need them. Always aim for code that's easy to understand
 without needing a bunch of comments.
 
 ## Console Logging
@@ -75,7 +85,7 @@ console.log(greeting); // Outputs: Hello, World!
 
 **Running the code**:
 
-- **In the Browser**: Press `F12`to open the Developer Tools. Navigate to the
+- **In the Browser**: Press `F12` to open the Developer Tools. Navigate to the
   'Console' tab. Here, you can directly paste and run JavaScript code. Any
   output from `console.log()` will be displayed here.
 
@@ -126,5 +136,38 @@ console.table(users);
 ## In Summary
 
 Grasping variables and the range of debugging tools like console methods sets
-the foundation for your JavaScript adventures. Keep an eye out for the next part
-in this series, where we'll dig into even more JavaScript basics!
+the foundation for your JavaScript adventures. Below is a code snippet that
+wraps up what we've learned in this article:
+
+```javascript
+// Declare variables using let and const
+let username = "JohnDoe";
+const maxAttempts = 3;
+
+// Use console.log() to debug or display messages
+console.log("Username is: ", username);
+console.log("Maximum login attempts: ", maxAttempts);
+
+// Show an informational message
+console.info(
+  "You can change the username variable, but not maxAttempts because it's a const.",
+);
+
+// This would have caused an error, if the code were not commented out
+// maxAttempts = 4
+
+// Issue a warning
+console.warn("Changing const variables will throw an error!");
+
+// Display data in a table format
+// The value of 'scores' is a combination of arrays and objects, making up a table.
+// We'll look into these concepts real soon!
+let scores = [
+  { username: "JohnDoe", score: 42 },
+  { username: "JaneDoe", score: 37 },
+];
+console.table(scores);
+```
+
+Keep an eye out for the next part in this series, where we'll dig into even more
+JavaScript basics!

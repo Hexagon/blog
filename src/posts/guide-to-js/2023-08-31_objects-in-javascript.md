@@ -1,6 +1,6 @@
 ---
 title: "Working with Objects in JavaScript"
-part: 6
+part: 8
 intro: "After mastering control structures and arrays, the next step is to understand another cornerstone of JavaScript: objects. Objects are essential for bundling related data and functions together, which makes your code more organized and manageable. This extended article will explore objects in more depth, covering not just the basics but also advanced concepts like JSON, object constructors, prototypes, inheritance, and ES6 features for objects."
 ---
 
@@ -23,6 +23,12 @@ let person = {
 In this example, `person` is an object. It has properties like `name` and `age`,
 and methods like `greet`. A method is simply a function that is a property of an
 object.
+
+> **Note:** This article focuses on the foundational aspects of working with
+> objects in JavaScript. For a deep dive into Prototypes and Inheritance, which
+> are advanced topics related to objects, you can skip to my specialized article
+> on
+> [Prototypes and Inheritance in JavaScript](/posts/guide-to-js/prototypes-and-inheritance/).
 
 #### Object Properties
 
@@ -170,51 +176,6 @@ let bob = new Person("Bob", 40);
 When you create a new object using `new`, the constructor function is called,
 and `this` refers to the new object.
 
-#### Prototypes
-
-In JavaScript, objects can inherit properties and methods from a prototype
-object.
-
-```javascript
-Person.prototype.sayGoodbye = function () {
-  console.log("Goodbye, " + this.name);
-};
-
-alice.sayGoodbye(); // Output: "Goodbye, Alice"
-```
-
-The `prototype` property allows you to add new methods to object constructors.
-These methods will be shared among all instances of the constructor.
-
-#### Inheritance in JavaScript Objects
-
-Inheritance is a fundamental concept in object-oriented programming. It allows
-objects to inherit properties and methods from other objects.
-
-```javascript
-function Employee(name, age, position) {
-  Person.call(this, name, age);
-  this.position = position;
-}
-
-Employee.prototype = Object.create(Person.prototype);
-
-let charlie = new Employee("Charlie", 50, "Manager");
-
-charlie.greet(); // Output: "Hello, my name is Charlie"
-```
-
-In the example above, the `Employee` constructor inherits from the `Person`
-constructor by using `Person.call(this, name, age);`. This means that `Employee`
-objects will have access to the methods and properties defined in `Person`.
-
-```javascript
-charlie.sayGoodbye(); // Output: "Goodbye, Charlie"
-```
-
-As you can see, the `sayGoodbye` method is available to the `Employee` object,
-even though it was defined in the `Person` prototype.
-
 #### ES6 Features for Objects
 
 JavaScript ES6 introduced several new features to make object manipulation
@@ -253,10 +214,12 @@ cleaner and more efficient code.
 #### Conclusion
 
 Understanding objects is crucial for effective JavaScript programming. This
-extended article has covered not just the basics but also advanced topics like
-object constructors, prototypes, inheritance, and ES6 features. Mastering these
-concepts will enable you to write more organized, reusable, and maintainable
-code.
+article has covered the basics like object properties, methods, and ES6
+features. For those interested in diving deeper into advanced topics like
+prototypes and inheritance, check out my dedicated article on
+[Prototypes and Inheritance in JavaScript](/posts/guide-to-js/prototypes-and-inheritance/).
+Mastering these concepts will enable you to write more organized, reusable, and
+maintainable code.
 
 Whether you're a beginner or an experienced developer, a deep understanding of
 objects will enhance your JavaScript coding skills. Keep practicing and

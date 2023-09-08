@@ -24,7 +24,7 @@ One of Deno's biggest selling points is its focus on security. Unlike Node.js,
 where you have to manually restrict permissions, Deno is secure by default. That
 means no random package can mess with your system unless you give it the OK.
 
-For example, to run main.ts and allow it to access  `api.openai.com`, you'd run:
+For example, to run main.ts and allow it to access `api.openai.com`, you'd run:
 
 `deno run --allow-net=api.openai.com main.ts`
 
@@ -38,13 +38,17 @@ code to a binary.
 
 **Built-in Key/Value store**
 
-It has a built-in Key/Value-store, which allows you to access a JavaScript friendly
-database with only a few lines of code. In custom deployments, it's based on
-SQLite, if using Deno Deploy, it uses a cloud based store.
+It has a built-in Key/Value-store, which allows you to access a JavaScript
+friendly database with only a few lines of code. In custom deployments, it's
+based on SQLite, if using Deno Deploy, it uses a cloud based store.
 
 **Backwards Compatible**
 
-One of the cool things about Deno is that it's backwards compatible with npm packages. This means you can still use all those npm libraries you know and love. For those who don't want to be weighed down by what's known as the [heaviest object in the universe](https://www.reddit.com/r/ProgrammerHumor/comments/6s0wov/heaviest_objects_in_the_universe/?rdt=41500) (node_modules), there is an `--no-npm` flag.
+One of the cool things about Deno is that it's backwards compatible with npm
+packages. This means you can still use all those npm libraries you know and
+love. For those who don't want to be weighed down by what's known as the
+[heaviest object in the universe](https://www.reddit.com/r/ProgrammerHumor/comments/6s0wov/heaviest_objects_in_the_universe/?rdt=41500)
+(node_modules), there is an `--no-npm` flag.
 
 ## How to Install
 
@@ -75,8 +79,8 @@ console.log("Hello, Deno!");
 Run your program with `deno run hello.ts`. You should see the output "Hello,
 Deno!"
 
-If you're new to JavaScript (or TypeScript for that matter), consider checking out
-[The Guide to JavaScript](https://hexagon.56k.guru/guide-to-js/introduction)
+If you're new to JavaScript (or TypeScript for that matter), consider checking
+out [The Guide to JavaScript](https://hexagon.56k.guru/guide-to-js/introduction)
 covering everything from the basics to advanced topics.
 
 ## Importing Packages
@@ -119,8 +123,8 @@ this year. We can't wait to see what new features and improvements it'll bring.
 
 ## Deno resources
 
-If you're looking for inspiration, you can check out some other write ups
-on Deno:
+If you're looking for inspiration, you can check out some other write ups on
+Deno:
 
 - [Building a blog using Lume and Deno](https://hexagon.56k.guru/posts/building-a-blog-using-lume/)(hexagon.56k.guru)
 - [Building a Web-based Tetris game using Deno](https://hexagon.56k.guru/posts/deno-tetris/introduction-to-deno-tetris/)(hexagon.56k.guru)
