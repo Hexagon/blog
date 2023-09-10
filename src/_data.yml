@@ -10,3 +10,6 @@ author:
   name: Hexagon
   email: hexagon@56k.guru
   url: https://hexagon.56k.guru
+ads:
+  article: false
+  sidebar: true

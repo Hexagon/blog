@@ -11,16 +11,19 @@ layout: layout/body.njk
         {% include "partials/post-details.njk" %}
         {{ intro | md | safe }}
         <br>
-        {% include "components/ads/article.njk" %}
-        <br>
+        {% if ads.article %}
+          {% include "components/ads/article.njk" %}
+          <br>
+        {% endif %}
         {{ content | safe }}
       </article>
     </section>
     <hr>
     {% include "partials/next-previous.njk" %}
     <hr>
-    <!-- {% include "components/ads/plex.njk" %}
-    <hr> -->
+    {% if ads.article %}
+      {% include "components/ads/plex.njk" %}
+    {% endif %}
     {% include "components/disqus.njk" %}
   </div>
 
@@ -30,6 +33,8 @@ layout: layout/body.njk
     {% include "partials/series-toc.njk" %}
     {% include "partials/recommended.njk" %}
     {% include "partials/more-series.njk" %}
-    <!--{% include "components/ads/plex.njk" %}-->
+    {% if ads.sidebar %}
+      {% include "components/ads/plex.njk" %}
+    {% endif %}
   </div>
 </div>

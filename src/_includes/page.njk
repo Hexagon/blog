@@ -14,6 +14,8 @@ layout: layout/body.njk
     {% include "components/search.njk" %}
     {% include "partials/recommended.njk" %}
     {% include "partials/more-series.njk" %}
-    {% include "components/ads/plex.njk" %}
+    {% if ads.sidebar %}
+      {% include "components/ads/plex.njk" %}
+    {% endif %}
   </div>
 </div>

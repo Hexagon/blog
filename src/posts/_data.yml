@@ -3,3 +3,6 @@ priority: 0.8
 license: CC BY-SA 4.0
 tags:
   - post
+ads:
+  article: true
+  sidebar: true
