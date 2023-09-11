@@ -5,6 +5,28 @@
     max-width: 1000px;
 }
 
+article table {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.green {
+    color: #090;
+}
+.red {
+    color: #900;
+}
+
+article table td, article table th {
+    padding: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+article table tr:first-child, article table tr:first-child {
+    padding-left: 5px;
+}
+
 h1 {
     margin-top: 0.5rem;
 }
