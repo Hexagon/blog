@@ -11,10 +11,16 @@ article table {
 }
 
 .green {
-    color: #090;
+    color: #393;
 }
 .red {
-    color: #900;
+    color: #D33;
+}
+.yellow {
+    color: #CC0;
+}
+.orange {
+    color: #F60;
 }
 
 article table td, article table th {
@@ -24,7 +30,7 @@ article table td, article table th {
 }
 
 article table tr:first-child, article table tr:first-child {
-    padding-left: 5px;
+    padding-left: 0px;
 }
 
 h1 {

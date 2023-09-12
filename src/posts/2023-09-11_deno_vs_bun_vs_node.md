@@ -8,45 +8,55 @@ tags:
   - bun
   - nodejs
 priority: 1.0
+updated: 2023-09-12T19:06:00.000Z
 intro: "Choosing a JavaScript runtime for your project? Then you've probably heard of Deno, Bun, and Node.js. They are all good, but each has its own set of features and trade-offs. This guide will break them down by features, ease of use, security, and other considerations."
 ---
 
 | Feature                     | Deno  | Bun  | Node.js |
 |-----------------------------|-------|------|---------|
-| Built-in Code Formatter     | <i class="green">✅</i>    | <i class="red">❌</i>   | <i class="red">❌</i>     |
-| Built-in Linting            | <i class="green">✅</i>    | <i class="red">❌</i>   | <i class="red">❌</i>     |
-| Built-in Upgrader           | <i class="green">✅</i>    | <i class="green">✅</i>   | <i class="red">❌</i>     |
-| Built-in Type Checker       | <i class="green">✅</i>    | <i class="red">❌</i>   | <i class="red">❌</i>     |
-| Built-in Minifier       |  <i class="red">❌</i>   | <i class="green">✅</i>   | <i class="red">❌</i>     |
-| Built-in LSP                | <i class="green">✅</i>    | <i class="red">❌</i>   | <i class="red">❌</i>     |
-| Built-in REPL               | <i class="green">✅</i>    | <i class="red">❌</i>   | <i class="green">✅</i>     |
-| Built-in Dependency Viewer        | <i class="green">✅</i>    | <i class="red">❌</i>   | <i class="green">❌</i>     |
-| Built-in Standard Library        | <i class="green">✅</i>    | <i class="red">❌</i>   | <i class="green">✅</i>     |
-| Built-in Websocket Handler  | <i class="green">✅</i>    | <i class="green">✅</i>   | <i class="red">❌</i>     |
-| Built-in Persistent Storage | <i class="green">✅</i>    | <i class="green">✅</i>   | <i class="red">❌</i>     |
-| Built-in Package Manager    | <i class="red">❌</i>    | <i class="green">✅</i>   | <i class="red">❌</i>     |
-| Built-in Benchmark Runner   | <i class="green">✅</i>    | <i class="red">❌</i>   | <i class="red">❌</i>     |
-| Single Executable Apps      | <i class="green">✅</i>    | <i class="green">✅</i>   | <i class="red">❌</i>     |
-| Secure by Default           | <i class="green">✅</i>    | <i class="red">❌</i>   | <i class="red">❌</i>     |
-| Native TypeScript / TSX      | <i class="green">✅</i>    | <i class="green">✅</i>   | <i class="red">❌</i>     |
-| Compatibility with Web APIs | <i class="green">✅</i>    | <i class="green">✅</i>   | <i class="green">✅</i>     |
-| Windows Support             | <i class="green">✅</i>    | <i class="red">❌</i>   | <i class="green">✅</i>     |
-| package.json Compatibility  | <i class="green">✅</i>    | <i class="green">✅</i>   | <i class="green">✅</i>     |
-| NPM Opt-out                 | <i class="green">✅</i>    | <i class="red">❌</i>   | <i class="red">❌</i>     |
-| Support for URL Imports     | <i class="green">✅</i>    | <i class="red">❌</i>   | <i class="red">❌</i>     |
-| Support for Import Maps     | <i class="green">✅</i>    | <i class="red">❌</i>   | <i class="red">❌</i>     |
+| Code Formatter     | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-triangle-exclamation orange"></i>   | <i class="fa-solid fa-triangle-exclamation orange"></i>     |
+| Linter             | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-triangle-exclamation orange"></i>   | <i class="fa-solid fa-triangle-exclamation orange"></i>     |
+| Upgrader           | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-check green"></i>   | <i class="fa-solid fa-triangle-exclamation orange"></i>     |
+| Type Checker       | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-triangle-exclamation orange"></i>   | <i class="fa-solid fa-triangle-exclamation orange"></i>     |
+| Minifier           | <i class="fa-solid fa-triangle-exclamation orange"></i>   | <i class="fa-solid fa-check green"></i>   | <i class="fa-solid fa-triangle-exclamation orange"></i>     |
+| Bundler           | <i class="fa-solid fa-check yellow"></i>    | <i class="fa-solid fa-check green"></i>   | <i class="fa-solid fa-triangle-exclamation orange"></i>     |
+| LSP                | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-triangle-exclamation orange"></i>   | <i class="fa-solid fa-triangle-exclamation orange"></i>     |
+| REPL               | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-check yellow"></i>   | <i class="fa-solid fa-check green"></i>     |
+| Dependency Viewer  | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-xmark red"></i>   | <i class="fa-solid fa-check yellow"></i>     |
+| Websocket Handler  | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-check green"></i>   | <i class="fa-solid fa-xmark red"></i>     |
+| Persistent Storage | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-check green"></i>   | <i class="fa-solid fa-xmark red"></i>     |
+| Package Manager    | <i class="fa-solid fa-triangle-exclamation orange"></i>    | <i class="fa-solid fa-check green"></i>   | <i class="fa-solid fa-check yellow"></i>     |
+| Benchmark Runner   | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-triangle-exclamation orange"></i>   | <i class="fa-solid fa-triangle-exclamation orange"></i>     |
+| Compiler           | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-check green"></i>   | <i class="fa-solid fa-triangle-exclamation orange"></i>     |
+| Single Executable Installation  | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-check green"></i>   | <i class="fa-solid fa-xmark red"></i>     |
+| Permissions Model           | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-xmark red"></i>   | <i class="fa-solid fa-triangle-exclamation orange"></i>     |
+| TypeScript / TSX            | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-check green"></i>   | <i class="fa-solid fa-triangle-exclamation orange"></i>     |
+| Compatibility with Web APIs | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-check green"></i>   | <i class="fa-solid fa-check green"></i>     |
+| Windows Support             | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-triangle-exclamation orange"></i>   | <i class="fa-solid fa-check green"></i>     |
+| ARM64 Support               | <i class="fa-solid fa-triangle-exclamation orange"></i>   | <i class="fa-solid fa-triangle-exclamation orange"></i> | <i class="fa-solid fa-check green"></i>
+| package.json Compatibility  | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-check green"></i>   | <i class="fa-solid fa-check green"></i>     |
+| NPM Opt-out                 | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-xmark red"></i>   | <i class="fa-solid fa-xmark red"></i>     |
+| Support for URL Imports     | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-xmark red"></i>   | <i class="fa-solid fa-xmark red"></i>     |
+| Support for Import Maps     | <i class="fa-solid fa-check green"></i>    | <i class="fa-solid fa-xmark red"></i>   | <i class="fa-solid fa-xmark red"></i>     |
 
+<i class="fa-solid fa-check green"></i> = Built In
+<i class="fa-solid fa-check yellow"></i> = Core Ecosystem
+<i class="fa-solid fa-triangle-exclamation orange"></i> = Third Party / Experimential / Partial
+<i class="fa-solid fa-xmark red"></i> = N/A
 
 As this table doesn't cover every single aspect, here are some noteworthy points:
 
-- Bun has some level of Windows support.
 - Node has started to implement a permissions model.
-- Node do have an external dependency view through `npm list`.
+- Node does have an external dependency view through `npm list`.
 - Bun has a semi-built-in REPL, which is downloaded on demand.
 - All runtimes offer ARM64 support to varying degrees, with Node.js supporting the broadest range of platforms.
 - While Deno lacks a traditional built-in package manager, it does facilitate automatic package installations through URL imports, specifier imports, import_map, and package.json.
 
-It's also worth noting that Deno has a major release rumored to arrive soon, which could bring some exciting new features.
+Report any misconceptions as an issue or PR at the [Blog GitHub Repo](https://github.com/hexagon/blog).
+
+*Table updated to include four levels (green/yellow/orange/red) instead of two (green/red) 2023-09-12*
+
+---
 
 Now let's go through them one by one.
 
@@ -66,6 +76,9 @@ Deno also offers an excellent developer experience, especially if you use TypeSc
 ### Security
 
 Deno is the clear winner here; it's secure by default, meaning everything is blocked by default, and you enable the features you need.
+
+---
+
 
 ## Bun
 
@@ -89,6 +102,9 @@ Bun hasn't implemented a comprehensive permissions model like Deno. However, it 
 
 Bun might not offer as comprehensive Windows support as Deno or Node.js, but it does function to some extent.
 
+---
+
+
 ## Node.js
 
 Node.js, launched in 2009, revolutionized server-side programming by allowing developers to use JavaScript outside the browser. Built on the V8 JavaScript engine. [(wikipedia)](https://en.wikipedia.org/wiki/Node.js)
@@ -109,6 +125,9 @@ Historically, Node.js received criticism for its approach to security, especiall
 
 Again, Node.js boasts the advantage of time, maturity, and a vast community. For large-scale applications or projects where library support is essential, Node.js still stands strong.
 
+---
+
+
 ## Conclusion
 
 Selecting between Deno, Bun, and Node.js largely depends on your project's requirements and your personal preferences.
@@ -119,6 +138,6 @@ Selecting between Deno, Bun, and Node.js largely depends on your project's requi
 
 ## Credits
 
-A big thank you to discord users Birk Skyum, lino-levan, Beast, cknight, Mark G and others for invaluable research and discussions contributing to this article.
+A big thank you to Discord users Birk Skyum, lino-levan, Beast, cknight, Mark G and others for invaluable research and discussions contributing to this article.
 
 Over and out.
