@@ -32,7 +32,7 @@ intro: "Choosing a JavaScript runtime for your project? Then you've probably hea
 | **Package Management**       |||
 | package.json Compatibility  | <i class="green">⬤</i>    | <i class="green">⬤</i>   | <i class="green">⬤</i>     |
 | NPM Opt-out                 | <i class="green">⬤</i>    | <i class="red">⬤</i>   | <i class="red">⬤</i>     |
-| Built in Package Manager    | <i class="orange">⬤</i>    | <i class="green">⬤</i>   | <i class="yellow">⬤</i>     |
+| Built-in Package Manager    | <i class="orange">⬤</i>    | <i class="green">⬤</i>   | <i class="yellow">⬤</i>     |
 | URL Imports     | <i class="green">⬤</i>    | <i class="red">⬤</i>   | <i class="red">⬤</i>     |
 | **Web API Compatibility**   |||
 | Fetch | <i class="green">⬤</i>    | <i class="green">⬤</i>   | <i class="green">⬤</i>     |
@@ -62,7 +62,7 @@ intro: "Choosing a JavaScript runtime for your project? Then you've probably hea
 | Ownership | Deno Land Inc. | Oven | OpenJS Foundation |
 | License | MIT License | MIT License | MIT License |
 
-<i class="green">⬤</i> = Built In
+<i class="green">⬤</i> = Built-In
 <i class="yellow">⬤</i> = Core Ecosystem
 <i class="orange">⬤</i> = Third Party / Experimential / Partial
 <i class="red">⬤</i> = N/A
@@ -71,9 +71,9 @@ intro: "Choosing a JavaScript runtime for your project? Then you've probably hea
 
 As this table doesn't cover every single aspect, here are some noteworthy points:
 
-- Node has started to implement a permissions model.
-- Node does have an external dependency view through `npm list`.
-- Node has an alternative approach to Web Workers called `Worker Threads`
+- Node.js has started to implement a permissions model.
+- Node.js does have an external dependency view through `npm list`.
+- Node.js has an alternative approach to Web Workers called `Worker Threads`
 - Bun's WebSocket API is flagged orange as it is flagged "Not production ready" in the [official documentation](https://bun.sh/docs/runtime/web-apis)
 - Bun has a semi-built-in REPL, which is downloaded on demand.
 - All runtimes offer ARM64 support to varying degrees, with Node.js supporting the broadest range of platforms.
@@ -92,7 +92,7 @@ Now let's go through the runtimes one by one.
 
 ## Deno
 
-Deno was initially created by Ryan Dahl in 2018, the original creator of Node.js, to address some of the regrets and issues he felt were present in Node.js. It is focusing on security, modern JavaScript practices and developer experience. Built on the V8 JavaScript engine and is written in Rust. [(wikipedia)](https://en.wikipedia.org/wiki/Deno_(software)).
+Deno was initially created by Ryan Dahl in 2018, the original creator of Node.js, to address some of the regrets and issues he felt were present in Node.js. It focuses on security, modern JavaScript practices and developer experience. Built on the V8 JavaScript engine and written in Rust. [(wikipedia)](https://en.wikipedia.org/wiki/Deno_(software)).
 
 ### Features
 
@@ -137,15 +137,15 @@ Bun might not offer as comprehensive Windows support as Deno or Node.js, but it 
 
 ## Node.js
 
-Node.js, launched in 2009, revolutionized server-side programming by allowing developers to use JavaScript outside the browser. It has a great ecosystem, enormous community and is proven and stable. Provides LTS builds for large scale applications. Built on the V8 JavaScript engine. [(wikipedia)](https://en.wikipedia.org/wiki/Node.js)
+Launched in 2009, Node.js revolutionized server-side programming by allowing developers to use JavaScript outside of the browser. It boasts a robust ecosystem, a vast community, and is proven and stable. Provides LTS builds for large scale applications. Built on the V8 JavaScript engine. [(wikipedia)](https://en.wikipedia.org/wiki/Node.js)
 
 ### Features
 
-Node.js has been the backbone of server-side JavaScript development for years, and do support most thinkable features through third party tools. If we focus on built in tools and compatibility with Web APIs, it is's starting to fall behind the competition.
+For years, Node.js has been the backbone of server-side JavaScript development, supporting a myriad of features through third-party tools. If we focus on built-in tools and compatibility with Web APIs, it is starting to fall behind the competition.
 
 ### Ease of Use
 
-Due to the lack of built in tools, Node.js has a steeper learning curve for beginners but offers immense power and flexibility in return. The extensive documentation, tutorials, and community support available make it easier to overcome challenges.
+Due to the lack of built-in tools, Node.js has a steeper learning curve for beginners but offers immense power and flexibility in return. The extensive documentation, tutorials, and community support available make it easier to overcome challenges.
 
 ### Security
 

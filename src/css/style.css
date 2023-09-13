@@ -12,15 +12,19 @@ article table {
 
 .green {
     color: #393;
+    font-style: normal;
 }
 .red {
     color: #D33;
+    font-style: normal;
 }
 .yellow {
     color: #CC0;
+    font-style: normal;
 }
 .orange {
     color: #F60;
+    font-style: normal;
 }
 
 article table td, article table th {
