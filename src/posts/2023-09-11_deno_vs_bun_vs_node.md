@@ -66,7 +66,7 @@ Deno was initially created by Ryan Dahl, the original creator of Node.js, to add
 
 ### Features
 
-As you can see in the table above, Deno has a very comprehensive set of features compared to the competition. While Node.js has great support for the tried and tested npm package registry, Deno is much more aligned with web APIs and modern standards, and it also supports most npm packages.
+As you can see in the table above, Deno has a very comprehensive set of features compared to the competition. It has great support for the Web APIs and modern standards, and it also supports most npm packages.
 
 
 ### Ease of Use
