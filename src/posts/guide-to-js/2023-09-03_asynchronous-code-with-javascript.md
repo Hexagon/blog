@@ -1,5 +1,6 @@
 ---
 title: Asynchronous code with JavaScript
+title_short: Asynchronous Code
 part: 9
 intro: "In this lesson, we will explore asynchronous code in JavaScript, learn what promises is, and how they relate to async/await."
 ---

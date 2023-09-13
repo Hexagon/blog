@@ -8,7 +8,7 @@ tags:
   - bun
   - nodejs
 priority: 1.0
-updated: 2023-09-12T19:06:00.000Z
+updated: 2023-09-13T23:41:00.000+0200
 intro: "Choosing a JavaScript runtime for your project? Then you've probably heard of Deno, Bun, and Node.js. They are all good, but each has its own set of features and trade-offs. This guide will break them down by features, ease of use, security, and other considerations."
 ---
 

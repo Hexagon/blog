@@ -1,5 +1,6 @@
 ---
 title: "Working with Objects in JavaScript"
+title_short: "Objects"
 part: 8
 intro: "After mastering control structures and arrays, the next step is to understand another cornerstone of JavaScript: objects. Objects are essential for bundling related data and functions together, which makes your code more organized and manageable. This extended article will explore objects in more depth, covering not just the basics but also advanced concepts like JSON, object constructors, prototypes, inheritance, and ES6 features for objects."
 ---

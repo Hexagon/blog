@@ -3,7 +3,8 @@
     "lume": "echo \"import 'lume/cli.ts'\" | deno run --unstable -A -",
     "build": "deno task lume",
     "serve": "deno task lume -s --port=8000",
-    "deploy": "rm -rf _prod && cp -R _site _prod"
+    "stage": "rm -rf _stage && cp -R _site _stage",
+    "deploy": "rm -rf _prod && cp -R _stage _prod"
   },
   "imports": {
     "lume/": "https://deno.land/x/lume@v1.18.4/"

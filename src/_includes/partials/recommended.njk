@@ -4,7 +4,7 @@
     <ul class="list-unstyled">
     {% for subpost in search.pages("standalone") %}
         <li class="mb-2">
-            <a class="link-primary {% if subpost.data.url == url %}link-secondary{% endif %}" href="{{ subpost.data.url }}">{{ subpost.data.title }}</a>
+            <a class="link-primary {% if subpost.data.url == url %}link-secondary{% endif %}" href="{{ subpost.data.url }}">{{ subpost.data.title_short or subpost.data.title }}</a>
         </li>
     {% endfor %}
     </ul>

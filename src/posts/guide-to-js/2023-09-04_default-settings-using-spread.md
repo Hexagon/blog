@@ -1,5 +1,6 @@
 ---
 title: Building a Default Settings System Using the Spread Operator
+title_short: Default Settings System
 part: 10
 intro: "Today, We'll have a look at how the spread operator works by building a small system for managing default settings and overrides."
 ---

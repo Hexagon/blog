@@ -1,5 +1,6 @@
 _site
 _prod
+_stage
 _bin
 .vscode
 draft

@@ -15,25 +15,8 @@ title: hexagon.56k.guru
     <meta name="color-scheme" content="light dark">
     <link rel="canonical" href="{{ page.data.url | url(true) }}" />
 
-    <!-- Dark mode toggler -->
-    <!--
-    <script>
-      const setTheme = (theme) => {
-        if (
-          theme === "auto" &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches
-        ) {
-          document.documentElement.setAttribute("data-bs-theme", "dark");
-        } else {
-          document.documentElement.setAttribute("data-bs-theme", theme);
-        }
-      };
-      setTheme("auto");
-    </script>
-    -->
-
-    <!-- Halfmoon CSS -->
-    <link href="/css/vendor/halfmoon-2.0.0.min.css" rel="stylesheet">
+    <!-- Pico CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
 
     {% include "components/google-ads.njk" %}
 

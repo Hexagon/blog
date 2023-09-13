@@ -1,21 +1,20 @@
 ---
 layout: layout/body.njk
 ---
+<div class="grid">
 
-<div class="row">
-  <div class="col-md-9">
-    <section>
-        {{ content | safe }}
-    </section>
-  </div>
+  <section>
+      {{ content | safe }}
+  </section>
 
   <!-- Sidebar -->
-  <div class="col-md-3">
+  <aside class="col-md-3">
     {% include "components/search.njk" %}
-    {% include "partials/recommended.njk" %}
     {% include "partials/more-series.njk" %}
+    {% include "partials/recommended.njk" %}
     {% if ads.sidebar %}
       {% include "components/ads/plex.njk" %}
     {% endif %}
-  </div>
+  </aside>
+  
 </div>

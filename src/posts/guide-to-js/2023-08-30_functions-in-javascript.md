@@ -1,5 +1,6 @@
 ---
 title: "Functions and type guards in JavaScript"
+title_short: "Functions"
 part: 4
 intro: "Now that we've covered control structures, let's step into another cornerstone
 of JavaScript: functions. Functions allow us to bundle code into reusable

@@ -1,5 +1,6 @@
 ---
 title: The Evolution of JavaScript and Why It Matters
+title_short: The Evolution
 part: 6
 intro: "Understanding the past and how we got here can give us good hints about where
 we're going. Let's dig into JavaScript's history and how it's grown over time.

@@ -4,37 +4,34 @@ layout: layout/body.njk
 {% if extra == "multi-pointer" %}
   {% include "partials/multi-pointer.njk" %}
 {% endif %}
-<div class="row">
-  <div class="col-md-9">
-    <section>
-      <article lang="{{ language }}">
-        {% include "partials/post-details.njk" %}
-        {{ intro | md | safe }}
-        <br>
-        {% if ads.article %}
-          {% include "components/ads/article.njk" %}
-          <br>
-        {% endif %}
-        {{ content | safe }}
-      </article>
-    </section>
-    <hr>
-    {% include "partials/next-previous.njk" %}
-    <hr>
-    {% if ads.article %}
-      {% include "components/ads/plex.njk" %}
-    {% endif %}
-    {% include "components/disqus.njk" %}
-  </div>
 
+<div class="grid">
+  <section>
+    <div>
+      {% include "partials/post-details.njk" %}
+      {{ intro | md | safe }}
+      <br>
+      {% if ads.article %}
+        {% include "components/ads/article.njk" %}
+        <br>
+      {% endif %}
+      {{ content | safe }}    
+      <hr>
+      {% include "partials/next-previous.njk" %}
+      {% if ads.article %}
+        {% include "components/ads/plex.njk" %}
+      {% endif %}
+      {% include "components/disqus.njk" %}
+    </div>
+  </section>
   <!-- Sidebar -->
-  <div class="col-md-3">
+  <aside>
     {% include "components/search.njk" %}
     {% include "partials/series-toc.njk" %}
-    {% include "partials/recommended.njk" %}
     {% include "partials/more-series.njk" %}
+    {% include "partials/recommended.njk" %}
     {% if ads.sidebar %}
       {% include "components/ads/plex.njk" %}
     {% endif %}
-  </div>
+  </aside>
 </div>

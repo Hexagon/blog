@@ -10,12 +10,15 @@
   {% endif %}
 
   <!-- Date -->
-  <time class="mb-1" datetime="{{ page.data.date }}">
-      {{ page.data.date | date }}
-  </time>
+  <time class="mb-1" datetime="{{ page.data.date | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
+      {{ page.data.date | date }}</time>{% if page.data.updated %}<span>, Updated:</span>
+    <time class="mb-1" datetime="{{ page.data.updated | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
+      {{ page.data.updated | date }}
+    </time>
+  {% endif %}
   
   <!-- Reading time -->
-  <span class="badge text-bg-info">{{ page.data.readingTime.minutes }} minutes read</span>
+  <span class="badge text-bg-info"> {{ page.data.readingTime.minutes }} minutes read</span>
 
   <!-- License -->
   <!--
@@ -31,13 +34,3 @@
     {% endif %}
   {% endfor %}
 </p>
-{% if page.data.updated %}
-<p>
-  <i>
-    Updated: 
-    <time class="mb-1" datetime="{{ page.data.updated }}">
-      {{ page.data.updated | date }}
-    </time>
-  </i>
-</p>
-{% endif %}

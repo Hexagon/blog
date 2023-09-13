@@ -1,8 +1,14 @@
 @import "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/github-dark.min.css";
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css";
 
-.restricted {
-    max-width: 1000px;
+aside {
+    border-left: 1px solid #333;
+    margin-left: 20px;
+    padding-left: 20px;
+}
+
+aside a {
+    font-size: 0.9rem;
 }
 
 article table {
@@ -30,7 +36,7 @@ article table tr:nth-child(0) {
     border-top: 0px none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
-
+/* Colors for comparison table */
 .green {
     color: rgb(42, 129, 42);
 }
@@ -44,53 +50,8 @@ article table tr:nth-child(0) {
     color: rgb(150, 63, 172);
 }
 
-
-h1 {
-    margin-top: 0.5rem;
-}
-
-h2,h3 {
-    margin-top: 3rem;
-}
-
-h1,h2,h3 {
-    margin-bottom: 1rem;
-}
-
 .header-image {
     width: 100%;
-}
-
-.spaced-link {
-    margin-left: 1rem;
-    margin-right: 1rem;
-}
-
-p {
-    margin-bottom: 1rem;
-    line-height: 1.6;
-}
-
-h1 { font-size: 1.5rem; font-weight:500; }
-h2 { font-size: 1.3rem; font-weight:500; }
-h3 { font-size: 1.1rem; font-weight:500; }
-h4 { font-size: 1.0rem; font-weight:500; }
-h5 { font-size: 0.9rem; font-weight:500; }
-
-a {
-    text-decoration: none !important;
-}
-
-article li {
-    margin-bottom: 0.25rem;
-}
-
-article ul {
-    margin-bottom: 2rem;
-}
-
-.hljs {
-    border-radius: 3px;
 }
 
 .index-avatar {
@@ -99,3 +60,33 @@ article ul {
     height: 150px;
     margin-left: 25px;
 }
+
+/* Reset Pico CSS Responsive padding */
+body > header, body > footer, body > main {
+    padding: 0;
+}
+
+.hljs {
+    border-radius: 3px;
+}
+
+  /* Pico CSS Overrides */
+ :root {
+    --font-size: 13px;
+  }
+  @media (min-width: 576px) {
+    :root {
+      --font-size: 14px;
+    }
+  }
+  @media (min-width: 768px) {
+    :root {
+      --font-size: 15px;
+    }
+  }
+  @media (min-width: 992px) {
+    main .grid {
+      grid-template-columns: auto 25%;
+    }
+  }
+  

@@ -1,11 +1,11 @@
 <!-- Current Series TOC -->
 {% if page.data.series %}
-    <section class="mb-4">
+    <nav>
         <h4>{{ page.data.series.title }}</h4>
-        <ul class="list-unstyled">
+        <ul>
             {% for subpost in search.pages(page.data.series.tag, "part") %}
-                <li class="mb-2"><a class="link-primary {% if subpost.data.url == url %}link-secondary{% endif %}" href="{{ subpost.data.url }}">{{subpost.data.part}}. {{ subpost.data.title }}</a></li>
+                <li><a class="link-primary {% if subpost.data.url == url %}link-secondary{% endif %}" href="{{ subpost.data.url }}">{{subpost.data.part}}. {{ subpost.data.title_short or subpost.data.title }}</a></li>
             {% endfor %}
         </ul>
-    </section>
+    </nav>
 {% endif %}

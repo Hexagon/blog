@@ -1,5 +1,6 @@
 ---
 title: Strings and Numbers in JavaScript
+title_short: Strings and Numbers
 part: 7
 intro: "In this post, we will explore two of the most common data types in JavaScript:
 strings and numbers. Strings are used to store text, while numbers are used to

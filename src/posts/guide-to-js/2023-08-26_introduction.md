@@ -1,5 +1,6 @@
 ---
 title: The Guide to JavaScript - Introduction
+title_short: Introduction
 part: 1
 priority: 1.0
 updated: "2023-09-08T14:44:00Z"

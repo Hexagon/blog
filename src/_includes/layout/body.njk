@@ -4,13 +4,17 @@ layout: layout/html.njk
 
 <body>
 
-  {% include "partials/nav.njk" %}
+  <header class="container">
+    {% include "partials/nav.njk" %}
+  </header>
 
-  <!-- content -->
-  <div class="container restricted">
+  <main class="container">
+    <!-- content -->
     {{ content | safe }}
-  </div>
-    
-  {% include "partials/footer.njk" %}
+  </main>
+
+  <footer class="container">
+    {% include "partials/footer.njk" %}
+  </footer>
 
 </body>

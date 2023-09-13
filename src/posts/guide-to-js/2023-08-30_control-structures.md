@@ -1,5 +1,6 @@
 ---
 title: "Control Structures in JavaScript"
+title_short: "Control Structures"
 part: 3
 intro: "Control structures in JavaScript dictate how your code runs. They decide the
 flow of operations based on conditions and can repeat sections of code multiple

@@ -1,5 +1,6 @@
 ---
 title: Fundamental Concepts of JavaScript
+title_short: Fundamental Concepts
 part: 2
 intro: "In this section we'll cover the key elements that are essential to working with
 JavaScript. We'll touch on variables, debugging methods, and core principles.
