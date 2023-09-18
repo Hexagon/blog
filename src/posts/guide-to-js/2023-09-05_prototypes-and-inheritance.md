@@ -1,5 +1,6 @@
 ---
 title: "Prototypes and Inheritance in JavaScript"
+title_short: "Prototypes and Inheritance"
 part: 13
 intro: "In this article, we'll delve into prototypes and inheritance in JavaScript, explaining how they provide a powerful way to create and manage objects. We'll also compare them with other forms of inheritance, particularly the class-based approach seen in languages like Java and C++."
 ---

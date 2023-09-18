@@ -1,7 +1,6 @@
 ---
 title: "Setting Up the Project: Main files and Dependencies"
 part: 2
-priority: 2.0
 intro: "Welcome to the second part of our series on building Detris, a web-based Tetris game using Deno. In this article, we'll take you through the initial steps of setting up your project environment. We'll cover the importance of the `deps.ts` and `main.ts` files, setting the foundation for the game development that lies ahead. By the end of this article, you'll have a base for the project and be ready to dive into the exciting world of frontend development!"
 ---
 

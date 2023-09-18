@@ -1,5 +1,6 @@
 ---
 title: "Closures and Scopes in JavaScript"
+title_short: "Scopes and Closures"
 part: 12
 intro: "In this article, we explore the important concepts of closures and scopes in JavaScript. Understand how scope works, what closures are, and how to use these features to write cleaner, more maintainable code."
 ---

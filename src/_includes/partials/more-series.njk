@@ -1,12 +1,12 @@
 <!-- More series -->
 {% set otherSeries = search.pages("part=1") %}
-<section class="mb-4">
+<nav>
     <h4>Article series</h5>
-    <ul class="list-unstyled">
+    <ul>
         {% for subpost in search.pages("part=1") %}
-            <li class="mb-2">
-                <a class="link-primary {% if subpost.data.url == url %}link-secondary{% endif %}" href="{{ subpost.data.url }}">{{ subpost.data.series.title }}</a>
+            <li>
+                <a class="{% if subpost.data.url == url %}link-secondary{% endif %}" href="{{ subpost.data.url }}">{{ subpost.data.series.title }}</a>
             </li>
         {% endfor %}
     </ul>
-</section>
+</nav>

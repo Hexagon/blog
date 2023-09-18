@@ -1,7 +1,6 @@
 ---
 title: Conclusion and Future Enhancements
 part: 7
-priority: 7.0
 intro: "Welcome to the grand finale of our Detris series, where we've been guiding you through the creation of a full-featured Tetris game using Deno."
 ---
 

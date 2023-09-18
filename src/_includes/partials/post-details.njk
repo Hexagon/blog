@@ -1,36 +1,38 @@
 {% if page.data.header %}
   <img src="{{ page.data.header }}" class="header-image mb-3">
 {% endif %}
-<a href="{{ page.data.url }}" class="link-secondary"><h1>{{page.data.title}}</h1></a>
-<p>
+<hgroup>
+  <h1><a href="{{ page.data.url }}" class="link-secondary">{{page.data.title}}</a></h1>
+  <p>
 
-  <!-- Author -->
-  {% if page.data.author %}
-      by <strong>{{ page.data.author.name }}</strong>, 
-  {% endif %}
-
-  <!-- Date -->
-  <time class="mb-1" datetime="{{ page.data.date | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
-      {{ page.data.date | date }}</time>{% if page.data.updated %}<span>, Updated:</span>
-    <time class="mb-1" datetime="{{ page.data.updated | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
-      {{ page.data.updated | date }}
-    </time>
-  {% endif %}
-  
-  <!-- Reading time -->
-  <span class="badge text-bg-info"> {{ page.data.readingTime.minutes }} minutes read</span>
-
-  <!-- License -->
-  <!--
-  {% if page.data.license %}
-    <span class="badge text-bg-success">{{ page.data.license }}</span>
-  {% endif %}
-  -->
-  
-  <!-- Tags -->
-  {% for tag in page.data.tags %}
-    {% if tag not in ["standalone","index","guide-to-js","post"] %}
-      <span class="badge text-bg-dark">{{tag}}</span>
+    <!-- Author -->
+    {% if page.data.author %}
+        by <strong>{{ page.data.author.name }}</strong>, 
     {% endif %}
-  {% endfor %}
-</p>
+
+    <!-- Date -->
+    <time class="mb-1" datetime="{{ page.data.date | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
+        {{ page.data.date | date }}</time>{% if page.data.updated %}<span>, Updated:</span>
+      <time class="mb-1" datetime="{{ page.data.updated | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
+        {{ page.data.updated | date }}
+      </time>
+    {% endif %}
+    
+    <!-- Reading time -->
+    <span class="badge badge-alt"> {{ page.data.readingTime.minutes }} minutes read</span>
+
+    <!-- License -->
+    <!--
+    {% if page.data.license %}
+      <span class="badge text-bg-success">{{ page.data.license }}</span>
+    {% endif %}
+    -->
+    
+    <!-- Tags -->
+    {% for tag in tags %}
+      {% if tag not in ["standalone","index","guide-to-js","post"] %}
+        <span class="badge text-bg-dark">{{tag}}</span>
+      {% endif %}
+    {% endfor %}
+  </p>
+</hgroup>

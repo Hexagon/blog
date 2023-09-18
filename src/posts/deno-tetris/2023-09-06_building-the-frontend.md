@@ -1,7 +1,7 @@
 ---
 title: "Building the Frontend: HTML, CSS, and Basic JS"
+title_short: "Building the Frontend"
 part: 3
-priority: 3.0
 intro: "Welcome to the third installment of our Detris series, where we're building a web-based Tetris game using Deno. Having set up our project and understood its core files, it's time to turn our attention to the frontend. In this article, we'll explore the `assets` folder to understand how our game will look and feel. We'll delve into the `index.html` file and the accompanying CSS to give our game its visual appeal. Furthermore, we'll discuss how the frontend and backend communicate to create a seamless gaming experience. By the end of this article, you'll have a good grasp of frontend development and be well on your way to creating an engaging user interface for your Tetris game."
 ---
 

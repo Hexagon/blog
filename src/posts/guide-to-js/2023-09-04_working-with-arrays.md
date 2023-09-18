@@ -1,5 +1,6 @@
 ---
 title: "Working with Arrays in JavaScript"
+title_short: "Working with Arrays"
 part: 5
 intro: "In this section, we will explore arrays in JavaScript. You'll learn how to create arrays, access their elements, manipulate array data, and work with common array methods like push, pop, shift, and unshift. Understanding arrays is crucial as they are used extensively in JavaScript for storing and managing collections of data."
 ---

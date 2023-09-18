@@ -12,15 +12,13 @@ layout: layout/body.njk
       {{ intro | md | safe }}
       <br>
       {% if ads.article %}
-        {% include "components/ads/article.njk" %}
+        {% include "components/ads/display.njk" %}
         <br>
       {% endif %}
       {{ content | safe }}    
       <hr>
       {% include "partials/next-previous.njk" %}
-      {% if ads.article %}
-        {% include "components/ads/plex.njk" %}
-      {% endif %}
+      <hr>
       {% include "components/disqus.njk" %}
     </div>
   </section>

@@ -88,6 +88,10 @@ As this table doesn't cover every single aspect, here are some noteworthy points
 
 Report any misconceptions as an issue or PR at the [Blog GitHub Repo](https://github.com/hexagon/blog).
 
+**Performance**
+
+I've written a separate post comparing the performance of these three, see [Deno vs. Bun vs. Node.js: A Speed Comparison](https://hexagon.56k.guru/posts/deno-vs-bun-vs-node-benchmark/).
+
 Now let's go through the runtimes one by one.
 
 ## Deno

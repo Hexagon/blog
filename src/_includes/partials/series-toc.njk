@@ -4,7 +4,7 @@
         <h4>{{ page.data.series.title }}</h4>
         <ul>
             {% for subpost in search.pages(page.data.series.tag, "part") %}
-                <li><a class="link-primary {% if subpost.data.url == url %}link-secondary{% endif %}" href="{{ subpost.data.url }}">{{subpost.data.part}}. {{ subpost.data.title_short or subpost.data.title }}</a></li>
+                <li><a class="{% if subpost.data.url == url %}link-secondary{% endif %}" href="{{ subpost.data.url }}">{{subpost.data.part}}. {{ subpost.data.title_short or subpost.data.title }}</a></li>
             {% endfor %}
         </ul>
     </nav>

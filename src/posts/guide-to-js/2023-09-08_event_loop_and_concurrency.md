@@ -1,6 +1,7 @@
 ---
 title: "Event Loop and Concurrency Model in JavaScript"
-part: 20
+title_short: "Event Loop and Concurrency Model"
+part: 15
 intro: "In this article, we delve into the Event Loop and Concurrency Model in JavaScript, revealing how they enable non-blocking asynchronous behavior."
 ---
 

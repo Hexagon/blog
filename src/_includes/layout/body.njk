@@ -4,8 +4,10 @@ layout: layout/html.njk
 
 <body>
 
-  <header class="container">
+  <header class="container-fluid">
+    <div class="container">
     {% include "partials/nav.njk" %}
+    </div>
   </header>
 
   <main class="container">
@@ -13,8 +15,10 @@ layout: layout/html.njk
     {{ content | safe }}
   </main>
 
-  <footer class="container">
-    {% include "partials/footer.njk" %}
+  <footer class="container-fluid">
+    <div class="container">
+      {% include "partials/footer.njk" %}
+    </div>
   </footer>
 
 </body>

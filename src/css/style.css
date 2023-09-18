@@ -1,42 +1,108 @@
 @import "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/github-dark.min.css";
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css";
 
+/* Theme */
+:root {
+    --badge-color: #333;
+    --badge-background: #CCC;
+    --badge-color-alt: #333;
+    --badge-background-alt: rgb(8, 211, 247);
+    --header-border-color: rgb(228,229,231);
+    --footer-background-color: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        --header-border-color: rgb(42, 44, 45);
+        --footer-background-color: rgb(12, 18, 22);
+    }
+}
+
+[data-theme="dark"] {
+    --header-border-color: rgb(42, 44, 45);
+    --footer-background-color: rgb(12, 18, 22);
+}
+
+/* Reset Pico CSS Responsive padding */
+body > header, body > footer, body > main {
+    padding: 0;
+}
+
+/* Pico CSS Overrides */
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
+}
+:root {
+    --font-size: 13px;
+}
+@media (min-width: 576px) {
+    :root {
+        --font-size: 14px;
+    }
+}
+@media (min-width: 768px) {
+    :root {
+        --font-size: 15px;
+    }
+}
+@media (min-width: 992px) {
+    main .grid {
+        grid-template-columns: auto 25%;
+    }
+}
+
+/* Highlightjs Customization */
+.hljs {
+    border-radius: 3px;
+}
+
+/* Header */
+header {
+    border-bottom: 1px solid;
+    border-color: var(--header-border-color);
+    margin-bottom: 2rem;
+}
+header nav {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Footer */
+footer{
+    border-top: 1px solid var(--header-border-color);
+    background-color: var(--footer-background-color);
+    margin-top: 3rem;
+}
+footer .grid {
+    padding-top: 2rem;
+}
+footer li {
+    list-style: none;
+}
+
+/* Sidebar */
 aside {
-    border-left: 1px solid #333;
     margin-left: 20px;
     padding-left: 20px;
 }
-
+/* - Slightly smaller links in the sidebar */
 aside a {
     font-size: 0.9rem;
 }
-
-article table {
-    width: 100%;
-    margin-bottom: 30px;
+aside li {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+h4 {
+    margin-bottom: 18px;
+}
+aside nav {
+    margin-bottom: 18px;
 }
 
-article table td, article table th {
-    padding: 15px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
+/* Content */
 
-article table tr:first-child, article table tr:first-child {
-    padding-left: 0px;
-}
-
-article table tr:nth-child(even) {
-    background-color: rgba(0, 0, 0, 0.02);
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-article table tr:nth-child(0) {
-    background-color: none;
-    border-top: 0px none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-/* Colors for comparison table */
+/* - Colors for comparison table */
 .green {
     color: rgb(42, 129, 42);
 }
@@ -50,43 +116,39 @@ article table tr:nth-child(0) {
     color: rgb(150, 63, 172);
 }
 
+/* Image at top of articles */
 .header-image {
     width: 100%;
+    margin-bottom: 2rem;
 }
 
+/* Avatar on index page */
 .index-avatar {
     border-radius: 50%;
     width: 150px;
     height: 150px;
     margin-left: 25px;
+    float: right;
 }
 
-/* Reset Pico CSS Responsive padding */
-body > header, body > footer, body > main {
-    padding: 0;
+/* Custom elements */
+.badge {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: normal;
+    line-height: 1;
+    color: var(--badge-color);
+    background-color: var(--badge-background);
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 4px;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
 }
-
-.hljs {
-    border-radius: 3px;
+.badge-alt {
+    color: var(--badge-color-alt);
+    background-color: var(--badge-background-alt);
 }
-
-  /* Pico CSS Overrides */
- :root {
-    --font-size: 13px;
-  }
-  @media (min-width: 576px) {
-    :root {
-      --font-size: 14px;
-    }
-  }
-  @media (min-width: 768px) {
-    :root {
-      --font-size: 15px;
-    }
-  }
-  @media (min-width: 992px) {
-    main .grid {
-      grid-template-columns: auto 25%;
-    }
-  }
-  

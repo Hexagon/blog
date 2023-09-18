@@ -1,7 +1,6 @@
 ---
 title: "Creating AI Opponents: Dive into the Code"
 part: 6
-priority: 6.0
 intro: "Welcome back to part six of our Detris series! After getting our hands dirty with multiplayer, let's tackle another cool feature: AI opponents. This article will walk you through the TypeScript code behind our Tetris AI. We'll look at how the AI decides to move and rotate blocks, and how to plug this AI into your game. Let's dive in!"
 
 ---

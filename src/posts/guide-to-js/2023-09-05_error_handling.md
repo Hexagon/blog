@@ -1,5 +1,6 @@
 ---
 title: "Error Handling and Debugging in JavaScript"
+title_short: "Error Handling"
 part: 11
 intro: "In this article, we delve into the essential aspects of error handling and debugging in JavaScript. Learn about different types of errors, advanced debugging techniques, and various error-handling mechanisms to develop robust and maintainable JavaScript applications."
 ---

@@ -1,7 +1,6 @@
 ---
 title: "Implementing Single-Player Mode: Server-Side Calculations"
 part: 4
-priority: 4.0
 intro: "Now that we've got our frontend ready, it's time to dive into the game mechanics. In this article, we'll focus on implementing the main loop and single-player mode. We'll walk you through the server-side calculations that make the game tick. You'll learn how the game board updates, how rows are cleared, and how the game state evolves. By the end of this article, you'll have a functional single-player mode and a deeper understanding of the server-side logic that powers it. Let's get those blocks falling!"
 ---
 

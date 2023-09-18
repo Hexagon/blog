@@ -1,6 +1,7 @@
 ---
 title: "Design Patterns in JavaScript"
-part: 19
+title_short: "Design Patterns"
+part: 14
 intro: "In this article, we'll explore common design patterns in JavaScript and how they can help you write clean, maintainable, and efficient code."
 ---
 

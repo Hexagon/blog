@@ -1,7 +1,6 @@
 ---
 title: "Adding Multiplayer: Server Logic"
 part: 5
-priority: 5.0
 intro: "Welcome to part five of our Detris series. In this article, we dive into multiplayer action, where we deal with multiple players, and real-time updates. Buckle up!"
 
 ---

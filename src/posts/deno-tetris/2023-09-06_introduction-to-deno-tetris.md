@@ -1,7 +1,6 @@
 ---
 title: "Introduction to Detris: Web-Based Tetris Using Deno"
 part: 1
-priority: 1.0
 intro: "Welcome to the first part of our journey in building Detris, a web-based Tetris game using Deno. In this article, we'll introduce you to the classic game of Tetris and explain why we chose Deno as our runtime. We'll also give you a sneak peek into the special features of Detris, like single-player mode, multiplayer functionality, and even AI opponents. Get ready to dive deep into the world of Tetris, powered by modern web technologies!"
 ---
 
