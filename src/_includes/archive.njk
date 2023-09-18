@@ -1,0 +1,37 @@
+---
+layout: page.njk
+title: Hexagon's Blog - Archive
+---
+
+<section class="mb-5">
+
+    {% if tag %}
+        <h2 class="mb-4 mt-5">Archive - Tagged with '{{ tag }}'</h2>
+    {% else %}
+        <h2 class="mb-4 mt-5">Archive</h2>
+    {% endif %}
+
+    <!-- List of tags -->
+    {% if tags %}
+        {% for tag in tags %}  
+            <a href="/archive/{{ tag }}/" class="badge">{{tag}}</a> 
+        {% endfor %}
+    {% endif %}
+
+    <!-- List of posts -->
+    <ul class="list-unstyled">
+    {% for page in articles %}  
+        <li>
+            <article>
+                {% include "partials/post-details.njk" %}
+                <p>
+                    {{ page.data.intro | md | safe }}
+                <p>
+            </article>
+        </li>
+    {% endfor %}
+    </ul>
+    <hr>
+    {% include "components/ads/plex.njk" %}
+    <br>
+</section>

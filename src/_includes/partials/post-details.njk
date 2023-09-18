@@ -28,7 +28,7 @@
   -->
   
   <!-- Tags -->
-  {% for tag in tags %}
+  {% for tag in page.data.tags %}
     {% if tag not in ["standalone","index","guide-to-js","post"] %}
       <span class="badge text-bg-dark">{{tag}}</span>
     {% endif %}

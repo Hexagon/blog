@@ -1,0 +1,20 @@
+{
+  "metas": {
+    "title": "=title",
+    "site": "Hexagon's Blog",
+    "lang": "en",
+    "description": "=description",
+    "image": "https://hexagon.56k.guru/img/og_image.webp"
+  },
+  "lang": "en",
+  "priority": 1.0,
+  "author": {
+    "name": "Hexagon",
+    "email": "hexagon@56k.guru",
+    "url": "https://hexagon.56k.guru"
+  },
+  "ads": {
+    "article": false,
+    "sidebar": true
+  }
+}

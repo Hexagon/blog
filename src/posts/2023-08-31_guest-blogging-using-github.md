@@ -5,11 +5,11 @@ description: A guide to guest blogging using static site generators as the plafo
 tags:
   - open-source
   - blogging
-  - guest blogging
-  - GitHub
+  - guest-blogging
+  - github
   - community
-  - Lume
-  - Deno
+  - lume
+  - deno
   - standalone
 priority: 0.7
 intro: "If you're into tech, coding, or writing, you probably enjoy sharing your

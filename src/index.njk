@@ -21,29 +21,9 @@ tags: index
         {% if loop.index0 < 20 and page.data.title != "Home" %}    
             <li>
                 <article>
-                    
-                    <h3 class="mb-1 mt-0">
-                        <a href="{{ page.data.url }}">{{ page.data.title }}</a>
-                    </h3>
-
-                    <p class="text-body-secondary mb-3">
-
-                        <!-- Author -->
-                        {% if page.data.author %}
-                            By <strong>{{ page.data.author.name }}</strong>, 
-                        {% endif %}
-
-                        <!-- Date -->
-                        <time class="mb-1" datetime="{{ page.data.date }}">
-                            {{ page.data.date | date }}
-                        </time>
-                        
-                        <!-- Reading time -->
-                        <span>, {{ page.data.readingTime.minutes }} minutes read</span>
-
-                    </p>
+                    {% include "partials/post-details.njk" %}
                     <p class="text-body-secondary mb-5">
-                        {{ page.data.intro }}
+                        {{ page.data.intro | md | safe }}
                     <p>
                 </article>
             </li>
