@@ -7,12 +7,12 @@ const blocked = ["standalone", "post", "index", "guide-to-js", "deno-tetris-guid
 export default function* ({ search }) {
 
   // Find all tags
-  const articles = search.pages("post");
+  const articles = search.pages("post", "date=desc");
   const tags = new Set();
   for (const article of articles) {
     if (article.data && article.data.tags) {
       for(const tag of article.data.tags) {
-        tags.add(tag);
+        if (!blocked.includes(tag)) tags.add(tag);
       }
     }
   }
@@ -31,7 +31,7 @@ export default function* ({ search }) {
       yield {
         url: `/archive/${tag}/`,
         tag,
-        articles,
+        articles: articles,
       };
     }
   }

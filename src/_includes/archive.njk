@@ -3,34 +3,54 @@ layout: page.njk
 title: Hexagon's Blog - Archive
 ---
 
-<section class="mb-5">
+<section>
 
     {% if tag %}
-        <h2 class="mb-4 mt-5">Archive - Tagged with '{{ tag }}'</h2>
+        <hgroup>
+            <h2>Archive - Tagged with '{{ tag }}'</h2>
+            <p><a href="/archive/">&lt; Back</a></p>
+        </hgroup>
     {% else %}
-        <h2 class="mb-4 mt-5">Archive</h2>
+        <h2>Archive</h2>
     {% endif %}
 
+    <hr />
+
     <!-- List of tags -->
-    {% if tags %}
+    {% if tags.length > 0 %}
         {% for tag in tags %}  
             <a href="/archive/{{ tag }}/" class="badge">{{tag}}</a> 
         {% endfor %}
+        <hr />
     {% endif %}
+    
+    <br />
 
     <!-- List of posts -->
-    <ul class="list-unstyled">
-    {% for page in articles %}  
-        <li>
-            <article>
-                {% include "partials/post-details.njk" %}
+    {% for post in articles %}  
+        <section>
+            <hgroup>
+                <h1><a href="{{ post.data.url }}" class="link-secondary">{{post.data.title | title }}</a></h1>
                 <p>
-                    {{ page.data.intro | md | safe }}
-                <p>
-            </article>
-        </li>
+                    <!-- Author -->
+                    {% if post.data.author %}
+                        by <strong>{{ post.data.author.name }}</strong>, 
+                    {% endif %}
+
+                    <!-- Date -->
+                    <time class="mb-1" datetime="{{ post.data.date | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
+                        {{ post.data.date | date }}</time>{% if post.data.updated %}<span>, Updated:</span>
+                    <time class="mb-1" datetime="{{ post.data.updated | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
+                        {{ post.data.updated | date }}
+                    </time>
+                    {% endif %}
+                </p>
+            </hgroup>
+            <p>
+                {{ post.data.intro | md | safe }}
+            </p>
+        </section>
     {% endfor %}
-    </ul>
     <hr>
     {% include "components/ads/plex.njk" %}
     <br>

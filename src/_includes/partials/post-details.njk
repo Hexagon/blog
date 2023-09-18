@@ -1,11 +1,10 @@
 {% if page.data.header %}
-  <img src="{{ page.data.header }}" class="header-image mb-3">
+  <img src="{{ page.data.header }}" class="header-image">
 {% endif %}
 <hgroup>
   <h1><a href="{{ page.data.url }}" class="link-secondary">{{page.data.title}}</a></h1>
   <p>
 
-    <!-- Author -->
     {% if page.data.author %}
         by <strong>{{ page.data.author.name }}</strong>, 
     {% endif %}
@@ -31,7 +30,7 @@
     <!-- Tags -->
     {% for tag in tags %}
       {% if tag not in ["standalone","index","guide-to-js","post"] %}
-        <span class="badge text-bg-dark">{{tag}}</span>
+        <a href="/archive/{{ tag }}"><span class="badge text-bg-dark">{{tag}}</span></a>
       {% endif %}
     {% endfor %}
   </p>

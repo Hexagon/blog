@@ -16,32 +16,29 @@ tags: index
       <hr>
     {% endif %}
     <h2 class="mb-4 mt-5">Recent posts</h2>
-    {% for page in search.pages("","date=desc") %}
-        {% if loop.index0 < 20 and page.data.title != "Home" %}    
+    {% for post2 in search.pages("post","date=desc") %}
+        {% if loop.index0 < 20 and post2.data.title != "Home" %}    
             <section>
                 <hgroup>
-                    <h3>
-                        <a href="{{ page.data.url }}">{{ page.data.title }}</a>
-                    </h3>
+                    <h1><a href="{{ post2.data.url }}">{{post2.data.title | title }}</a></h1>
                     <p>
                         <!-- Author -->
-                        {% if page.data.author %}
-                            By <strong>{{ page.data.author.name }}</strong>, 
+                        {% if post2.data.author %}
+                            by <strong>{{ post2.data.author.name }}</strong>, 
                         {% endif %}
 
                         <!-- Date -->
-                        <time class="mb-1" datetime="{{ page.data.date }}">
-                            {{ page.data.date | date }}
+                        <time datetime="{{ post2.data.date | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
+                            {{ post2.data.date | date }}</time>{% if post2.data.updated %}<span>, Updated:</span>
+                        <time datetime="{{ post2.data.updated | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
+                            {{ post2.data.updated | date }}
                         </time>
-                        
-                        <!-- Reading time -->
-                        <span>, {{ page.data.readingTime.minutes }} minutes read</span>
-
+                        {% endif %}
                     </p>
                 </hgroup>
-                <p class="text-body-secondary mb-5">
-                    {{ page.data.intro }}
                 <p>
+                    {{ post2.data.intro | md | safe }}
+                </p>
             </section>
         {% endif %}
     {% endfor %}

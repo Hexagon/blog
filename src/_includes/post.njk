@@ -11,15 +11,11 @@ layout: layout/body.njk
       {% include "partials/post-details.njk" %}
       {{ intro | md | safe }}
       <br>
-      {% if ads.article %}
-        {% include "components/ads/display.njk" %}
-        <br>
-      {% endif %}
+      {% include "components/ads/display.njk" %}
+      <br>
       {{ content | safe }}    
       <hr>
       {% include "partials/next-previous.njk" %}
-      <hr>
-      {% include "components/disqus.njk" %}
     </div>
   </section>
   <!-- Sidebar -->
