@@ -152,3 +152,8 @@ aside nav {
     color: var(--badge-color-alt);
     background-color: var(--badge-background-alt);
 }
+
+/* Toc */
+.toc * {
+    font-size: 0.9rem;
+}

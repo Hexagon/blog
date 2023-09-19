@@ -1,9 +1,8 @@
 {% if enable_toc %}
     {% if toc.length %}  
         <h2>Table of Contents</h2>
-        <nav class="toc">
-            <ol>
-            {% for item in toc %}
+        <ol class="toc">
+        {% for item in toc %}
             <li>
                 <a href="#{{ item.slug }}">{{ item.text }}</a>
                 {% if item.children.length %}
@@ -16,8 +15,7 @@
                 </ul>
                 {% endif %}
             </li>
-            {% endfor %}
-            </ol>
-        </nav>
+        {% endfor %}
+        </ol>
     {% endif %}
 {% endif %}

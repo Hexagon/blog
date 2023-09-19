@@ -15,15 +15,17 @@ intro: "If you're into JavaScript or TypeScript, you've probably heard about
 Deno. It's an exciting new runtime that's often described as a more secure and simpler
 alternative to Node.js. In this blog post, we'll go over what makes Deno awesome
 and how to get started."
+updated: "2023-09-19T23:13:00.000+0200"
 ---
 
 ## Why Deno?
 
 **Security First**
 
-One of Deno's biggest selling points is its focus on security. Unlike Node.js,
-where you have to manually restrict permissions, Deno is secure by default. That
-means no random package can mess with your system unless you give it the OK.
+One of Deno's biggest selling points is its focus on security. Unlike Node.js
+and Bun, where you have to manually restrict permissions, Deno is secure by
+default. That means no random package can mess with your system unless you give
+it the OK.
 
 For example, to run main.ts and allow it to access `api.openai.com`, you'd run:
 
@@ -50,6 +52,12 @@ packages. This means you can still use all those npm libraries you know and
 love. For those who don't want to be weighed down by what's known as the
 [heaviest object in the universe](https://www.reddit.com/r/ProgrammerHumor/comments/6s0wov/heaviest_objects_in_the_universe/?rdt=41500)
 (node_modules), there is an `--no-npm` flag.
+
+For those interested in diving deeper into how Deno measures up against other
+runtimes, I've provided comprehensive comparisons in my articles:
+[Deno vs. Bun vs. Node.js: A Feature Comparison](https://hexagon.56k.guru/posts/deno-vs-bun-vs-node/)
+and
+[Deno vs. Bun vs. Node.js: A Speed Comparison](https://hexagon.56k.guru/posts/deno-vs-bun-vs-node-benchmark/).
 
 ## How to Install
 
@@ -81,7 +89,8 @@ Run your program with `deno run hello.ts`. You should see the output "Hello,
 Deno!"
 
 If you're new to JavaScript (or TypeScript for that matter), consider checking
-out [The Guide to JavaScript](https://hexagon.56k.guru/guide-to-js/introduction)
+out
+[The Guide to JavaScript](https://hexagon.56k.guru/posts/guide-to-js/introduction/)
 covering everything from the basics to advanced topics.
 
 ## Importing Packages

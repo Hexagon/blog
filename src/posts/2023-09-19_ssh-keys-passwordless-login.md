@@ -10,133 +10,119 @@ tags:
   - windows
   - linux
 priority: 1.0
-intro: "Secure, efficient, and passwordless. Dive into the world of SSH key management to enhance security and simplify your development life."
+intro: "SSH keys provide an essential layer of security when working with remote
+servers, but they're often overlooked. In this guide, we'll walk through SSH key management to simplify and enhance the security of your development workflow."
 enable_toc: true
 ---
 
-SSH keys provide an essential layer of security when working with remote
-servers, but they're often overlooked. In this guide, we'll walk through SSH key
-management, with a focus on making your development life simpler and more
-secure.
-
 ## Introduction
 
-SSH keys are cryptographic keys that are used to authenticate users to servers,
-replacing the need for passwords. Not only are they more secure, but they also
-make the day-to-day work of developers more convenient. By using an SSH key you
-can either make your life simpler, by omitting a password altogether, or by
-using a very simple password compared to what's normally required when logging
-in using SSH.
+SSH keys are cryptographic keys that facilitate the authentication of users to
+servers, offering an alternative to traditional passwords. They not only
+heighten security but also greatly enhance the convenience of daily tasks for
+developers.
 
-Additionally, tools like Visual Studio Code support remote SSH sessions with key
-authentication, making coding remotely secore, smooth and/or seamless.
+By employing an SSH key, you can:
 
-## Creating a SSH key
+- Enhance your environment's security by disabling regular password access and
+  mandating a passphrase-protected SSH key.
 
-While creating a SSH key, you will have the option to protect it with a
-passphrase or not. While setting up an SSH key without a passphrase provides an
-added layer of security compared to regular password authentication, by allowing
-only the machine that carry the private part of the key to connect. If your
-machine isbn't physically protected, it's crucial to further protect this key.
-The best way to achieve this is by adding a passphrase to your key. As using a
-password protected key will be a two factor autentication (something you own -
-the machine carrying the key file, and something you know - the passphrase), you
-can use a simpler passphrase compared to only using a regular SSH password.
+- Simplify your login process by either forgoing the need for a password or
+  opting for a simpler password than typically necessary for SSH logins.
+  However, it's worth noting that this isn't a best practice and should be
+  reserved for situations like personal home setups where security is not a
+  paramount concern. We'll delve deeper into this aspect later.
 
-Let's weight the pros and cons of passphrase protecting the key:
+Furthermore, tools such as Visual Studio Code, and GitHub have incorporated
+support for remote SSH sessions using key authentication, ensuring that remote
+coding is both secure and seamless.
 
-### Pros of using an SSH key with a passphrase:
+## How to create an SSH key
 
-- **Double Security**: A two-factor style mechanism. Someone needs both the
-  private key and the passphrase to gain access.
+When creating an SSH key, you'll be presented with the choice of protecting it
+with a passphrase or not. Opting for an SSH key without a passphrase can be
+perceived as more secure than traditional password authentication, primarily
+because only a machine possessing the private key can establish a connection.
+However, if your machine isn't physically safeguarded, it's paramount to add an
+additional layer of protection to the key, which can be achieved through a
+passphrase.
 
-- **Mitigation against theft**: Even if someone steals your private key, without
-  the passphrase, they can't do much.
+Using a passphrase-protected key introduces a two-factor authentication
+mechanism: something you own (the machine containing the key file) and something
+you know (the passphrase). With this dual-layer security, the passphrase can be
+simpler than if relying solely on a traditional SSH password.
 
-- **Security-conscious practice**: It's always good to get into the habit of
-  adding extra security layers, especially for crucial credentials.
+Now, let's weigh the pros and cons of passphrase-protecting your SSH key:
 
-## SSH Key Without A Password
+**Using a passphrase**
+
+- **Pro: Double Security**: Acts as a two-factor authentication mechanism where
+  access requires both the private key (something one has) and the passphrase
+  (something one knows).
+
+- **Pro: Mitigation against theft**: Even if an unauthorized individual obtains
+  the private key, they can't utilize it without the passphrase.
+
+- **Pro: Security-conscious practice**: It's always good to get into the habit
+  of adding extra security layers, especially for crucial credentials.
+
+**Skipping the passphrase**
+
+_WARNING!: This is not recommended under any circumstances._
 
 Using an SSH key without a password (or passphrase) is tempting because of its
 simplicity. Just one tap and you're in. However, this convenience comes with its
 share of risks.
 
-### Simplicity:
+- **Pro: Hassle-free access**: No need to remember or type in a passphrase every
+  time you connect.
 
-- **Hassle-free access**: No need to remember or type in a passphrase every time
-  you connect.
+- **Pro: Automated scripts**: Especially useful when automation tools/scripts
+  need to connect without human intervention.
 
-- **Automated scripts**: Especially useful when automation tools/scripts need to
-  connect without human intervention.
+- **Con: Unauthorized Access**: If the private key falls into the wrong hands,
+  it can be used to gain unauthorized access to all its associated accounts.
 
-### Security Implications:
-
-- **Unauthorized Access**: If someone gets your private key, they can access
-  anything that key has access to.
-
-- **Loss of Device**: If your device with the key is stolen, the thief has
+- **Con: Loss of Device**: If your device with the key is stolen, the thief has
   immediate access to all accounts associated with that SSH key.
-
-- **Complacency**: Often leads to neglecting regular audits of where and how the
-  key is used.
-
-Certainly! Let's dive into the creation process of an SSH key, covering both
-Windows and Linux platforms:
-
-## How to create an SSH key
-
-SSH keys can be created using the `ssh-keygen` command available on most
-platforms. The process might vary slightly between Windows and Linux.
 
 ### Preparations
 
-For **Windows** users, the `ssh-keygen` command comes with the OpenSSH client,
-which can be installed through Powershell, Windows Features or the Windows
-Store.
-
-**Using Powershell (Requires admin-shell)**
-
-```bash
-Add-WindowsCapability -Online -Name OpenSSH.Client
-```
-
-On Linux, the `ssh-keygen` tool is typically installed by default. If not, it's
-available in most repositories.
+On **Linux**, the `ssh-keygen` tool is typically installed by default. If not,
+it's available in most repositories.
 
 ```bash
 sudo apt-get install openssh-client openssh-server
 ```
 
+For **Windows** users, there are multiple methods to get the `ssh-keygen`
+command. One way is through the OpenSSH client, which can be installed using
+Powershell, Windows Features, or the Windows Store. Here, we'll show the
+Powershell method (make sure to run Powershell as an administrator):
+
+```bash
+Add-WindowsCapability -Online -Name OpenSSH.Client
+```
+
 ### Generating the key
 
-Now here's how to generate an SSH key:
+Now, to generate an SSH key:
 
-1. Open the terminal of your choice (Powershell on Windows).
-2. Type the command:
+1. Open the terminal of your choice (Powershell for Windows users).
+2. Input the command:
 
 ```bash
 ssh-keygen -t rsa -b 4096
 ```
 
 This command instructs `ssh-keygen` to generate a key (`-t rsa`) of 4096 bits
-(`-b 4096`). You'll be prompted to choose a save location and optionally add a
-passphrase.
+(`-b 4096`).
 
 3. Follow the prompts. If you'd like to use the default location
    (`~/.ssh/id_rsa`) which will place the key in your home directory, just press
-   `Enter`.
+   `Enter`. You will also get the option to add a passphrase.
 
-### Common `ssh-keygen` flags:
-
-- `-t`: Specifies the type of key to be created. Common types are `rsa`, `dsa`,
-  `ecdsa`, and `ed25519`.
-- `-b`: Defines the number of bits in the key. Common values for RSA keys are
-  `2048` or `4096`.
-- `-f`: Specifies the filename of the key file.
-- `-C`: Provides a comment. Useful for labeling keys.
-
-### Expected output:
+**Expected output**
 
 When you run the `ssh-keygen` command, you'll typically see output similar to:
 
@@ -165,7 +151,16 @@ The key's randomart image is:
 
 The exact appearance might vary slightly depending on the version and platform.
 
-### How to add a passphrase?
+### Common `ssh-keygen` flags
+
+- `-t`: Specifies the type of key to be created. Common types are `rsa`, `dsa`,
+  `ecdsa`, and `ed25519`.
+- `-b`: Defines the number of bits in the key. Common values for RSA keys are
+  `2048` or `4096`.
+- `-f`: Specifies the filename of the key file.
+- `-C`: Provides a comment. Useful for labeling keys.
+
+### How to retrofit a passphrase
 
 As previously mentioned, during the `ssh-keygen` process, you'll be prompted to
 set a passphrase. If you've skipped that or need to change the passphrase of an
@@ -175,16 +170,17 @@ existing key, you can do so with:
 ssh-keygen -p
 ```
 
-This command will prompt you for the private key file's location, its current
-passphrase (if any), and then let you set a new passphrase.
+After entering the command, you'll specify the location of the private key file,
+its current passphrase (if set), and then input a new passphrase. Remember:
+Always store your passphrase securely, as forgetting it can lead to challenges
+accessing your key's associated resources.
 
-### Public and Private keys?
+### Public and Private keys
 
-In the realm of SSH, there are two main components to the key pair: the public
-key and the private key. Understanding the roles and security implications of
-each is paramount to SSH security.
+In SSH, two key components make up the key pair: the public key and the private
+key.
 
-#### Private Key:
+#### Private Key
 
 - **Nature:** The private key is exactly as the name implies—private. It should
   remain confidential and never be shared.
@@ -196,7 +192,7 @@ each is paramount to SSH security.
   any system that trusts your public key. Hence, it's often protected with a
   passphrase.
 
-#### Public Key:
+#### Public Key
 
 - **Nature:** The public key can be freely shared and is not sensitive. It
   doesn't enable access on its own, but is used to verify a signature made by
@@ -223,81 +219,45 @@ When you try to SSH into a server:
    private, only the holder of that key (hopefully, just you) can access the
    system.
 
-#### Distributing your Public Key:
+## Distributing your Public Key
 
 To utilize key-based authentication, your public key must be placed on the
 servers you want to access. This can be done using the `ssh-copy-id` command or
 manually appending it to the `~/.ssh/authorized_keys` file on the server.
 
-## SSH Key Management for Windows 10/11
+## Setting up the client
 
-For those using Windows 10 or 11, here's a brief walk-through of setting up SSH
-key authentication:
+1. **Start the ssh-agent in the background**
 
-### Step-by-step guide:
-
-1. **Enable extra Windows features (Requires admin-shell)**
-
-```bash
-Add-WindowsCapability -Online -Name OpenSSH.Client
-```
-
-2. **Generate an SSH key pair**
-
-```bash
-ssh-keygen
-```
-
-3. **Start the ssh-agent in the background**
+Windows
 
 ```bash
 ssh-agent -s
 ```
 
-4. **Add your SSH private key to the ssh-agent**
-
-```bash
-ssh-add ~\.ssh\id_rsa
-```
-
-## SSH Key Management for Linux
-
-For Linux users, here's a guide to setting up SSH key authentication:
-
-### Step-by-step guide:
-
-2. **Generate an SSH key pair**
-
-```bash
-ssh-keygen
-```
-
-3. **Start the ssh-agent in the background**
+Linux
 
 ```bash
 eval $(ssh-agent -s)
 ```
 
-4. **Add your SSH private key to the ssh-agent**
+2. **Add your SSH private key to the ssh-agent**
 
 ```bash
-ssh-add ~/.ssh/id_rsa
+ssh-add ~\.ssh\id_rsa
 ```
+
+If you have distributed your key to a server, you should now be able to log in
+using your key.
 
 ## Using SSH Keys for GitHub Authentication
 
 GitHub supports SSH key authentication, making your interactions with
 repositories secure and convenient.
 
-### Step-by-step guide for GitHub:
+Here is how:
 
-1. Generate an SSH key pair (if you haven't already)
-
-```bash
-ssh-keygen
-```
-
-2. Copy the public key content. Either do it manually by opening `id_rsa.pub`
+1. Copy the public key content. Either do it manually by opening `id_rsa.pub`
    from the `.ssh` subfolder of your home directory, or use one of these cli
    methods:
 
@@ -308,6 +268,9 @@ For Windows:
 For Linux:
 
 `cat ~/.ssh/id_rsa.pub | xclip -selection clipboard`
+
+**Remember, never share or expose your private key. You're only sharing your
+_public_ key with GitHub.**
 
 3. Add your SSH key to your GitHub account
 
@@ -324,15 +287,13 @@ ssh -T git@github.com
 
 ## Disabling Password Authentication on a SSH Server
 
+**WARNING: Ensure you've successfully tested and can log in using your SSH key
+before proceeding. Disabling password authentication without setting up
+key-based access could lock you out of your server.**
+
 If you're administering your own SSH server and have set up SSH keys, you can
 improve security by disabling password authentication. This ensures that access
 is only possible through SSH keys.
-
-**Important: Before doing this, make sure it is possible to log in using your
-SSH key, and that you have the private part of the key backed up. Or that you
-have physical console access to the server.**
-
-### Step-by-step guide:
 
 1. **Edit the SSH daemon configuration**
 
@@ -354,21 +315,64 @@ By default there is usually a commented out row saying
 sudo systemctl restart sshd
 ```
 
+## Handling a compromised Private Key
+
+If you suspect or know that your private key has been compromised:
+
+- Generate a new SSH key pair immediately.
+- Replace the compromised public key on all remote systems with the new one.
+- Investigate any potential unauthorized access or actions taken on systems
+  where the compromised key had access.
+
+**If using traditional key-based authentication:**
+
+- Remove the old public key from any services/systems where you had installed
+  it.
+
+**If using SSH CA:**
+
+- Utilize your SSH CA to revoke the certificate associated with the compromised
+  key. By doing this at the CA level, you can effectively deny access across all
+  systems that trust the CA without manually touching each individual server.
+
+Remember, it's always better to be safe than sorry. If you're unsure about the
+security of your private key, consider it compromised and take action.
+
 ## Advanced: SSH Certificate Authority (CA)
 
-An
+Secure Shell Certificates provide an alternative to traditional SSH key pairs,
+simplifying the process of authenticating users and hosts. An SSH Certificate
+Authority (CA) is responsible for generating, signing, and managing these
+certificates.
 
- SSH Certificate Authority (CA) can help you scale authentication. A CA can sign public keys with a certificate, allowing servers to trust any client with a certified key, without having to know the client's public key in advance.
+**Benefits:**
 
-### Benefits:
+- **Centralized Authentication**: Traditional SSH authentication requires
+  copying every user's public key to every server. This becomes cumbersome as
+  your infrastructure grows. With a CA, you only need to distribute the CA's
+  public key, greatly simplifying the authentication process.
 
-- **Centralized Authentication**: No need to copy individual public keys to servers.
-- **Revocation**: Easily revoke access by invalidating the certificate.
-- **Time-bound Certificates**: Provide access for limited durations.
+- **Revocation**: In traditional setups, revoking access would mean searching
+  for and removing a user's public key across multiple servers. With a CA, you
+  can simply invalidate their certificate, ensuring they can't authenticate
+  anymore.
 
-### Steps to Set Up an SSH CA:
+- **Time-bound Certificates**: You can specify an expiration date for the
+  certificates. This is perfect for granting temporary access or ensuring that
+  keys need to be periodically refreshed.
+
+Think of the SSH Certificate Authority (CA) as a trusted third party, similar to
+how websites use Certificate Authorities to verify their identity. With SSH CA,
+instead of trusting individual keys, you trust the CA, and the CA vouches for
+individual user keys.
+
+**Steps to Set Up an SSH CA:**
 
 1. **Generate a CA key pair**:
+
+This is the first step where you generate the private and public keys for the
+CA. These keys are extremely critical, especially the private key, as it is used
+to sign user certificates.
 
 ```bash
 ssh-keygen -f /path/to/ca_key
@@ -376,11 +380,20 @@ ssh-keygen -f /path/to/ca_key
 
 2. **Sign user keys**:
 
+Once you have the CA key pair, you can sign individual user public keys. The
+following command demonstrates how to sign a user's public key. The `-I` flag
+provides an identifier for the certificate, while the `-n` flag specifies the
+user or host names that the certificate is valid for.
+
 ```bash
 ssh-keygen -s /path/to/ca_key -I user_identifier -n username,user2 /path/to/user/key.pub
 ```
 
 3. **Install the CA public key on servers**:
+
+For servers to trust certificates signed by the CA, they need to be aware of the
+CA's public key. You can specify this by adding a configuration in the SSH
+daemon's configuration file.
 
 Add to `/etc/ssh/sshd_config`:
 
@@ -390,15 +403,36 @@ TrustedUserCAKeys /path/to/ca_key.pub
 
 4. **Restart SSH**:
 
+After updating the SSH configuration, you need to restart the SSH service to
+apply the changes. The exact command might differ depending on your operating
+system, but on systems using systemd, the command is:
+
 ```bash
 sudo systemctl restart sshd
 ```
 
+**Best Practices:**
+
+- **Secure the CA's private key**: Given its power, it's imperative to keep the
+  CA's private key secure. Consider encrypting it and storing it offline or
+  using hardware security modules (HSMs).
+
+- **Regularly Rotate Certificates**: For added security, regularly rotate and
+  refresh your certificates.
+
+- **Monitor and Audit**: Continuously monitor certificate creation, revocation,
+  and authentication attempts to detect any suspicious activity.
+
 ---
 
-In conclusion, while SSH keys simplify and secure your development workflow,
-it's essential to be mindful of best practices. If you choose the convenience of
-a key without a passphrase, ensure you take additional precautions. This
-includes limiting the key's use, regularly monitoring access, and maintaining
-backup access methods. Always remember: security and convenience can co-exist,
-but careful management is crucial. Happy coding!
+## Conclusion
+
+While SSH keys simplify and secure your development workflow, it's essential to
+be mindful of best practices. If you choose the convenience of a key without a
+passphrase, ensure you take additional precautions. This includes limiting the
+key's use, regularly monitoring access, and maintaining backup access methods.
+Regularly updating and checking the keys you've authorized can help prevent
+unauthorized access. Additionally, be vigilant about where and how you store
+your private keys. When set up properly, SSH keys can be a powerful tool in your
+development and security arsenal.Always remember: security and convenience can
+co-exist, but careful management is crucial. Happy coding!
