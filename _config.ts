@@ -14,6 +14,9 @@ import inline from "lume/plugins/inline.ts";
 // Experimental plugins
 import readingTime from "https://raw.githubusercontent.com/lumeland/experimental-plugins/main/reading_time/mod.ts";
 
+// Official markdown plugins
+import toc from "https://deno.land/x/lume_markdown_plugins@v0.5.1/toc.ts";
+
 // Themes for highlight.js
 import lang_javascript from "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/javascript.min.js";
 import lang_bash from "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/bash.min.js";
@@ -46,6 +49,7 @@ site.use(
     },
   }),
 );
+site.use(toc());
 site.use(readingTime());
 site.use(date());
 site.use(feed({

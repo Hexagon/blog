@@ -309,15 +309,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
       cursor.style.top = pos.y + "%";
     });
 
-    // Slightly optimized cleanup, this should 
+    // Slightly optimized cleanup, this should
     // probably be made less frequent in a separate setInterval
-    const positionIds = new Set(positions.map(pos => pos.id));
+    const positionIds = new Set(positions.map((pos) => pos.id));
 
     Object.keys(cursors).forEach((id) => {
-        if (!positionIds.has(id)) {
-            document.body.removeChild(cursors[id]);
-            delete cursors[id];
-        }
+      if (!positionIds.has(id)) {
+        document.body.removeChild(cursors[id]);
+        delete cursors[id];
+      }
     });
   };
 });

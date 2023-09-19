@@ -43,6 +43,7 @@ step-by-step. Here's the plan:
 5. **Creating AI Opponents**: Adding computer players to the mix.
 6. **Running the game and Future Plans**: Summary and what you could do next.
 
-When you've walked through all parts, you'll hopefully have your own version of [tetris.56k.guru](https://tetris.56k.guru)
+When you've walked through all parts, you'll hopefully have your own version of
+[tetris.56k.guru](https://tetris.56k.guru)
 
 So let's dive in and make an awesome Tetris game with Deno!

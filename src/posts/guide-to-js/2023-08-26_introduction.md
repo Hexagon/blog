@@ -6,7 +6,10 @@ priority: 1.0
 updated: "2023-09-08T14:44:00Z"
 intro: "The aim of this series is to give a thorough understanding of vanilla JavaScript and its many features. We won't be using any external libraries, and all the code will be cross-runtime. It'll work seamlessly whether you're in a browser or using runtimes like Node.js or Deno."
 ---
-Before diving in, let's make something clear: This guide is packed with valuable info, but it won't cover every detail of JavaScript. Think of it as your roadmap to mastering JavaScript.
+
+Before diving in, let's make something clear: This guide is packed with valuable
+info, but it won't cover every detail of JavaScript. Think of it as your roadmap
+to mastering JavaScript.
 
 ### What You'll Learn
 
@@ -54,5 +57,5 @@ use JavaScript. You can always choose to run the code using:
 Congratulations! You've just written and run your first JavaScript code that
 works across multiple platforms.
 
-That's it for now, you find the next article on the link just below, or at the top of the page,
-under "The guide to JavaScript".
+That's it for now, you find the next article on the link just below, or at the
+top of the page, under "The guide to JavaScript".
