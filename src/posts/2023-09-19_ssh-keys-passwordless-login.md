@@ -37,6 +37,100 @@ Furthermore, tools such as Visual Studio Code, and GitHub have incorporated
 support for remote SSH sessions using key authentication, ensuring that remote
 coding is both secure and seamless.
 
+## Quick Start
+
+For those who want to quickly set up SSH key management without diving into the details, here's a brief step-by-step guide:
+
+### Generate an SSH Key
+
+**Linux/MacOS**:
+
+```bash
+ssh-keygen -t rsa -b 4096
+```
+
+**Windows (PowerShell as administrator)**:
+
+```bash
+Add-WindowsCapability -Online -Name OpenSSH.Client
+Get-Service -Name ssh-agent | Set-Service -StartupType Automatic
+ssh-keygen -t rsa -b 4096
+```
+
+Press `Enter` for default settings and decide whether to set a passphrase.
+
+### Start SSH Agent & Add Your Key
+
+**Linux/MacOS**:
+
+```bash
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_rsa
+```
+
+**Windows**:
+
+```bash
+Start-Service ssh-agent
+ssh-add ~\.ssh\id_rsa
+```
+
+### Distribute the Public Key to the Remote Server
+
+For a server with the address `your_server_ip`:
+
+```bash
+ssh-copy-id username@your_server_ip
+```
+
+Or, manually append the public key (`~/.ssh/id_rsa.pub`) content to `~/.ssh/authorized_keys` on the server.
+
+Or, on Windows using Powershell:
+
+`type $env:USERPROFILE\.ssh\id_rsa.pub | ssh user@host "cat >> .ssh/authorized_keys"`
+
+### 4. Test SSH Connection
+
+```bash
+ssh username@your_server_ip
+```
+
+If everything is set up correctly, you should be able to log into the server without entering a password.
+
+### (Optional) Disable Password Authentication on Server
+
+After ensuring that the SSH key-based access is successful:
+
+1. Edit the SSH configuration:
+
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+
+2. Change the line `#PasswordAuthentication yes` to:
+
+```bash
+PasswordAuthentication no
+```
+
+3. Restart the SSH service:
+
+```bash
+sudo systemctl restart sshd
+```
+
+### (Optional) Use with GitHub
+
+- Copy the public key content: 
+
+  **Linux**: `cat ~/.ssh/id_rsa.pub | xclip -selection clipboard`
+
+  **Windows**: `clip < ~/.ssh/id_rsa.pub`
+
+- Go to GitHub account settings > "SSH and GPG keys" > "New SSH key". Paste the copied key and save.
+
+That's it! You've quickly set up SSH key management for both remote server access and GitHub. Adjust and dive deeper into the configurations as needed using the information provided in the detailed guide above.
+
 ## How to create an SSH key
 
 When creating an SSH key, you'll be presented with the choice of protecting it
