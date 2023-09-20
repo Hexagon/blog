@@ -89,7 +89,7 @@ Or, on Windows using Powershell:
 
 `type $env:USERPROFILE\.ssh\id_rsa.pub | ssh user@host "cat >> .ssh/authorized_keys"`
 
-### 4. Test SSH Connection
+### Test SSH Connection
 
 ```bash
 ssh username@your_server_ip
