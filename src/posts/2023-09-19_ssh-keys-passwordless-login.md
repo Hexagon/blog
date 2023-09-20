@@ -340,10 +340,10 @@ security of your private key, consider it compromised and take action.
 
 ## Advanced: SSH Certificate Authority (CA)
 
-Secure Shell Certificates provide an alternative to traditional SSH key pairs,
-simplifying the process of authenticating users and hosts. An SSH Certificate
-Authority (CA) is responsible for generating, signing, and managing these
-certificates.
+Secure Shell Certificates offer a significant advantage over traditional SSH key
+pairs by streamlining the process of user and host authentication. At the heart
+of this system is the SSH Certificate Authority (CA), which manages the
+creation, issuance, and revocation of these certificates.
 
 **Benefits:**
 
@@ -366,7 +366,7 @@ how websites use Certificate Authorities to verify their identity. With SSH CA,
 instead of trusting individual keys, you trust the CA, and the CA vouches for
 individual user keys.
 
-**Steps to Set Up an SSH CA:**
+**Steps to manually Set Up an SSH CA:**
 
 1. **Generate a CA key pair**:
 
@@ -401,6 +401,18 @@ Add to `/etc/ssh/sshd_config`:
 TrustedUserCAKeys /path/to/ca_key.pub
 ```
 
+4. **Handle certificate revocation**:
+
+To revoke certificates, create a revoked-keys file and list the revoked key IDs.
+Update the SSH daemon's configuration to reference this file:
+
+Add to `/etc/ssh/sshd_config`:
+
+`RevokedKeys /path/to/revoked-keys`
+
+To revoke a key, add its key ID to the revoked-keys file. This file should be
+periodically updated on all servers.
+
 4. **Restart SSH**:
 
 After updating the SSH configuration, you need to restart the SSH service to
@@ -422,6 +434,38 @@ sudo systemctl restart sshd
 
 - **Monitor and Audit**: Continuously monitor certificate creation, revocation,
   and authentication attempts to detect any suspicious activity.
+
+## Using step-ca for SSH CA
+
+step-ca is a lightweight, open-source Certificate Authority (CA) in software
+form, developed by [Smallstep](https://smallstep.com/). Designed to be easily
+deployable and manageable, it brings several advantages to the table,
+particularly for SSH certificate management.
+
+Advantages of step-ca:
+
+- **Easy Certificate Management:** step-ca simplifies the issuance, renewal, and
+  revocation processes. Its command-line tools and APIs allow for effortless
+  certificate operations.
+
+- **Automated Renewals:** With step-ca, certificates can be automatically
+  renewed, reducing the administrative overhead of manual renewals.
+
+- **Interoperability:** It supports multiple protocols including X.509 for
+  HTTPS/TLS and SSH User & Host certificates. This broadens its application
+  beyond just SSH environments.
+
+- **Rich Documentation:** Smallstep provides comprehensive documentation and
+  tutorials for step-ca, ensuring users can make the most of its features.
+
+- **Modern Security Practices:** step-ca integrates contemporary security best
+  practices out of the box. Its design ensures that even non-experts can deploy
+  a secure CA.
+
+For more information on its features, benefits, and setup guides, consider
+visiting the official
+[step-ca GitHub repository](https://github.com/smallstep/certificates) and
+[Smallstep's website](https://smallstep.com/).
 
 ---
 
