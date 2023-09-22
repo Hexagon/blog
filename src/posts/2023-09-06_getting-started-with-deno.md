@@ -15,7 +15,8 @@ intro: "If you're into JavaScript or TypeScript, you've probably heard about
 Deno. It's an exciting new runtime that's often described as a more secure and simpler
 alternative to Node.js. In this blog post, we'll go over what makes Deno awesome
 and how to get started."
-updated: "2023-09-19T23:13:00.000+0200"
+updated: "2023-09-22T17:00:00.000+0200"
+enable_toc: true
 ---
 
 ## Why Deno?
@@ -126,6 +127,196 @@ app.get("/", (req, res) => {
 app.listen(8000);
 ```
 
+## Quick Guide to Deno’s CLI
+
+Deno comes with a set of powerful command-line tools that allow developers to
+easily run scripts, manage dependencies, and more. Below are some commonly used
+Deno commands that can help you get started.
+
+### Running Scripts
+
+To run a script, use the `deno run` command followed by the name of your script.
+
+```sh
+deno run hello.ts
+```
+
+### Managing Permissions
+
+Deno is secure by default, which means scripts run in a sandbox environment. For
+any external access, such as network, file, and environment access, explicit
+permissions are required. To allow network access, for example, use the
+`--allow-net` flag:
+
+```sh
+deno run --allow-net=example.com myscript.ts
+```
+
+If you want to give Deno all permissions, you can use `-A`:
+
+```sh
+deno run -A myscript.ts
+```
+
+### Formatting Code
+
+Deno provides a built-in code formatter that helps keep your codebase
+consistent. To format your code, use the `deno fmt` command followed by the name
+of your script or directory:
+
+```sh
+deno fmt myfile.ts
+```
+
+### Type Checking and Linting
+
+Deno’s built-in tools also include a type checker and a linter to help you catch
+errors early and enforce code quality. To check types in your script, run:
+
+```sh
+deno check myfile.ts
+```
+
+And to lint your code, use:
+
+```sh
+deno lint myfile.ts
+```
+
+### Bundling and Compiling
+
+Deno also allows you to bundle and compile your TypeScript or JavaScript code
+easily with the `deno bundle` and `deno compile` commands, respectively:
+
+```sh
+deno bundle myscript.ts output.bundle.js
+```
+
+```sh
+deno compile myscript.ts
+```
+
+### Viewing Documentation
+
+If you ever need a quick reference for the APIs and modules in your code, you
+can generate documentation using the `deno doc` command:
+
+```sh
+deno doc mymodule.ts
+```
+
+### Installing Scripts
+
+Deno enables you to install scripts as executables using the `deno install`
+command. It’s great for creating CLI tools:
+
+```sh
+deno install -n mycli myscript.ts
+```
+
+Explore the [official documentation](https://deno.land/manual/tools) for more
+advanced use cases and additional information.
+
+## Configuring Deno with `deno.json`
+
+Deno allows configuration of project settings through a `deno.json` or
+`deno.jsonc` file. This configuration file, placed at the root of your project,
+is instrumental in defining various project-level settings, such as compiler
+options and lint rules.
+
+Here is an example of a basic `deno.json` file:
+
+```json
+{
+  "compilerOptions": {
+    "lib": ["deno.ns", "dom"],
+    "strict": true
+  },
+  "lint": {
+    "rules": {
+      "tags": ["recommended"]
+    }
+  }
+}
+```
+
+This configuration file specifies compiler options such as which libraries to
+include (`deno.ns` and `dom`) and whether to enforce strict type checking
+(`"strict": true`). It also sets up linting rules, including all recommended
+rules.
+
+### Why is deno.json Important?
+
+Having a `deno.json` file in your project allows you to maintain consistent
+settings across your development environment. It’s crucial for defining how Deno
+should behave when running, linting, or bundling your code, and can be used to
+set up specific permissions or environment variables that your project needs to
+run correctly.
+
+Remember to consult the
+[official documentation](https://deno.land/manual/configuration) to understand
+all the available configuration options and to set up the `deno.json` file
+according to your project needs.
+
+## Deno Best Practices
+
+Developing with Deno can be a breeze, but to ensure the maintainability,
+scalability, and robustness of your codebase, following best practices is
+essential.
+
+### Explicitly Specify Permissions
+
+Always specify the permissions needed for your Deno scripts explicitly, rather
+than running scripts with the `-A` flag which gives full permissions. This
+mitigates security risks by adhering to the principle of least privilege.
+
+```sh
+deno run --allow-read --allow-net myscript.ts
+```
+
+### Utilize TypeScript
+
+Take advantage of Deno’s built-in TypeScript support. TypeScript helps catch
+errors early, enhances code quality, and improves developer experience through
+static typing.
+
+### Keep Dependencies Up To Date
+
+Regularly update the dependencies in your project to the latest versions to
+benefit from bug fixes, new features, and security updates. But, always test
+your application thoroughly after updating to ensure everything works as
+expected.
+
+### Write Tests
+
+Writing tests is crucial for maintaining a healthy codebase. Deno provides a
+built-in test runner, making it easy to write and run tests for your
+application.
+
+```sh
+deno test
+```
+
+### Use Built-in Tooling
+
+Leverage Deno’s built-in tools for formatting, linting, testing, bundling, and
+compiling your codebase, ensuring a consistent and error-free development
+experience.
+
+```sh
+deno fmt
+deno lint
+deno test
+deno bundle
+deno compile
+```
+
+### Prefer Deno Standard Library
+
+When possible, prefer using modules from the
+[Deno standard library](https://deno.land/std) as they are well-maintained,
+tested, and optimized for Deno.
+
 ## Looking Ahead: Deno 2.0
 
 There's a lot of chatter about Deno 2.0, which is rumored to be coming out later
@@ -136,14 +327,16 @@ this year. We can't wait to see what new features and improvements it'll bring.
 If you're looking for inspiration, you can check out some other write ups on
 Deno:
 
-- [Building a blog using Lume and Deno](https://hexagon.56k.guru/posts/building-a-blog-using-lume/)(hexagon.56k.guru)
-- [Building a Web-based Tetris game using Deno](https://hexagon.56k.guru/posts/deno-tetris/introduction-to-deno-tetris/)(hexagon.56k.guru)
-- [Building a Discord Bot with Deno and Harmony.](https://pinta.land/posts/deno-discord-bot/)(pinta.land)
+- [Building a blog using Lume and Deno](https://hexagon.56k.guru/posts/building-a-blog-using-lume/) (hexagon.56k.guru)
+- [Building a Web-based Tetris game using Deno](https://hexagon.56k.guru/posts/deno-tetris/introduction-to-deno-tetris/) (hexagon.56k.guru)
+- [Building a Discord Bot with Deno and Harmony](https://pinta.land/posts/deno-discord-bot/) (pinta.land)
 
 Other good Deno resources to check out:
 
-- [Official Deno Manual](https://deno.land/manual/introduction)(deno.land)
-- [Setting up Visual Studio Code for Deno](https://deno.land/manual@v1.36.4/references/vscode_deno)(deno.land)
+- [Official Deno Manual](https://deno.land/manual/introduction) (deno.land)
+- [Setting up Visual Studio Code for Deno](https://deno.land/manual/references/vscode_deno) (deno.land)
+- [Deno vs. Bun vs. Node.js: A Feature Comparison](https://hexagon.56k.guru/posts/deno-vs-bun-vs-node/) (56k.guru)
+- [Deno vs. Bun vs. Node.js: A Speed Comparison](https://hexagon.56k.guru/posts/deno-vs-bun-vs-node-benchmark/) (56k.guru)
 
 ## Wrapping Up
 
