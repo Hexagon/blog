@@ -1,0 +1,22 @@
+{
+  "layout": "post.njk",
+  "title": "The Guide to SSH Key Management",
+  "description": "Hexagon's guide to SSH Key Management, learn to secure your development workflow.",
+  "metas": {
+    "image": "https://hexagon.56k.guru/img/ssh_key_management.webp"
+  },
+  "series": {
+    "title": "The guide to SSH Key Management",
+    "tag": "guide-to-ssh"
+  },
+  "tags": [
+    "ssh",
+    "security",
+    "developer-tips",
+    "guide-to-ssh"
+  ],
+  "ads": {
+    "article": true,
+    "sidebar": true
+  }
+}

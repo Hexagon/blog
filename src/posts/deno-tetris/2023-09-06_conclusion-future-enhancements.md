@@ -27,7 +27,7 @@ Congrats, you've made it to the end of the series! Let's recap what we've built:
 
 ## Wrapping Up
 
-Thanks for following along! We hope you enjoyed this series and learned
-something new. Now go ahead and build your own awesome version of Tetris!
+Thanks for following along! I hope you enjoyed this series and learned something
+new. Now go ahead and build your own awesome version of Tetris!
 
 See you in the next project!

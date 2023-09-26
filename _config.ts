@@ -12,7 +12,7 @@ import pagefind from "lume/plugins/pagefind.ts";
 import inline from "lume/plugins/inline.ts";
 
 // Experimental plugins
-import readingTime from "https://raw.githubusercontent.com/lumeland/experimental-plugins/main/reading_time/mod.ts";
+import readInfo from "lume/plugins/reading_info.ts";
 
 // Official markdown plugins
 import toc from "https://deno.land/x/lume_markdown_plugins@v0.5.1/toc.ts";
@@ -50,7 +50,7 @@ site.use(
   }),
 );
 site.use(toc());
-site.use(readingTime());
+site.use(readInfo());
 site.use(date());
 site.use(feed({
   output: ["/feed.rss", "/feed.json"],
@@ -73,6 +73,7 @@ site.use(slugify_urls());
 site.use(nav());
 site.use(pagefind({
   resetStyles: false,
+  glob: "/posts/**",
 }));
 
 // Copy static content

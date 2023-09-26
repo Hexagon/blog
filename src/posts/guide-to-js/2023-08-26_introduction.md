@@ -4,7 +4,7 @@ title_short: Introduction
 part: 1
 priority: 1.0
 updated: "2023-09-08T14:44:00Z"
-intro: "The aim of this series is to give a thorough understanding of vanilla JavaScript and its many features. We won't be using any external libraries, and all the code will be cross-runtime. It'll work seamlessly whether you're in a browser or using runtimes like Node.js or Deno."
+intro: "The aim of this series is to give a thorough understanding of vanilla JavaScript and its many features. We won't be using any external libraries, and all the code will be cross-runtime. It'll work seamlessly whether you're in a browser or using runtimes like Deno, Bun or Node.js."
 ---
 
 Before diving in, let's make something clear: This guide is packed with valuable
@@ -51,8 +51,9 @@ use JavaScript. You can always choose to run the code using:
 
 1. **The Browser**: Open the browser, press `F12`, paste the code into the
    console, and hit enter.
-2. **Node or Deno**: Save the code into a file, say `example.js`, and run it
-   using `node example.js` or `deno run example.js` respectively.
+2. **Node, Bun or Deno**: Save the code into a file, say `example.js`, and run
+   it using `node example.js`, `deno run example.js` or `bun run example.js`
+   respectively.
 
 Congratulations! You've just written and run your first JavaScript code that
 works across multiple platforms.

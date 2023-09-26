@@ -4,9 +4,10 @@
     "build": "deno task lume",
     "serve": "deno task lume -s --port=8000",
     "stage": "rm -rf _stage && cp -R _site _stage",
-    "deploy": "rm -rf _prod && cp -R _stage _prod"
+    "deploy": "rm -rf _prod && cp -R _stage _prod",
+    "upgrade": "deno task lume upgrade && deno run --allow-read=. --allow-net=deno.land,cdn.deno.land https://deno.land/x/udd/main.ts --dry-run deno.json src/_config.ts"
   },
   "imports": {
-    "lume/": "https://deno.land/x/lume@v1.18.4/"
+    "lume/": "https://deno.land/x/lume@v1.19.0/"
   }
 }

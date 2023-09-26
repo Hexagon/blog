@@ -320,23 +320,29 @@ tested, and optimized for Deno.
 ## Looking Ahead: Deno 2.0
 
 There's a lot of chatter about Deno 2.0, which is rumored to be coming out later
-this year. We can't wait to see what new features and improvements it'll bring.
+this year. I can't wait to see what new features and improvements it'll bring.
 
 ## Deno resources
 
 If you're looking for inspiration, you can check out some other write ups on
 Deno:
 
-- [Building a blog using Lume and Deno](https://hexagon.56k.guru/posts/building-a-blog-using-lume/) (hexagon.56k.guru)
-- [Building a Web-based Tetris game using Deno](https://hexagon.56k.guru/posts/deno-tetris/introduction-to-deno-tetris/) (hexagon.56k.guru)
-- [Building a Discord Bot with Deno and Harmony](https://pinta.land/posts/deno-discord-bot/) (pinta.land)
+- [Building a blog using Lume and Deno](https://hexagon.56k.guru/posts/building-a-blog-using-lume/)
+  (hexagon.56k.guru)
+- [Building a Web-based Tetris game using Deno](https://hexagon.56k.guru/posts/deno-tetris/introduction-to-deno-tetris/)
+  (hexagon.56k.guru)
+- [Building a Discord Bot with Deno and Harmony](https://pinta.land/posts/deno-discord-bot/)
+  (pinta.land)
 
 Other good Deno resources to check out:
 
 - [Official Deno Manual](https://deno.land/manual/introduction) (deno.land)
-- [Setting up Visual Studio Code for Deno](https://deno.land/manual/references/vscode_deno) (deno.land)
-- [Deno vs. Bun vs. Node.js: A Feature Comparison](https://hexagon.56k.guru/posts/deno-vs-bun-vs-node/) (56k.guru)
-- [Deno vs. Bun vs. Node.js: A Speed Comparison](https://hexagon.56k.guru/posts/deno-vs-bun-vs-node-benchmark/) (56k.guru)
+- [Setting up Visual Studio Code for Deno](https://deno.land/manual/references/vscode_deno)
+  (deno.land)
+- [Deno vs. Bun vs. Node.js: A Feature Comparison](https://hexagon.56k.guru/posts/deno-vs-bun-vs-node/)
+  (56k.guru)
+- [Deno vs. Bun vs. Node.js: A Speed Comparison](https://hexagon.56k.guru/posts/deno-vs-bun-vs-node-benchmark/)
+  (56k.guru)
 
 ## Wrapping Up
 

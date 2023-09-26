@@ -11,7 +11,7 @@ intro: "Welcome to the second part of our series on building Detris, a web-based
 We'll start with the basics, setting up the HTTP server, starting the game loop,
 and adding routes to the server.
 
-All files we go through is available at the
+All files we will go through is available at the
 [Detris GitHub repository](https://github.com/Hexagon/detris/tree/main/), but
 adding them manually, and carefully examining the code will make it easier to
 customize it later.
@@ -39,7 +39,7 @@ Here, we're importing three main dependencies:
 The main.ts file is where the magic happens. This is your server's entry point,
 and it's where you'll put most of your backend logic.
 
-There is some imports here that doesn't exist in your project yet, we will add
+There is some imports here that doesn't exist in your project yet, I will add
 these later.
 
 The `MainLoop` function is where our game logic will reside. It's going to be
