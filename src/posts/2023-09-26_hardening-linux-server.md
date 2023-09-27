@@ -13,6 +13,7 @@ tags:
  - ssh
  - firewall
  - guide
+ - standalone
 priority: 0.9
 intro: "With the constant rise of online threats, it becomes more crucial to ensure that your server is secure. Review these basic measures, and make your server safer. The steps in this guide are primarily geared towards Ubuntu and Debian, but the fundamental principles are the same."
 ---
