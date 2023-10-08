@@ -8,7 +8,7 @@ tags:
   - bun
   - nodejs
 priority: 1.0
-updated: 2023-09-28T00:05:00.000+0200
+updated: 2023-10-08T23:05:00.000+0200
 intro: "Choosing a JavaScript runtime for your project? Then you've probably heard of Deno, Bun, and Node.js. They are all good, but each has its own set of features and trade-offs. This guide will break them down by features, ease of use, security, and other considerations."
 ---
 
@@ -57,7 +57,7 @@ Let's examine each runtime through this table:
 | TypeScript / TSX               |        <i class="fa-solid fa-square-check green"></i>        |       <i class="fa-solid fa-square-check green"></i>        |                            <i class="fa-solid fa-cube orange"></i>                            |
 | **Metadata**                   |                                                              |                                                             |                                                                                               |
 | Initial Release                |                             2018                             |                            2021                             |                                             2009                                              |
-| Current Version                |                            1.37.1                            |                            1.0.3                            |                                            20.7.0                                            |
+| Current Version                |                            1.37.1                            |                            1.0.4                            |                                            20.8.0                                             |
 | LTS Version                    |                              -                               |                              -                              |                                            18.18.0                                            |
 | Original Author                |                          Ryan Dahl                           |                        Jarred Sumner                        |                                           Ryan Dahl                                           |
 | Ownership                      |                        Deno Land Inc.                        |                            Oven                             |                                       OpenJS Foundation                                       |
