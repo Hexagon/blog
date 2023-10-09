@@ -1,7 +1,8 @@
 ---
 layout: post.njk
 title: "Introducing Lumocs: A Modern Documentation Engine based on Deno and Lume"
-description: "Discover the benefits of using Lumocs, a modern documentation engine powered by Deno and Lume. Learn about its tailored design, automatic light/dark mode, zero configuration, and more."
+description: "Meet Lumoc, a documentation generator powered by Deno and Lume. This guide will walk you through the essential steps to set it up, create
+your first documentation page, and deploy your site"
 tags:
   - documentation
   - lumocs
@@ -9,7 +10,7 @@ tags:
   - lume
   - javascript
   - typescript
-  - webdev
+  - markdown
 priority: 1.0
 metas:
   image: "https://hexagon.56k.guru/img/ssh_key_management.webp"
@@ -63,6 +64,30 @@ deno task serve
 
 This will launch a local server, making your site accessible at
 [http://localhost:8000](http://localhost:8000).
+
+## Adding Content
+
+Once you have set up your Lumocs project, you are ready to create some content.
+You will already have a template `src/index.md` which is generated to
+`/index.html`. To create more content, add new Markdown files for each page or
+section of your documentation.
+
+Each Markdown file should start with a front matter block, specifying metadata
+such as the page title and navigation order. Here's an example:
+
+```markdown
+---
+title: "Page Title"
+nav_order: 2
+---
+
+## Heading
+
+This is the markdown content.
+```
+
+If you want to create a hierarchy of pages, you add `parent: "Title of parent"`
+to the front matter of the child page.
 
 ## The Details
 
@@ -177,23 +202,6 @@ an example:
     }
   ]
 }
-```
-
-### `src/index.md`
-
-Now, let's add your first content to `src/index.md`. This Markdown file serves
-as the starting point for your documentation. Include the following front matter
-and content:
-
-```markdown
----
-title: "First Page"
-nav_order: 1
----
-
-# First Page
-
-Hello Lumocs!
 ```
 
 ### Compiling Your Site

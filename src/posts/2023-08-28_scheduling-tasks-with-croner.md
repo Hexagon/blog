@@ -2,7 +2,7 @@
 layout: post.njk
 title: Scheduling Tasks in JavaScript or TypeScript with Croner
 description: A deep dive into the potential of Croner, the task scheduler for JavaScript and TypeScript.
-updated: "2023-09-22T22:41:00Z"
+updated: "2023-10-09T00:17:00Z"
 metas:
   image: "https://hexagon.56k.guru/img/scheduling_tasks_croner.webp"
 header: "/img/scheduling_tasks_croner.webp"
@@ -34,8 +34,8 @@ Croner is a robust JavaScript and TypeScript tool for:
 - Pausing, resuming, or stopping tasks once scheduled.
 - All these without needing a database or any configuration files.
 
-[**Try Croner Live on JSFiddle**](https://jsfiddle.net/) or delve into the
-[**Full Documentation**](https://croner.56k.guru).
+[**Try Croner Live on JSFiddle**](https://jsfiddle.net/hexag0n/hoa8kwsb/) or
+delve into the [**Full Documentation**](https://croner.56k.guru).
 
 ## Quick Start with Croner
 
@@ -232,7 +232,7 @@ evaluate future run times based on cron patterns, Croner is a reliable choice.
 Don't forget to check out its official documentation for a deeper dive into its
 capabilities.
 
-[**Try Croner Live on jsfiddle**](https://jsfiddle.net/) or delve into the
-[**Full Documentation**](https://croner.56k.guru).
+[**Try Croner Live on jsfiddle**](https://jsfiddle.net/hexag0n/hoa8kwsb/) or
+delve into the [**Full Documentation**](https://croner.56k.guru).
 
 Happy coding!
