@@ -8,7 +8,7 @@ tags:
   - bun
   - nodejs
 priority: 1.0
-updated: 2023-10-08T23:05:00.000+0200
+updated: 2023-10-19T08:14:00.000+0200
 intro: "Choosing a JavaScript runtime for your project? Then you've probably heard of Deno, Bun, and Node.js. They are all good, but each has its own set of features and trade-offs. This guide will break them down by features, ease of use, security, and other considerations."
 ---
 
@@ -40,7 +40,7 @@ Let's examine each runtime through this table:
 | Fetch                          |        <i class="fa-solid fa-square-check green"></i>        |       <i class="fa-solid fa-square-check green"></i>        |                        <i class="fa-solid fa-square-check green"></i>                         |
 | Web Crypto                     |        <i class="fa-solid fa-square-check green"></i>        |       <i class="fa-solid fa-square-check green"></i>        |                        <i class="fa-solid fa-square-check green"></i>                         |
 | Web Storage                    |        <i class="fa-solid fa-square-check green"></i>        |        <i class="fa-solid fa-square-xmark red"></i>         |                         <i class="fa-solid fa-square-xmark red"></i>                          |
-| WebSocket                      |        <i class="fa-solid fa-square-check green"></i>        |           <i class="fa-solid fa-cube orange"></i>           |                         <i class="fa-solid fa-square-xmark red"></i>                          |
+| WebSocket                      |        <i class="fa-solid fa-square-check green"></i>        |           <i class="fa-solid fa-flask purple"></i>           |                         <i class="fa-solid fa-flask purple"></i>                         |
 | Web Workers                    |        <i class="fa-solid fa-square-check green"></i>        |       <i class="fa-solid fa-square-check green"></i>        |                         <i class="fa-solid fa-square-xmark red"></i>                          |
 | Import Maps                    |        <i class="fa-solid fa-square-check green"></i>        |        <i class="fa-solid fa-square-xmark red"></i>         |                         <i class="fa-solid fa-square-xmark red"></i>                          |
 | **Security**                   |                                                              |                                                             |                                                                                               |
@@ -57,8 +57,8 @@ Let's examine each runtime through this table:
 | TypeScript / TSX               |        <i class="fa-solid fa-square-check green"></i>        |       <i class="fa-solid fa-square-check green"></i>        |                            <i class="fa-solid fa-cube orange"></i>                            |
 | **Metadata**                   |                                                              |                                                             |                                                                                               |
 | Initial Release                |                             2018                             |                            2021                             |                                             2009                                              |
-| Current Version                |                            1.37.1                            |                            1.0.4                            |                                            20.8.0                                             |
-| LTS Version                    |                              -                               |                              -                              |                                            18.18.0                                            |
+| Current Version                |                            1.37.2                            |                            1.0.6                            |                                            21.0.0                                             |
+| LTS Version                    |                              -                               |                              -                              |                                            18.18.2                                            |
 | Original Author                |                          Ryan Dahl                           |                        Jarred Sumner                        |                                           Ryan Dahl                                           |
 | Ownership                      |                        Deno Land Inc.                        |                            Oven                             |                                       OpenJS Foundation                                       |
 | License                        |                         MIT License                          |                         MIT License                         |                                          MIT License                                          |
@@ -81,7 +81,7 @@ points:
 - Node.js has an alternative approach to Web Workers called `Worker Threads`.
 - The built in test-runner in Node.js were stabilized in version 20, in 18
   (LTS), it is experimental.
-- Bun's WebSocket API is flagged orange as it is flagged "Not production ready"
+- Bun's WebSocket API is flagged experimental as it is flagged "Not production ready"
   in the [official documentation](https://bun.sh/docs/runtime/web-apis)
 - Bun has a semi-built-in REPL, which is downloaded on demand.
 - While Deno lacks a traditional built-in package manager, it does facilitate
@@ -89,7 +89,8 @@ points:
   import_map, and package.json.
 
 **Updates**
-
+- _2023-10-19: Node.js 21.0.0 got an experimental WebSocket client._
+- _2023-10-17: Version update and review._
 - _2023-09-12: Table updated to include four levels (green/green/orange/red)
   instead of two (green/red)._
 - _2023-09-13: Table grouped in sections. Metadata and Web API-sections were
@@ -153,7 +154,7 @@ The main selling point of Bun is its performance, presenting a lot of benchmarks
 showing awesome numbers. Using bun as a package manager is a lot quicker than
 using the standard NPM command. In real-world applications, especially web
 applications, performance difference may not be as significant as in the
-benchmarks. We'll have to keep an eye out for real-world results.
+benchmarks provided by Oven. We will have to keep an eye out for real-world results. To start exploring this, I have made a quick apples-to-apples performance comparison in this article: [Deno vs. Bun vs. Node.js Benchmark](https://hexagon.56k.guru/posts/deno-vs-bun-vs-node-benchmark/).
 
 **Ease of Use**
 
@@ -166,6 +167,8 @@ quickly without the initial setup hurdles that other runtimes might impose.
 Bun hasn't implemented a comprehensive permissions model like Deno. However, it
 does introduce a new interesting package.json feature called
 [trustedDependencies](https://bun.sh/docs/cli/install#trusted-dependencies).
+
+Additionally, when considering running important software using Bun, especially those with stringent security requirements, it's crucial to weigh the benefits of its innovative features against the potential risks associated with its relative newness. Monitoring Bun's development over time is essential to assess how well it matures in terms of security.
 
 ## Node.js
 
@@ -197,6 +200,8 @@ Historically, Node.js received criticism for its approach to security,
 especially regarding packages. However, the community and maintainers have
 significantly improved this area. The permissions model is now being
 implemented, which might make Node.js more secure in the future.
+
+Additionally, the maturity that comes from being tried and tested over time is a significant advantage that Node.js holds over more recent alternatives like Bun.
 
 ## Conclusion
 
