@@ -1,10 +1,10 @@
 {
   "tasks": {
     "lume": "echo \"import 'lume/cli.ts'\" | deno run --unstable -A -",
-    "build": "deno task lume",
+    "build": "deno task lume && rm -rf /var/www/hexagon.56k.guru/_site && cp -R _site /var/www/hexagon.56k.guru/_site",
     "serve": "deno task lume -s --port=8000",
-    "stage": "rm -rf _stage && cp -R _site _stage",
-    "deploy": "rm -rf _prod && cp -R _stage _prod",
+    "stage": "rm -rf /var/www/hexagon.56k.guru/_stage && cp -R /var/www/hexagon.56k.guru/_site /var/www/hexagon.56k.guru/_stage",
+    "deploy": "rm -rf /var/www/hexagon.56k.guru/_prod && cp -R /var/www/hexagon.56k.guru/_stage /var/www/hexagon.56k.guru/_prod",
     "upgrade": "deno task lume upgrade && deno run --allow-read=. --allow-net=deno.land,cdn.deno.land https://deno.land/x/udd/main.ts --dry-run deno.json src/_config.ts"
   },
   "imports": {
