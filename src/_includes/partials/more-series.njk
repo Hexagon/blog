@@ -5,7 +5,7 @@
     <ul>
         {% for subpost in search.pages("part=1") %}
             <li>
-                <a class="{% if subpost.data.url == url %}link-secondary{% endif %}" href="{{ subpost.data.url }}">{{ subpost.data.series.title }}</a>
+                <a class="{% if subpost.url == url %}link-secondary{% endif %}" href="{{ subpost.url }}">{{ subpost.series.title }}</a>
             </li>
         {% endfor %}
     </ul>

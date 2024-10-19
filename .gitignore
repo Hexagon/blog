@@ -5,3 +5,7 @@ _bin
 .vscode
 draft
 *.log
+deno.lock
+node_modules
+.npmrc
+package.json

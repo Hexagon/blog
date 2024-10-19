@@ -7,7 +7,6 @@ strings and numbers. Strings are used to store text, while numbers are used to
 store numerical values. We will also learn how to manipulate strings and numbers
 using various methods and operators, how to avoid overflows using BigInts, and
 how to represent binary and hexadecimal numbers."
-
 ---
 
 There is a lot to cover here, from simple string manipulation to advanced

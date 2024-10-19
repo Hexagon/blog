@@ -231,14 +231,14 @@ Example for _data.yml in a series folder, like `/posts/my-series/_data.yml`
 layout: post.njk
 title: Page title for my series articles (overridable)
 description: Description of my series
-series: 
+series:
   title: Title for the series in the series listing
   tag: my-series-tag
 tags:
- - my-series-tag
- - javascript
- - guide
- - post
+  - my-series-tag
+  - javascript
+  - guide
+  - post
 ```
 
 ### Showing an in-series listing in the sidebar

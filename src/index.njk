@@ -16,31 +16,30 @@ tags: index
       <hr>
     {% endif %}
     <h2 class="mb-4 mt-5">Recent posts</h2>
-    {% for post2 in search.pages("post","date=desc") %}
-        {% if loop.index0 < 20 and post2.data.title != "Home" %}    
+    {% for subpost in search.pages("post", "date=desc", 20) %}
+           
             <section>
                 <hgroup>
-                    <h1><a href="{{ post2.data.url }}">{{post2.data.title | title }}</a></h1>
+                    <h1><a href="{{ subpost.url }}">{{ subpost.title or "title" }}</a></h1>
                     <p>
                         <!-- Author -->
-                        {% if post2.data.author %}
-                            by <strong>{{ post2.data.author.name }}</strong>, 
+                        {% if subpost.author %}
+                            by <strong>{{ subpost.author.name }}</strong>, 
                         {% endif %}
 
                         <!-- Date -->
-                        <time datetime="{{ post2.data.date | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
-                            {{ post2.data.date | date }}</time>{% if post2.data.updated %}<span>, Updated:</span>
-                        <time datetime="{{ post2.data.updated | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
-                            {{ post2.data.updated | date }}
+                        <time datetime="{{ subpost.date | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
+                            {{ subpost.date | date }}</time>{% if subpost.updated %}<span>, Updated:</span>
+                        <time datetime="{{ subpost.updated | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
+                            {{ subpost.updated | date }}
                         </time>
                         {% endif %}
                     </p>
                 </hgroup>
                 <p>
-                    {{ post2.data.intro | md | safe }}
+                    {{ subpost.intro | md | safe }}
                 </p>
             </section>
-        {% endif %}
     {% endfor %}
     <hr>
     {% include "components/ads/plex.njk" %}

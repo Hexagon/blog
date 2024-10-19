@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "lume": "echo \"import 'lume/cli.ts'\" | deno run --unstable -A -",
+    "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
     "build": "deno task lume && rm -rf /var/www/hexagon.56k.guru/_site && cp -R _site /var/www/hexagon.56k.guru/_site",
     "serve": "deno task lume -s --port=8000",
     "stage": "rm -rf /var/www/hexagon.56k.guru/_stage && cp -R /var/www/hexagon.56k.guru/_site /var/www/hexagon.56k.guru/_stage",
@@ -8,6 +8,15 @@
     "upgrade": "deno task lume upgrade && deno run --allow-read=. --allow-net=deno.land,cdn.deno.land https://deno.land/x/udd/main.ts --dry-run deno.json src/_config.ts"
   },
   "imports": {
-    "lume/": "https://deno.land/x/lume@v1.19.0/"
+    "lume/": "https://deno.land/x/lume@v2.3.3/"
+  },
+  "nodeModulesDir": "auto",
+  "compilerOptions": {
+    "types": [
+      "lume/types.ts"
+    ]
+  },
+  "fmt": {
+    "exclude": ["_site"]
   }
 }

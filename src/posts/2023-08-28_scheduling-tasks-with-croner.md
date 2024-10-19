@@ -86,7 +86,9 @@ import { Cron } from "https://deno.land/x/croner@7.0.1/dist/croner.js";
 ### For Webpages (UMD-module):
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/croner@7/dist/croner.umd.min.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/croner@7/dist/croner.umd.min.js"
+></script>
 ```
 
 ### Cron Expressions

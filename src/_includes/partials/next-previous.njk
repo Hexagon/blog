@@ -4,13 +4,13 @@
     {% set previousPart = search.previousPage(url, series.tag, "part")  %}
     {% if previousPart %}
         <i class="fas fa-angle-left"></i>
-        <a class="spaced-link" href="{{ previousPart.data.url }}">{{ previousPart.data.title_short or previousPart.data.title }}</a>
+        <a class="spaced-link" href="{{ previousPart.url }}">{{ previousPart.title_short or previousPart.title }}</a>
     {% endif %}
     {% if previousPart and nextPart %}
         <i class="fas fa-ellipsis"></i> 
     {% endif %}
     {% if nextPart %}
-        <a class="spaced-link" href="{{ nextPart.data.url }}">{{ nextPart.data.title_short or nextPart.data.title }}</a>
+        <a class="spaced-link" href="{{ nextPart.url }}">{{ nextPart.title_short or nextPart.title }}</a>
         <i class="fas fa-angle-right"></i>
     {% endif %}
     <section>
@@ -20,13 +20,13 @@
     {% set previousPart = search.previousPage(url, "standalone", "date=desc" ) %}
     {% if previousPart %}
         <i class="fas fa-angle-left"></i>
-        <a class="spaced-link" href="{{ previousPart.data.url }}">{{ previousPart.data.title_short or previousPart.data.title }}</a>
+        <a class="spaced-link" href="{{ previousPart.url }}">{{ previousPart.title_short or previousPart.title }}</a>
     {% endif %}
     {% if previousPart and nextPart %}
         <i class="fas fa-ellipsis"></i> 
     {% endif %}
     {% if nextPart %}
-        <a class="spaced-link" href="{{ nextPart.data.url }}">{{ nextPart.data.title_short or nextPart.data.title }}</a>
+        <a class="spaced-link" href="{{ nextPart.url }}">{{ nextPart.title_short or nextPart.title }}</a>
         <i class="fas fa-angle-right"></i>
     {% endif %}
     <section>

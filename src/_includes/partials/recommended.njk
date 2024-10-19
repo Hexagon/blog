@@ -25,7 +25,7 @@
     <ul>
     {% for subpost in search.pages("standalone", "date=desc") %}
         <li>
-            <a class="{% if subpost.data.url == url %}link-secondary{% endif %}" href="{{ subpost.data.url }}">{{ subpost.data.title_short or subpost.data.title }}</a>
+            <a class="{% if subpost.url == url %}link-secondary{% endif %}" href="{{ subpost.url }}">{{ subpost.title_short or subpost.title }}</a>
         </li>
     {% endfor %}
     </ul>

@@ -5,11 +5,11 @@ import code_highlight from "lume/plugins/code_highlight.ts";
 import feed from "lume/plugins/feed.ts";
 import metas from "lume/plugins/metas.ts";
 import sitemap from "lume/plugins/sitemap.ts";
-import slugify_urls from "lume/plugins/slugify_urls.ts";
 import nav from "lume/plugins/nav.ts";
 import date from "lume/plugins/date.ts";
 import pagefind from "lume/plugins/pagefind.ts";
 import inline from "lume/plugins/inline.ts";
+import nunjucks from "lume/plugins/nunjucks.ts";
 
 // Experimental plugins
 import readInfo from "lume/plugins/reading_info.ts";
@@ -24,18 +24,14 @@ import lang_xml from "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/langua
 import lang_json from "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/json.min.js";
 import lang_yaml from "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/yaml.min.js";
 
-// Markdown plugin configuration
-const markdown = {};
-
 // Initiate site
 const site = lume({
   src: "./src",
   location: new URL("https://hexagon.56k.guru"),
-}, {
-  markdown,
 });
 
 // Add plugins
+site.use(nunjucks());
 site.use(inline());
 site.use(
   code_highlight({
@@ -69,7 +65,6 @@ site.use(metas());
 site.use(sitemap({
   priority: "priority",
 }));
-site.use(slugify_urls());
 site.use(nav());
 site.use(pagefind({
   resetStyles: false,

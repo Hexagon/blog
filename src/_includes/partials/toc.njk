@@ -4,12 +4,12 @@
         <ol class="toc">
         {% for item in toc %}
             <li>
-                <a href="#{{ item.slug }}">{{ item.text }}</a>
+                <a href="#{{ item.data.url }}">{{ item.text }}</a>
                 {% if item.children.length %}
                 <ul>
                 {% for child in item.children %}
                 <li>
-                    <a href="#{{ child.slug }}">{{ child.text }}</a>
+                    <a href="#{{ child.data.url }}">{{ child.text }}</a>
                 </li>
                 {% endfor %}
                 </ul>
