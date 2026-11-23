@@ -14,9 +14,5 @@
     "security",
     "developer-tips",
     "guide-to-ssh"
-  ],
-  "ads": {
-    "article": true,
-    "sidebar": true
-  }
+  ]
 }

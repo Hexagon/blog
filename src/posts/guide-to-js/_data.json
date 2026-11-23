@@ -14,9 +14,5 @@
     "javascript",
     "guide",
     "guide-to-js"
-  ],
-  "ads": {
-    "article": true,
-    "sidebar": true
-  }
+  ]
 }
