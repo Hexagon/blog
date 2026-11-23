@@ -11,15 +11,10 @@ layout: layout/body.njk
       {% include "partials/post-details.njk" %}
       {{ intro | md | safe }}
       <br>
-      {% include "components/ads/article.njk" %}
-      <br>
       {% include "partials/toc.njk" %}
       {{ content | safe }}    
       <hr>
       {% include "partials/next-previous.njk" %}
-      <br>
-      {% include "components/ads/plex.njk" %}
-      <br>
     </div>
   </section>
   <!-- Sidebar -->
@@ -28,8 +23,5 @@ layout: layout/body.njk
     {% include "partials/series-toc.njk" %}
     {% include "partials/more-series.njk" %}
     {% include "partials/recommended.njk" %}
-    {% if ads.sidebar %}
-      {% include "components/ads/plex.njk" %}
-    {% endif %}
   </aside>
 </div>

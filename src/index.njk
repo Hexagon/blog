@@ -11,10 +11,6 @@ tags: index
     <p>This blog is built using <a href="https://deno.land" target="_blank">Deno</a> and <a href="https://lume.land" target="_blank">Lume</a>, and the source code is available at <a href="https://github.com/hexagon/blog">github.com/hexagon/blog</a>.</p>
     <br>
     <hr>
-    {% if ads.article %}
-      {% include "components/ads/article.njk" %}
-      <hr>
-    {% endif %}
     <h2 class="mb-4 mt-5">Recent posts</h2>
     {% for subpost in search.pages("post", "date=desc", 20) %}
            
@@ -41,7 +37,4 @@ tags: index
                 </p>
             </section>
     {% endfor %}
-    <hr>
-    {% include "components/ads/plex.njk" %}
-    <br>
 </section>
