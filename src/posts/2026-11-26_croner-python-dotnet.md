@@ -76,3 +76,8 @@ versioning.
 ### Feedback
 
 Issues and pull requests are welcome in each repository.
+
+---
+
+*This post was written with help from AI (Claude), and reviewed and edited by
+me.*

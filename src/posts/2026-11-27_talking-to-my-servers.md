@@ -66,8 +66,10 @@ normal. That is what the notes are for.
 You can start Remote Control by hand, with `claude remote-control` in the
 directory you want to work in. But on a server you want it to start at boot,
 come back if it crashes, and keep running when you log out. That is a job for a
-systemd user service. I had help from Claude to set this up, which felt
-fitting. Here is roughly what it looks like.
+systemd user service. I have written about
+[autostarting Deno applications](/posts/running-deno-application-at-boot/) with
+Docker and Pup before. This time it is plain systemd. I had help from Claude to
+set this up, which felt fitting. Here is roughly what it looks like.
 
 First, pick a working directory for the sessions. I use a small, empty
 directory of its own rather than the home directory itself, like `~/ops`.
@@ -205,7 +207,9 @@ most here. Then it lists what to check:
 4. That last night's backup finished, and that the newest snapshot is less than
    a day old.
 5. TLS certificates that expire within three weeks.
-6. Logins over SSH the last week, new users, changes to `authorized_keys`.
+6. Logins over SSH the last week, new users, changes to `authorized_keys` (see
+   the series on [SSH keys](/posts/ssh-keys-passwordless-login/) for why keys,
+   and not passwords).
 7. Pending updates, especially security updates.
 8. Errors in the journal, minus the known ones. Disk and I/O errors are always
    serious.
@@ -246,7 +250,7 @@ back in half an hour and check:
 
 Same with an upgrade: if the release isn't published yet, the task checks again
 in fifteen minutes, at most twice, and then tells you instead of trying forever.
-It is a small thing, but it means you don't have to remember to check.
+That way, you don't have to remember to check.
 
 ### It works outside the server room too
 

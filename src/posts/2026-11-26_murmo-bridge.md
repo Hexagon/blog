@@ -159,8 +159,7 @@ Most of the skill is not code, though. It is rules, and they matter more:
 
 The bot runs with **owner only** on. So it can only ever write to me, and it
 only ever listens to me. Now I can start something in a cloud session, put the
-phone in my pocket, and get a message when it is done. It is a small thing, but
-it changes how it feels to hand off work.
+phone in my pocket, and get a message when it is done.
 
 ### What you give up
 
@@ -187,11 +186,10 @@ What Murmo does is keep the damage small, and make it visible:
 - **Owner only stops strangers.** For a personal assistant this is the
   important one. If anyone could write to the bot that Claude reads, anyone
   could try to give Claude instructions. With owner only, everything from
-  others is dropped before it becomes an event. Prompt injection needs a way in,
-  and this closes that door.
+  others is dropped before it becomes an event.
 
-So the rule for the skill is simple: write to the bot as if the server can read
-it. Because it can.
+So the rule for the skill is: write to the bot as if the server can read it,
+since it can.
 
 ### Not yet
 
@@ -217,6 +215,9 @@ in the hosting guide first. The whole protocol and API is in
 [DESIGN.md §16](https://github.com/Hexagon/murmo/blob/main/docs/DESIGN.md#16-the-bridge-optional),
 and the code is at [github.com/Hexagon/murmo](https://github.com/Hexagon/murmo).
 
-A messenger where the server is just a messenger, with a small, clearly marked
-door for the programs you choose to let in. And now, when Claude is done, it
-just tells me.
+And now, when Claude is done, it sends me a message.
+
+---
+
+*This post was written with help from AI (Claude), and reviewed and edited by
+me.*
