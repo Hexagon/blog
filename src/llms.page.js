@@ -6,8 +6,9 @@ const abs = (url) => new URL(url, base).href;
 const oneLine = (text) => String(text ?? "").replace(/\s+/g, " ").trim();
 const describe = (data) => oneLine(data.description || data.intro);
 
-async function body(page) {
-  const path = `./src${page.src.path}${page.src.ext}`;
+async function body(data) {
+  const { src } = data.page;
+  const path = `./src${src.path}${src.ext}`;
   const source = await Deno.readTextFile(path);
   return source.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, "").trim();
 }
