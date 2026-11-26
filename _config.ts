@@ -50,19 +50,50 @@ site.use(
 site.use(toc());
 site.use(readInfo());
 site.use(date());
+const feedInfo = {
+  title: "Hexagon's Blog",
+  description:
+    "Hexagon on JavaScript, TypeScript, Deno, Rust, Linux servers, security and open source.",
+};
+const markdown = () => site.formats.get(".md")!.engines![0];
 site.use(feed({
   output: ["/feed.rss", "/feed.json"],
   query: "post",
-  info: {
-    title: "=site.title",
-    description: "=site.description",
-  },
+  limit: 20,
+  info: { ...feedInfo, lang: "en" },
   items: {
     title: "=title",
-    description: "=description",
-    content: "=intro",
+    description: (data) => data.description || data.intro,
+    content: (data) =>
+      data.intro ? markdown().renderComponent(data.intro, {}) : undefined,
   },
 }));
+// Lume 2.3's JSON feed writes RFC 822 dates and no summary; fix both.
+site.addEventListener("beforeSave", () => {
+  const page = site.pages.find((p) => p.data.url === "/feed.json");
+  if (!page) return;
+  const posts = new Map(
+    site.search.pages("post").map((d) => [site.url(d.url, true), d]),
+  );
+  const json = JSON.parse(page.content as string);
+  json.version = "https://jsonfeed.org/version/1.1";
+  json.language = "en";
+  json.authors = [{ name: "Hexagon", url: "https://hexagon.56k.guru" }];
+  for (const item of json.items) {
+    const data = posts.get(item.url);
+    const summary = data?.description || data?.intro;
+    if (summary) item.summary = String(summary).replace(/\s+/g, " ").trim();
+    for (const key of ["date_published", "date_modified"]) {
+      if (item[key]) item[key] = new Date(item[key]).toISOString();
+    }
+    if (data?.tags) {
+      item.tags = data.tags.filter((t: string) =>
+        !["post", "standalone", "index"].includes(t)
+      );
+    }
+  }
+  page.content = JSON.stringify(json);
+});
 site.use(metas());
 site.use(sitemap({
   priority: "priority",
