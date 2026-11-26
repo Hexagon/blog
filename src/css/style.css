@@ -316,6 +316,9 @@ header {
 }
 @media (max-width: 575px) {
   .navbar-brand .brand-host { display: none; }
+  header nav .nav-json { display: none; }
+  header nav ul:last-child li { padding-left: 0.4rem; padding-right: 0.4rem; }
+  #theme-switcher { margin-right: 0.3rem; }
 }
 header nav a, #theme-switcher { color: var(--muted-color); }
 header nav a:hover, #theme-switcher:hover { color: var(--accent); }
