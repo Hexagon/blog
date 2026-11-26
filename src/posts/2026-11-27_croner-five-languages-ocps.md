@@ -260,3 +260,8 @@ opinions about cron (who doesn't), I would be happy for feedback:
 
 And if you just need a cron library, there is now one for your language. As
 long as your language is one of five.
+
+---
+
+*This post was written with help from AI (Claude), and reviewed and edited by
+me.*
