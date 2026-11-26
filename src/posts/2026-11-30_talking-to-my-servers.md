@@ -1,7 +1,7 @@
 ---
 layout: post.njk
 title: "Talking to my servers, and letting them take notes"
-description: "How to use Claude Code with Remote Control to talk to a Linux server in plain language, and how a single AGENTS.md per server, scheduled checks and notifications make the setup a little smarter every week."
+description: "How to use Claude Code with Remote Control to talk to a Linux server in plain language, and how a single CLAUDE.md per server, scheduled checks and notifications make the setup a little smarter every week."
 tags:
   - claude
   - ai
@@ -62,9 +62,12 @@ normal. That is what the notes are for.
 
 ### One file that remembers
 
-Each server has an `AGENTS.md` in the home directory. It is the documentation
-of the server, written for whoever comes next, which is usually Claude, and
-sometimes me. It has:
+Claude Code reads a file called `CLAUDE.md` at the start of every session: the
+one in the directory the session starts in, those in the directories above it,
+and `~/.claude/CLAUDE.md`, which is loaded everywhere. That is the memory. Each
+of my servers has a `CLAUDE.md` in the home directory, which is where the
+sessions start. It is the documentation of the server, written for whoever
+comes next, which is usually Claude, and sometimes me. It has:
 
 - **What runs here.** Services, containers, which user they run as, where their
   config is, and which ports should be open.
@@ -77,10 +80,27 @@ sometimes me. It has:
   avoid, and what to check before restarting something.
 - **Versions.** What version of each self-built service is deployed, and when.
 
-The rule is simple: when Claude learns something about the server that is
-worth knowing next time, it goes into `AGENTS.md`. When it upgrades something,
-it updates the version and date. When something in the file turns out to be
+The rule is simple, and it is written at the top of the file itself: when
+Claude learns something about the server that is worth knowing next time, it
+goes into `CLAUDE.md`. When it upgrades something, it updates the version and
+date. When something in the file turns out to be
 wrong, it gets fixed, not appended to.
+
+Since the file is loaded automatically, there is nothing else to set up. Every
+session, interactive or scheduled, starts with what the last one wrote down.
+
+**What about `AGENTS.md`?** Other coding agents read `AGENTS.md` instead, and
+you may already have one. Claude Code doesn't load it by itself. If you want to
+keep `AGENTS.md` as the real file, make `CLAUDE.md` a single line that imports
+it:
+
+```markdown
+@AGENTS.md
+```
+
+Then Claude Code loads `AGENTS.md` through `CLAUDE.md`, and other tools read it
+directly. If Claude Code is the only tool you use, skip `AGENTS.md`, and let
+`CLAUDE.md` be the one file. One file is easier to keep up to date than two.
 
 The known issues are the part that makes the biggest difference. Without them,
 every check turns into a list of twenty "problems", of which nineteen have been
@@ -92,7 +112,7 @@ The other half is scheduled tasks. Claude Code can run a prompt on a schedule,
 and each run starts a fresh session on the server. Each of my servers has a
 weekly health check.
 
-The prompt is long and boring on purpose. It starts with "read `~/AGENTS.md`
+The prompt is long and boring on purpose. It starts with "read `~/CLAUDE.md`
 first", and then lists what to check:
 
 1. Failed systemd units, uptime, and whether a reboot is pending.
@@ -105,11 +125,11 @@ first", and then lists what to check:
 7. Pending updates, especially security updates.
 8. Errors in the journal, minus the known ones. Disk and I/O errors are always
    serious.
-9. Growth of the directories that tend to grow, compared to `AGENTS.md`.
+9. Growth of the directories that tend to grow, compared to `CLAUDE.md`.
 
 And then, just as important, what **not** to do: the check is read-only. It
 doesn't restart, update or delete anything. At most, it may add one line under
-"To do" in `AGENTS.md` if it finds a new deviation that is there to stay.
+"To do" in `CLAUDE.md` if it finds a new deviation that is there to stay.
 
 The answer has a fixed first line, `✅ All normal` or `⚠️ DEVIATIONS: …`,
 followed by the deviations and a suggested command for each. Then Claude sends
@@ -162,7 +182,7 @@ things I would recommend if you try this:
 - **Narrow scripts instead of root.** If Claude needs to do something as root,
   give it a script that does exactly that one thing.
 - **Don't let secrets reach the model.** Whatever Claude reads is sent to the
-  model provider. Keep keys out of `AGENTS.md`, out of skills and out of
+  model provider. Keep keys out of `CLAUDE.md`, out of skills and out of
   prompts. Write *where* a secret is, never *what* it is.
 - **Logs are written by strangers.** This one is easy to miss. An access log
   contains whatever anyone on the internet put in a URL or a User-Agent. If
@@ -184,7 +204,7 @@ And it doesn't replace monitoring: a check every five minutes is a job for a
 monitoring tool, not for a language model.
 
 But for the kind of questions I used to dig through logs for, and for the
-weekly "is everything still fine?", it has been great, and `AGENTS.md` on each
+weekly "is everything still fine?", it has been great, and `CLAUDE.md` on each
 server is already better documentation than I ever kept myself.
 
 ### Try it
@@ -193,11 +213,11 @@ If you want to try this, start small:
 
 1. Install Claude Code on the server, as a normal user, and set up Remote
    Control if you want to reach it from your phone.
-2. Ask it to look around and write an `AGENTS.md`: what runs, where the config
+2. Ask it to look around and write a `CLAUDE.md`: what runs, where the config
    is, what normal looks like. That first inventory is useful on its own, and
    you'll probably learn something about your own server.
 3. Add a weekly read-only check, with a fixed first line, that reads
-   `AGENTS.md` first.
+   `CLAUDE.md` first.
 4. Every time the check reports something that turns out to be normal, add it to
    the known issues. After a few weeks, the reports get quiet, and then the
    one line that isn't is worth reading.
