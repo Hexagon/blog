@@ -12,11 +12,12 @@ tags: index
     <br>
     <hr>
     <h2 class="mb-4 mt-5">Recent posts</h2>
+    <div class="post-list">
     {% for subpost in search.pages("post", "date=desc", 20) %}
            
             <section>
                 <hgroup>
-                    <h1><a href="{{ subpost.url }}">{{ subpost.title or "title" }}</a></h1>
+                    <h3 class="post-title"><a href="{{ subpost.url }}">{{ subpost.title or "title" }}</a></h3>
                     <p>
                         <!-- Author -->
                         {% if subpost.author %}
@@ -37,4 +38,5 @@ tags: index
                 </p>
             </section>
     {% endfor %}
+    </div>
 </section>

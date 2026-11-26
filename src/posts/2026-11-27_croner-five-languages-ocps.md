@@ -15,6 +15,8 @@ tags:
   - programming
   - standalone
 priority: 1.0
+metas:
+  image: "https://hexagon.56k.guru/img/croner_five_languages_og.webp"
 intro: "Croner started as a [small cron library for JavaScript](/posts/scheduling-tasks-with-croner/). It then got a [Rust version](/posts/croner-for-rust/), and recently [Python and .NET versions](/posts/croner-python-dotnet/). Now there is a fifth one, for C++. Five libraries that should answer the same question in the same way: when does `0 0 L * FRI` run next? That turned out to be the easy part. The hard part was deciding what the right answer is."
 ---
 

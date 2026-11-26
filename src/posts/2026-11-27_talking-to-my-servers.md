@@ -11,6 +11,8 @@ tags:
   - murmo
   - standalone
 priority: 1.0
+metas:
+  image: "https://hexagon.56k.guru/img/talking_to_my_servers_og.webp"
 intro: "I have a couple of servers that I care about. Each was set up by me, at some point, in a hurry, and each has its own little surprises. These days I mostly just talk to them. Claude runs on each of them, and writes down what it learns, so it knows a bit more the next time."
 ---
 

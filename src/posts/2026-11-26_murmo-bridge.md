@@ -14,6 +14,8 @@ tags:
   - bots
   - standalone
 priority: 1.0
+metas:
+  image: "https://hexagon.56k.guru/img/murmo_bridge_og.webp"
 intro: "A few days ago I wrote about [Murmo](/posts/murmo/), the end-to-end encrypted messenger built on rootcard. Since then it has learned a new trick: bots. Any program can now write with Murmo users over plain HTTPS. And the first program I wanted to hook up was Claude, so it can tell me when it is done instead of me checking every five minutes."
 ---
 

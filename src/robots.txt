@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hexagon.56k.guru/sitemap.xml

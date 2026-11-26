@@ -1,7 +1,7 @@
 {% if page.data.header %}
   <img src="{{ page.data.header }}" class="header-image" alt="{{ page.data.title }}">
 {% endif %}
-<hgroup>
+<hgroup class="post-header">
   <h1><a href="{{ page.data.url }}" class="link-secondary">{{page.data.title}}</a></h1>
   <p>
     {% if page.data.author %}

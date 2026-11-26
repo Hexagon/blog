@@ -12,6 +12,8 @@ tags:
   - programming
   - standalone
 priority: 0.8
+metas:
+  image: "https://hexagon.56k.guru/img/croner_python_dotnet_og.webp"
 intro: "Croner started as a cron library for JavaScript, and later got a [Rust version](/posts/croner-for-rust/). It is now also available for Python and .NET, and both have reached their first stable releases."
 ---
 

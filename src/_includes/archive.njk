@@ -7,11 +7,11 @@ title: Hexagon's Blog - Archive
 
     {% if tag %}
         <hgroup>
-            <h2>Archive - Tagged with '{{ tag }}'</h2>
+            <h1>Archive - Tagged with '{{ tag }}'</h1>
             <p><a href="/archive/">&lt; Back</a></p>
         </hgroup>
     {% else %}
-        <h2>Archive</h2>
+        <h1>Archive</h1>
     {% endif %}
 
     <hr />
@@ -27,10 +27,11 @@ title: Hexagon's Blog - Archive
     <br />
 
     <!-- List of posts -->
+    <div class="post-list">
     {% for post in articles %}  
         <section>
             <hgroup>
-                <h1><a href="{{ post.data.url }}" class="link-secondary">{{post.data.title | title }}</a></h1>
+                <h2 class="post-title"><a href="{{ post.data.url }}" class="link-secondary">{{post.data.title | title }}</a></h2>
                 <p>
                     <!-- Author -->
                     {% if post.data.author %}
@@ -51,4 +52,5 @@ title: Hexagon's Blog - Archive
             </p>
         </section>
     {% endfor %}
+    </div>
 </section>
