@@ -1,7 +1,7 @@
 ---
 layout: post.njk
 title: "Talking to my servers, and letting them take notes"
-description: "How to use Claude Code with Remote Control to talk to a Linux server in plain language, and how a single CLAUDE.md per server, scheduled checks and notifications make the setup a little smarter every week."
+description: "Run Claude Code with Remote Control and systemd on a Linux server, and use CLAUDE.md, scheduled checks and notifications to make it learn over time."
 tags:
   - claude
   - ai

@@ -1,7 +1,7 @@
 ---
 layout: post.njk
 title: "Deno vs. Bun vs. Node.js: A Feature Comparison"
-description: "Description"
+description: "Deno, Bun and Node.js compared feature by feature: package management, testing, security, developer tools, platforms and web API support."
 tags:
   - standalone
   - deno

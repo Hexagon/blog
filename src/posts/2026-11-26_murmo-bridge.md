@@ -1,7 +1,7 @@
 ---
 layout: post.njk
 title: "Murmo bots: Letting Claude tap me on the shoulder"
-description: "How the Murmo bridge lets any program, like an AI assistant or an alert script, write with Murmo users over plain HTTPS, and how I use it to get notifications from Claude when a long job is done."
+description: "The Murmo bridge lets any program message Murmo users over plain HTTPS. Here is how it works, and how I use it to get notifications from Claude."
 tags:
   - murmo
   - rootcard

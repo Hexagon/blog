@@ -1,7 +1,7 @@
 ---
 layout: post.njk
 title: "One cron pattern, five languages: Croner and OCPS"
-description: "Croner now exists for JavaScript, Rust, Python, .NET and C++. This is how the five are kept in agreement, and why a written cron standard, OCPS, was needed to make that possible."
+description: "Croner now exists for JavaScript, Rust, Python, .NET and C++. How the five are kept in agreement, and why a cron standard, OCPS, was needed."
 tags:
   - croner
   - cron

@@ -4,7 +4,8 @@
   "description": "Hexagon's guide to JavaScript, learn pure JavaScript.",
   "header": "/img/og_image_header.webp",
   "metas": {
-    "image": "https://hexagon.56k.guru/img/og_image_header.webp"
+    "image": "https://hexagon.56k.guru/img/og_image_header.webp",
+    "description": "=intro"
   },
   "series": {
     "title": "The guide to JavaScript",
