@@ -12,12 +12,6 @@
   --footer-background-color: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    --header-border-color: rgb(42, 44, 45);
-    --footer-background-color: rgb(12, 18, 22);
-  }
-}
 
 [data-theme="dark"] {
   --header-border-color: rgb(42, 44, 45);
@@ -186,17 +180,6 @@ aside nav {
   --badge-color-alt: #f3c27a;
   --badge-background-alt: rgba(232, 163, 58, 0.14);
 }
-@media only screen and (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --primary: #8fa6f0;
-    --primary-hover: #b3c3f6;
-    --accent: #e8a33a;
-    --badge-color: #c8d3ff;
-    --badge-background: rgba(143, 166, 240, 0.14);
-    --badge-color-alt: #f3c27a;
-    --badge-background-alt: rgba(232, 163, 58, 0.14);
-  }
-}
 
 /* Brand */
 .navbar-brand {
@@ -280,3 +263,254 @@ a .badge, a.badge {
 .hljs {
   border-radius: 8px;
 }
+
+/* ------------------------------------------------------------------ */
+/* Terminal refresh: monospace chrome, sans-serif reading text         */
+/* ------------------------------------------------------------------ */
+:root {
+  --mono: ui-monospace, "JetBrains Mono", "Cascadia Code", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --code-border: var(--muted-border-color);
+}
+[data-theme=dark] {
+  --background-color: #0d1014;
+  --card-background-color: #12161b;
+  --footer-background-color: #0a0c0f;
+  --header-border-color: #1e242b;
+  --code-border: #232a32;
+}
+
+::selection {
+  background: var(--accent);
+  color: #0d1014;
+}
+
+/* Header: a shell prompt as the brand */
+header {
+  background-image: radial-gradient(var(--header-border-color) 1px, transparent 1px);
+  background-size: 14px 14px;
+  background-position: -7px -7px;
+}
+.navbar-brand {
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.navbar-brand .brand-user { color: var(--accent); }
+.navbar-brand .brand-host { color: var(--muted-color); font-weight: 400; }
+.navbar-brand .brand-path { color: var(--primary); }
+.navbar-brand .brand-sigil { color: var(--muted-color); margin-left: 0.35em; font-weight: 400; }
+.cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 0.35em;
+  vertical-align: -0.15em;
+  background: var(--accent);
+  animation: blink 1.1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .cursor { animation: none; }
+}
+@media (max-width: 575px) {
+  .navbar-brand .brand-host { display: none; }
+  header nav .nav-json { display: none; }
+  header nav ul:last-child li { padding-left: 0.4rem; padding-right: 0.4rem; }
+  #theme-switcher { margin-right: 0.3rem; }
+}
+header nav a, #theme-switcher { color: var(--muted-color); }
+header nav a:hover, #theme-switcher:hover { color: var(--accent); }
+
+/* Front page */
+h1.hello::before {
+  content: "> ";
+  font-family: var(--mono);
+  color: var(--accent);
+  font-weight: 400;
+}
+.section-title, aside h4 {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+  color: var(--muted-color);
+}
+.section-title::before, aside h4::before {
+  content: "// ";
+  color: var(--accent);
+}
+.section-title { font-size: 0.95rem; }
+
+/* Post lists: date in mono, title, intro */
+.post-list hgroup { display: flex; flex-direction: column-reverse; }
+.post-list hgroup > p,
+.post-header > p,
+time {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--muted-color);
+}
+.post-list hgroup > p strong,
+.post-header > p strong { font-weight: 500; }
+.post-list .post-title { position: relative; }
+.post-list .post-title a::before {
+  content: "\2192";
+  position: absolute;
+  left: -1.3em;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-weight: 400;
+  opacity: 0;
+  transform: translateX(-0.4em);
+  transition: opacity 0.15s, transform 0.15s;
+}
+.post-list .post-title a:hover::before { opacity: 1; transform: none; }
+
+/* Badges: tags as #tag, terse mono */
+.badge {
+  font-family: var(--mono);
+  border-radius: 3px;
+  padding: 0.15rem 0.45rem;
+  font-size: 0.72rem;
+}
+.badge.tag::before { content: "#"; opacity: 0.6; }
+.badge-alt::before { content: "~"; }
+a:hover > .badge.tag { background: var(--accent); color: #0d1014; }
+
+/* Headings in posts show their markdown level */
+main > .grid > section h2:not(.post-title)::before,
+main > .grid > section h3:not(.post-title)::before {
+  font-family: var(--mono);
+  font-weight: 400;
+  color: var(--accent);
+  opacity: 0.75;
+}
+main > .grid > section h2:not(.post-title):not(.section-title),
+main > .grid > section h3:not(.post-title),
+main > .grid > section h2:not(.post-title):not(.section-title) > a,
+main > .grid > section h3:not(.post-title) > a { color: var(--h1-color); text-decoration: none; }
+main > .grid > section h2:not(.post-title):not(.section-title)::before { content: "## "; }
+main > .grid > section h3:not(.post-title)::before { content: "### "; }
+main > .grid > section .section-title::before { content: "// "; opacity: 1; }
+
+/* Code */
+pre, code, kbd, samp { font-family: var(--mono); }
+pre {
+  border: 1px solid var(--code-border);
+  border-radius: 6px;
+}
+.hljs { border-radius: 6px; }
+:not(pre) > code {
+  border-radius: 3px;
+  padding: 0.1em 0.35em;
+}
+
+/* Sidebar */
+aside {
+  border-left: 1px dashed var(--header-border-color);
+}
+aside nav a, aside nav li a { color: inherit; text-decoration: none; }
+aside nav a:hover { color: var(--accent); }
+aside nav a.link-secondary { color: var(--accent); }
+
+/* Footer */
+footer li, footer li a { font-size: 0.85rem; }
+footer li a strong { font-weight: 500; }
+footer .eof {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--muted-color);
+  border-top: 1px dashed var(--header-border-color);
+  padding: 1rem 0 1.5rem;
+  margin: 0;
+}
+footer .eof span { color: var(--accent); margin-right: 0.5em; }
+footer .eof a { font-size: inherit; color: var(--muted-color); }
+footer .eof a:hover { color: var(--accent); }
+
+/* Avatar: hexagon frame in accent, faint scanlines */
+.index-avatar {
+  position: relative;
+  float: right;
+  width: 150px;
+  height: 166px;
+  margin: 0 0 1rem 25px;
+  padding: 3px;
+  border-radius: 0;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  transition: transform 0.3s;
+}
+.index-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: inherit;
+  filter: grayscale(1) contrast(1.15) brightness(1.05);
+}
+/* Duotone in the theme's own colors: blue shadows, orange highlights */
+.index-avatar::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  z-index: 1;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  background: linear-gradient(160deg, var(--accent) 0%, var(--primary) 75%);
+  mix-blend-mode: color;
+  pointer-events: none;
+}
+.index-avatar::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  z-index: 2;
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.18) 0 1px, transparent 1px 3px);
+  pointer-events: none;
+}
+.index-avatar:hover { transform: rotate(-4deg); }
+@media (prefers-reduced-motion: reduce) {
+  .index-avatar:hover { transform: none; }
+}
+
+/* Archive */
+.tag-filter { color: var(--accent); font-family: var(--mono); font-size: 0.8em; }
+.cd-back { font-family: var(--mono); font-size: 0.85rem; }
+
+/* Share row at the end of posts */
+.share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 2.5rem 0 1rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}
+.share-prompt { color: var(--accent); margin-right: 0.3rem; }
+.share a, .share button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  width: auto;
+  margin: 0;
+  padding: 0.25rem 0.55rem;
+  font: inherit;
+  line-height: 1.4;
+  color: var(--muted-color);
+  background: transparent;
+  border: 1px solid var(--header-border-color);
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.share a:hover, .share button:hover, .share a:focus-visible, .share button:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: transparent;
+}
+.share .share-native { color: var(--h1-color); }

@@ -4,7 +4,7 @@ title: hexagon.56k.guru
 ---
 
 <!doctype html>
-<html lang="{{ lang }}">
+<html lang="{{ lang }}" data-theme="dark">
   <head>
 
     {% include "components/webpulse-analytics.njk" %}
@@ -12,8 +12,10 @@ title: hexagon.56k.guru
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="dark light">
     <link rel="canonical" href="{{ page.data.url | url(true) }}" />
+    <link rel="alternate" type="application/rss+xml" title="Hexagon's Blog (RSS)" href="/feed.rss">
+    <link rel="alternate" type="application/feed+json" title="Hexagon's Blog (JSON Feed)" href="/feed.json">
 
     <!-- Pico CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
@@ -23,43 +25,33 @@ title: hexagon.56k.guru
  
     <link href="/css/style.css" rel="stylesheet" inline>
 
-    <!-- Theme switcher -->
+    <!-- Theme: dark unless the visitor picked light with the switcher -->
     <script>
+      try {
+        if (localStorage.getItem('preferredTheme') === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (_) { /* storage blocked: stay dark */ }
+
       document.addEventListener('DOMContentLoaded', () => {
-          const html = document.documentElement;
-          const switcher = document.getElementById('theme-switcher');
-          const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+        const switcher = document.getElementById('theme-switcher');
+        const themeIcon = document.getElementById('theme-icon');
 
-          // Function to determine whether user has a system preference for dark mode
-          const userPrefersDark = () => window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const apply = (theme) => {
+          html.setAttribute('data-theme', theme);
+          switcher.setAttribute('data-theme', theme === 'dark' ? 'light' : 'dark');
+          themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        };
+        apply(html.getAttribute('data-theme'));
 
-          // Load user preferred theme from local storage or user's system preference
-          let preferredTheme = localStorage.getItem('preferredTheme');
-          
-          if (!preferredTheme) {
-              preferredTheme = userPrefersDark() ? 'dark' : 'light';
-          }
-          const inverseTheme = preferredTheme === 'dark' ? 'light' : 'dark';
-          html.setAttribute('data-theme', preferredTheme);
-          switcher.setAttribute('data-theme', inverseTheme);
-
-          // Set the correct initial icon
-          themeIcon.className = preferredTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-
-          // Event Listener for Switch Theme button
-          switcher.addEventListener('click', () => {
-              const currentTheme = html.getAttribute('data-theme');
-              const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-              const newInverseTheme = newTheme === 'dark' ? 'light' : 'dark';
-              html.setAttribute('data-theme', newTheme);
-              switcher.setAttribute('data-theme', newInverseTheme);
-              localStorage.setItem('preferredTheme', newTheme);
-
-              // Change the Font Awesome icon based on the new theme
-              themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-          });
+        switcher.addEventListener('click', () => {
+          const theme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          apply(theme);
+          try { localStorage.setItem('preferredTheme', theme); } catch (_) {}
+        });
       });
-  </script>
+    </script>
 
   </head>
   {{ content | safe }}

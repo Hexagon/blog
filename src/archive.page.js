@@ -15,8 +15,8 @@ export default function* ({ search }) {
   const articles = search.pages("post", "date=desc");
   const tags = new Set();
   for (const article of articles) {
-    if (article.data && article.data.tags) {
-      for (const tag of article.data.tags) {
+    if (article.tags) {
+      for (const tag of article.tags) {
         if (!blocked.includes(tag)) tags.add(tag);
       }
     }
@@ -25,14 +25,14 @@ export default function* ({ search }) {
   // Yield archuive main url
   yield {
     url: `/archive/`,
-    tags: [...tags],
+    allTags: [...tags],
     articles,
   };
 
   // Generate one page per tag
   for (const tag of tags) {
     if (!blocked.includes(tag)) {
-      const articles = search.pages(tag);
+      const articles = search.pages(`"${tag}"`, "date=desc");
       yield {
         url: `/archive/${tag}/`,
         tag,

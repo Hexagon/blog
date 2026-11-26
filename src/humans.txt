@@ -1,0 +1,22 @@
+/* TEAM */
+Author: Hexagon
+Site: https://hexagon.56k.guru
+Contact: hexagon [at] 56k.guru
+Murmo: Hexagon#DNTT@murmo.org (https://murmo.org/#add=Hexagon%23DNTT%40murmo.org)
+GitHub: https://github.com/hexagon
+rootcard: https://rootcard.org/card?h=Hexagon%23DNTT
+Patreon: https://www.patreon.com/Hexagon56k
+
+/* THANKS */
+Guest authors: https://hexagon.56k.guru/posts/guest-blogging-using-github/
+
+/* SITE */
+Language: English
+Built with: Lume (https://lume.land), Deno (https://deno.land)
+Search: Pagefind
+Source: https://github.com/hexagon/blog
+Feeds: https://hexagon.56k.guru/feed.rss, https://hexagon.56k.guru/feed.json
+
+/* LICENSES */
+Posts: CC BY-SA 4.0 (https://github.com/hexagon/blog/blob/main/LICENSE.posts.txt)
+Source code: MIT (https://github.com/hexagon/blog/blob/main/LICENSE.source.txt)
