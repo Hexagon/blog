@@ -12,12 +12,6 @@
   --footer-background-color: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    --header-border-color: rgb(42, 44, 45);
-    --footer-background-color: rgb(12, 18, 22);
-  }
-}
 
 [data-theme="dark"] {
   --header-border-color: rgb(42, 44, 45);
@@ -186,17 +180,6 @@ aside nav {
   --badge-color-alt: #f3c27a;
   --badge-background-alt: rgba(232, 163, 58, 0.14);
 }
-@media only screen and (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --primary: #8fa6f0;
-    --primary-hover: #b3c3f6;
-    --accent: #e8a33a;
-    --badge-color: #c8d3ff;
-    --badge-background: rgba(143, 166, 240, 0.14);
-    --badge-color-alt: #f3c27a;
-    --badge-background-alt: rgba(232, 163, 58, 0.14);
-  }
-}
 
 /* Brand */
 .navbar-brand {
@@ -294,14 +277,6 @@ a .badge, a.badge {
   --footer-background-color: #0a0c0f;
   --header-border-color: #1e242b;
   --code-border: #232a32;
-}
-@media only screen and (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --background-color: #0d1014;
-    --footer-background-color: #0a0c0f;
-    --header-border-color: #1e242b;
-    --code-border: #232a32;
-  }
 }
 
 ::selection {
