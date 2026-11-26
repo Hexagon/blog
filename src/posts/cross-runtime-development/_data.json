@@ -3,7 +3,8 @@
   "title": "Cross-Runtime JavaScript: A Primer for Adaptable Code",
   "description": "Kickstart your cross-runtime TypeScript or JavaScript journey! Learn the basics and why building code for Node.js, Deno, and Bun matters.",
   "metas": {
-    "image": "https://hexagon.56k.guru/img/og_image.webp"
+    "image": "https://hexagon.56k.guru/img/og_image.webp",
+    "description": "=intro"
   },
   "series": {
     "title": "Cross-Runtime JavaScript Development",

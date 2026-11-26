@@ -162,3 +162,121 @@ aside nav {
 .toc * {
   font-size: 0.9rem;
 }
+
+/* ------------------------------------------------------------------ */
+/* Refresh 2026: colors from the share images, calmer type and lists   */
+/* ------------------------------------------------------------------ */
+:root:not([data-theme=dark]), [data-theme=light] {
+  --primary: #3550c8;
+  --primary-hover: #2a40a8;
+  --primary-focus: rgba(53, 80, 200, 0.2);
+  --accent: #e0622c;
+  --badge-color: #3550c8;
+  --badge-background: #eef1fb;
+  --badge-color-alt: #8a3a12;
+  --badge-background-alt: #fbe9df;
+}
+[data-theme=dark] {
+  --primary: #8fa6f0;
+  --primary-hover: #b3c3f6;
+  --primary-focus: rgba(143, 166, 240, 0.25);
+  --accent: #e8a33a;
+  --badge-color: #c8d3ff;
+  --badge-background: rgba(143, 166, 240, 0.14);
+  --badge-color-alt: #f3c27a;
+  --badge-background-alt: rgba(232, 163, 58, 0.14);
+}
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --primary: #8fa6f0;
+    --primary-hover: #b3c3f6;
+    --accent: #e8a33a;
+    --badge-color: #c8d3ff;
+    --badge-background: rgba(143, 166, 240, 0.14);
+    --badge-color-alt: #f3c27a;
+    --badge-background-alt: rgba(232, 163, 58, 0.14);
+  }
+}
+
+/* Brand */
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--h1-color);
+  text-decoration: none;
+}
+.navbar-brand::before {
+  content: "\2B22";
+  color: var(--accent);
+  margin-right: 0.45rem;
+}
+
+/* Headings */
+.post-header h1 {
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+.post-header h1 a {
+  color: var(--h1-color);
+  text-decoration: none;
+}
+main h2, main h3 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Post lists on the front page and in the archive */
+.post-list > section {
+  margin: 0;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--muted-border-color);
+}
+.post-list > section:first-child {
+  padding-top: 0.4rem;
+}
+.post-list > section:last-child {
+  border-bottom: none;
+}
+.post-list hgroup {
+  margin-bottom: 0.6rem;
+}
+.post-list .post-title {
+  font-size: 1.45rem;
+  font-weight: 650;
+  line-height: 1.25;
+  margin-bottom: 0.3rem;
+}
+.post-list .post-title a {
+  color: var(--h1-color);
+  text-decoration: none;
+}
+.post-list .post-title a:hover {
+  color: var(--primary);
+}
+.post-list p {
+  margin-bottom: 0;
+}
+
+/* Reading comfort */
+main section p, main section li {
+  line-height: 1.7;
+}
+
+/* Badges as soft pills */
+.badge {
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+}
+a .badge, a.badge {
+  text-decoration: none;
+}
+
+/* Rounded media and code */
+.header-image {
+  border-radius: 12px;
+}
+.hljs {
+  border-radius: 8px;
+}

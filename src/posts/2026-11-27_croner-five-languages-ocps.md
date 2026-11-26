@@ -1,7 +1,7 @@
 ---
 layout: post.njk
 title: "One cron pattern, five languages: Croner and OCPS"
-description: "Croner now exists for JavaScript, Rust, Python, .NET and C++. This is how the five are kept in agreement, and why a written cron standard, OCPS, was needed to make that possible."
+description: "Croner now exists for JavaScript, Rust, Python, .NET and C++. How the five are kept in agreement, and why a cron standard, OCPS, was needed."
 tags:
   - croner
   - cron
@@ -15,7 +15,9 @@ tags:
   - programming
   - standalone
 priority: 1.0
-intro: "Croner started as a small cron library for JavaScript. It then got a [Rust version](/posts/croner-for-rust/), and recently [Python and .NET versions](/posts/croner-python-dotnet/). Now there is a fifth one, for C++. Five libraries that should answer the same question in the same way: when does `0 0 L * FRI` run next? That turned out to be the easy part. The hard part was deciding what the right answer is."
+metas:
+  image: "https://hexagon.56k.guru/img/croner_five_languages_og.webp"
+intro: "Croner started as a [small cron library for JavaScript](/posts/scheduling-tasks-with-croner/). It then got a [Rust version](/posts/croner-for-rust/), and recently [Python and .NET versions](/posts/croner-python-dotnet/). Now there is a fifth one, for C++. Five libraries that should answer the same question in the same way: when does `0 0 L * FRI` run next? That turned out to be the easy part. The hard part was deciding what the right answer is."
 ---
 
 ### The five
@@ -29,6 +31,12 @@ Here they are, with the current versions:
 | Python | [Hexagon/croner-py](https://github.com/Hexagon/croner-py) | `croner` on PyPI | 1.2.0 |
 | .NET | [Hexagon/croner-dotnet](https://github.com/Hexagon/croner-dotnet) | `Croner` on NuGet | 1.0.0 |
 | C++ | [Hexagon/croner-cpp](https://github.com/Hexagon/croner-cpp) | Header only, CMake or Conan | 0.2.0 |
+
+The JavaScript version runs in Node.js, Deno, Bun and the browser, from the
+same code. I have written about how that works in the series on
+[cross-runtime JavaScript](/posts/cross-runtime-development/introduction/), and
+about publishing to JSR in
+[Two weeks with jsr.io](/posts/getting-to-know-jsr/).
 
 All of them have no dependencies beyond the standard library of each language
 (the Rust version lets you pick `chrono` or `jiff` for time). All of them can

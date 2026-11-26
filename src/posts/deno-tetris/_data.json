@@ -3,7 +3,8 @@
   "title": "Building a Web-Based Tetris Game with Deno",
   "description": "Building a Web-Based Tetris Game with Deno",
   "metas": {
-    "image": "https://hexagon.56k.guru/img/og_image.webp"
+    "image": "https://hexagon.56k.guru/img/og_image.webp",
+    "description": "=intro"
   },
   "series": {
     "title": "Web-Based Tetris Game with Deno",
