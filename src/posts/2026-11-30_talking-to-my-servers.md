@@ -37,7 +37,8 @@ afterwards.
 Claude Code has a feature called Remote Control. It runs as a small service on
 the computer, and lets you start or continue a Claude Code session there from
 the Claude app, on the phone or in the browser. I run it as a systemd user
-service under a normal user, so it starts at boot and is always there.
+service under a normal user, so it starts at boot and is always there. More on
+how to set that up below.
 
 So instead of SSH, a terminal and a search for the right log file, I open the
 app and write:
@@ -198,9 +199,18 @@ doesn't restart, update or delete anything. At most, it may add one line under
 
 The answer has a fixed first line, `✅ All normal` or `⚠️ DEVIATIONS: …`,
 followed by the deviations and a suggested command for each. Then Claude sends
-that to me in Murmo, with the notification skill from the
-[bridge post](/posts/murmo-bridge/). Most weeks, I get one line on my phone that
-says everything is fine. When it isn't, I open a session and we fix it.
+that to me in Murmo, with a small notification skill. Most weeks, I get one
+line on my phone that says everything is fine. When it isn't, I open a session
+and we fix it.
+
+How to set up the notifications is described in
+[Murmo bots: Letting Claude tap me on the shoulder](/posts/murmo-bridge/): how
+to make a bot on a Murmo server with the bridge turned on, how to keep its API
+key out of the prompts, and how the `murmo-notify` skill and its small
+`notify.sh` script work. Turn on **owner only** for the bot, so that it only
+ever talks to you. Any other way to get a message to your phone works too, but
+the rules from that post apply either way: short messages, one per event, and
+no secrets.
 
 ### Following up on changes
 
@@ -253,7 +263,11 @@ server that matters.
 **Protect the service's settings.** If Remote Control runs with a
 `--settings` file, it should be owned by root, or at least be outside every
 directory Claude can write to. The same goes for the unit file: a session that
-can edit its own unit file can give itself new flags at the next restart.
+can edit its own unit file can give itself new flags at the next restart. In the
+setup above, the unit file is in the home directory, so Claude has to ask before
+it edits it, but it could. If that worries you, put the unit in
+`/etc/systemd/user/` instead, owned by root. It works the same way, but only
+root can change it.
 
 **Least privilege.** Run Claude as a normal user, never as root, and preferably
 as a user that only has access to what it needs. Everything that needs root
