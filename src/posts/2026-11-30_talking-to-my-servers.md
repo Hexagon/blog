@@ -69,9 +69,14 @@ come back if it crashes, and keep running when you log out. That is a job for a
 systemd user service. I had help from Claude to set this up, which felt
 fitting. Here is roughly what it looks like.
 
-First, log in once, as the user that Claude should run as. Start `claude` in a
-terminal over SSH and follow the login steps, then exit. The service uses the
-same login.
+First, pick a working directory for the sessions. I use a small, empty
+directory of its own rather than the home directory itself, like `~/ops`.
+
+Then log in once, as the user that Claude should run as. Over SSH, `cd` into
+that directory, start `claude`, follow the login steps, and accept the prompt
+that asks if you trust the folder. Then exit. The service uses the same login,
+and without the trust step, the service can get stuck waiting for an answer
+that nobody gives.
 
 Then let that user's services run without an open SSH session:
 
@@ -87,20 +92,27 @@ Find out where `claude` is installed, with `command -v claude`, and create
 Description=Claude Code Remote Control
 
 [Service]
-WorkingDirectory=%h
-ExecStart=/usr/local/bin/claude remote-control --name %H
-Restart=on-failure
-RestartSec=30
+WorkingDirectory=%h/ops
+ExecStart=%h/.local/bin/claude remote-control
+Restart=always
+RestartSec=15
 
 [Install]
 WantedBy=default.target
 ```
 
-`%h` is the user's home directory, so sessions start there and pick up
-`~/CLAUDE.md`. `%H` is the host name, so each server shows up with its own name
-in the app. If `claude` was installed with a Node version manager, its path is
-not in systemd's `PATH`, so use the full path in `ExecStart`, and add an
-`Environment=PATH=...` line that includes the directory of `node`.
+`%h` is the user's home directory. `~/.local/bin/claude` is where the native
+installer puts `claude`; if yours is somewhere else, use the path from
+`command -v claude`. Sessions are named after the host name by default, so each
+server shows up with its own name in the app.
+
+`Restart=always` brings it back whether it crashed or exited cleanly, which is
+what you want for something that should always be there.
+
+systemd doesn't read your shell profile, so tools that you have installed in
+your own `PATH` may be missing in the sessions. Either add an
+`Environment=PATH=...` line with what you need, or start it through a login
+shell, with `ExecStart=/bin/bash -lc 'exec claude remote-control'`.
 
 Then start it, and check that it runs:
 
@@ -115,25 +127,29 @@ there from the phone.
 
 A few options are worth knowing about:
 
-- `--permission-mode` sets the permission mode for new sessions. I leave it at
-  the default, which asks before anything that changes something.
+- `--permission-mode` sets the permission mode for new sessions. Check which
+  mode you actually get: unless you give it a settings file, Remote Control
+  turns on auto mode for sessions started from a project, and in auto mode a lot
+  runs without asking.
 - `--settings <file>` gives new sessions a fixed settings file, with
   permission rules for example. It is read once at start, so restart the service
   when you change it. Put it somewhere the sessions can't write to, or Claude
   could loosen its own rules.
 - `--spawn` and `--capacity` control how new sessions are started, and how many
   can run at the same time. The defaults are fine for a server.
-- `--allow-unattended-tool-calls` lets cloud sessions run commands in the folder
-  without asking. It is off by default, and I keep it off on a server.
+
+Run `claude remote-control --help` to see what your version supports. The
+options change between versions.
 
 ### One file that remembers
 
 Claude Code reads a file called `CLAUDE.md` at the start of every session: the
 one in the directory the session starts in, those in the directories above it,
-and `~/.claude/CLAUDE.md`, which is loaded everywhere. That is the memory. Each
-of my servers has a `CLAUDE.md` in the home directory, which is where the
-sessions start. It is the documentation of the server, written for whoever
-comes next, which is usually Claude, and sometimes me. It has:
+and `~/.claude/CLAUDE.md`, which is loaded everywhere. That is the memory. On
+a server, `~/.claude/CLAUDE.md` is the simplest place for it, since it is
+loaded wherever a session starts. I'll call it the notes. They are the
+documentation of the server, written for whoever comes next, which is usually
+Claude, and sometimes me. They have:
 
 - **What runs here.** Services, containers, which user they run as, where their
   config is, and which ports should be open.
@@ -148,9 +164,9 @@ comes next, which is usually Claude, and sometimes me. It has:
 
 The rule is simple, and it is written at the top of the file itself: when
 Claude learns something about the server that is worth knowing next time, it
-goes into `CLAUDE.md`. When it upgrades something, it updates the version and
-date. When something in the file turns out to be
-wrong, it gets fixed, not appended to.
+goes into the notes. When it upgrades something, it updates the version and
+date. When something in the notes turns out to be wrong, it gets fixed, not
+appended to.
 
 Since the file is loaded automatically, there is nothing else to set up. Every
 session, interactive or scheduled, starts with what the last one wrote down.
@@ -158,14 +174,15 @@ session, interactive or scheduled, starts with what the last one wrote down.
 **What about `AGENTS.md`?** Other coding agents read `AGENTS.md` instead, and
 you may already have one. Claude Code doesn't load it by itself. If you want to
 keep `AGENTS.md` as the real file, make `CLAUDE.md` a single line that imports
-it:
+it. That is how mine are set up: the notes live in `~/AGENTS.md`, and
+`~/.claude/CLAUDE.md` contains just this:
 
 ```markdown
-@AGENTS.md
+@~/AGENTS.md
 ```
 
-Then Claude Code loads `AGENTS.md` through `CLAUDE.md`, and other tools read it
-directly. If Claude Code is the only tool you use, skip `AGENTS.md`, and let
+Then Claude Code loads `AGENTS.md` through `CLAUDE.md` in every session, and
+other tools can read it directly. If Claude Code is the only tool you use, skip `AGENTS.md`, and let
 `CLAUDE.md` be the one file. One file is easier to keep up to date than two.
 
 The known issues are the part that makes the biggest difference. Without them,
@@ -178,8 +195,9 @@ The other half is scheduled tasks. Claude Code can run a prompt on a schedule,
 and each run starts a fresh session on the server. Each of my servers has a
 weekly health check.
 
-The prompt is long and boring on purpose. It starts with "read `~/CLAUDE.md`
-first", and then lists what to check:
+The prompt is long and boring on purpose. It starts with "read the notes
+first", even though they are already loaded, because the known issues matter
+most here. Then it lists what to check:
 
 1. Failed systemd units, uptime, and whether a reboot is pending.
 2. Disk, memory, swap and load.
@@ -191,11 +209,13 @@ first", and then lists what to check:
 7. Pending updates, especially security updates.
 8. Errors in the journal, minus the known ones. Disk and I/O errors are always
    serious.
-9. Growth of the directories that tend to grow, compared to `CLAUDE.md`.
+9. Growth of the directories that tend to grow, compared to the notes.
 
 And then, just as important, what **not** to do: the check is read-only. It
-doesn't restart, update or delete anything. At most, it may add one line under
-"To do" in `CLAUDE.md` if it finds a new deviation that is there to stay.
+doesn't restart, update or delete anything. Whether it may touch the notes is
+up to you. One option is to let it add a single line under a "To do" heading if
+it finds a new deviation that is there to stay. The other is to not let it write
+at all, and only report.
 
 The answer has a fixed first line, `✅ All normal` or `⚠️ DEVIATIONS: …`,
 followed by the deviations and a suggested command for each. Then Claude sends
@@ -239,8 +259,9 @@ use it. A few rules that I have found useful for any "self-learning" setup:
   to them. Otherwise the file argues with itself after a month.
 - **Keep it small.** Keep only the last few entries of any log, and keep the
   whole file to a few tens of kilobytes. Everything in it is read on every run.
-- **Commit after every run.** `git log -p` shows exactly what it learned and
-  when, and `git revert` fixes it when it learned something silly.
+- **Keep it in git, and commit after every run.** `git log -p` shows exactly
+  what it learned and when, and `git revert` fixes it when it learned something
+  silly.
 - **Put limits on what it can start by itself.** If it may schedule its own
   follow-ups, allow only a few at a time, at most one new per day, and never at
   night.
@@ -264,10 +285,9 @@ server that matters.
 `--settings` file, it should be owned by root, or at least be outside every
 directory Claude can write to. The same goes for the unit file: a session that
 can edit its own unit file can give itself new flags at the next restart. In the
-setup above, the unit file is in the home directory, so Claude has to ask before
-it edits it, but it could. If that worries you, put the unit in
-`/etc/systemd/user/` instead, owned by root. It works the same way, but only
-root can change it.
+setup above, the unit file is in the home directory, so Claude can edit it. In
+auto mode it may not even ask first. Put the unit in `/etc/systemd/user/`
+instead, owned by root. It works the same way, but only root can change it.
 
 **Least privilege.** Run Claude as a normal user, never as root, and preferably
 as a user that only has access to what it needs. Everything that needs root
@@ -278,10 +298,11 @@ safe as the script.
 
 **Read-only by default.** Scheduled checks only look. They run without anyone
 watching, so they should have nothing to approve. Changes happen in a session
-where you are there, and Claude asks before it restarts, edits or deletes
-anything. Claude Code's permission settings can enforce some of this, and the
-prompt and `CLAUDE.md` say the rest. Don't rely on the prompt alone for the
-things that really matter.
+where you are there. Don't assume that Claude asks before it restarts, edits or
+deletes something: that depends on the permission mode, and in auto mode a lot
+runs without asking. Use permission rules in a settings file for the things
+that must always need your approval, and let the prompt and the notes say the
+rest. Don't rely on the prompt alone for the things that really matter.
 
 **Prompt injection.** This is the one that is easiest to miss. Claude can't
 reliably tell an instruction from you apart from text that happens to look like
@@ -296,22 +317,22 @@ way back: a bot that Claude reads messages from should only accept messages
 from you.
 
 **Secrets.** Whatever Claude reads is sent to the model provider, and may end up
-in a transcript. Keep keys and passwords out of `CLAUDE.md`, out of skills, out
+in a transcript. Keep keys and passwords out of the notes, out of skills, out
 of scheduled prompts and out of notifications. Write *where* a secret is, never
 *what* it is. Be careful with commands that print config or environment
 variables. And if a key has ended up somewhere it shouldn't, rotate it, don't
 just delete the text.
 
-**Unattended runs.** A scheduled task runs at 07:00 whether or not you are
+**Unattended runs.** A scheduled task runs at its time whether or not you are
 awake. Limit what it may start by itself, especially if it may schedule its own
 follow-ups, and make sure it fails loudly instead of trying again and again.
 
-**The memory can be poisoned.** `CLAUDE.md` is read by every session, so a bad
+**The memory can be poisoned.** The notes are read by every session, so a bad
 line in it affects every session after it. That can be an honest mistake, like
 "this service isn't used anymore" about a job that runs once a month. It can
 also be something that came in from a log or a web page, and got written down
-as a fact. Keep the file in git, read the changes now and then like you would
-review a colleague's work, and be suspicious of notes that make Claude more
+as a fact. Keep the notes in git if you can, or at least in your backups, read
+the changes now and then like you would review a colleague's work, and be suspicious of notes that make Claude more
 permissive.
 
 **Keep a trail.** Commit the notes after every change, keep the journal, and let
@@ -327,8 +348,8 @@ And it doesn't replace monitoring: a check every five minutes is a job for a
 monitoring tool, not for a language model.
 
 But for the kind of questions I used to dig through logs for, and for the
-weekly "is everything still fine?", it has been great, and `CLAUDE.md` on each
-server is already better documentation than I ever kept myself.
+weekly "is everything still fine?", it has been great, and the notes on each
+server are already better documentation than I ever kept myself.
 
 ### Try it
 
@@ -336,11 +357,12 @@ If you want to try this, start small:
 
 1. Install Claude Code on the server, as a normal user, and set up Remote
    Control if you want to reach it from your phone.
-2. Ask it to look around and write a `CLAUDE.md`: what runs, where the config
+2. Ask it to look around and write the notes in `~/.claude/CLAUDE.md`, or in
+   `~/AGENTS.md` with an import: what runs, where the config
    is, what normal looks like. That first inventory is useful on its own, and
    you'll probably learn something about your own server.
-3. Add a weekly read-only check, with a fixed first line, that reads
-   `CLAUDE.md` first.
+3. Add a weekly read-only check, with a fixed first line, that reads the notes
+   first.
 4. Every time the check reports something that turns out to be normal, add it to
    the known issues. After a few weeks, the reports get quiet, and then the
    one line that isn't is worth reading.
