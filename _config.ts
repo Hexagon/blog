@@ -77,6 +77,7 @@ site.use(pagefind({
 site.copy("css");
 site.copy("img");
 site.copy("robots.txt");
+site.copy("humans.txt");
 
 // Success!
 export default site;
