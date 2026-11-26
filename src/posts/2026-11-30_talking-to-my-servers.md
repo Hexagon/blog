@@ -60,6 +60,71 @@ That part works out of the box, and is useful on its own. But every new session
 starts from zero. Claude has to find out, again, where things are and what is
 normal. That is what the notes are for.
 
+### Running Remote Control with systemd
+
+You can start Remote Control by hand, with `claude remote-control` in the
+directory you want to work in. But on a server you want it to start at boot,
+come back if it crashes, and keep running when you log out. That is a job for a
+systemd user service. I had help from Claude to set this up, which felt
+fitting. Here is roughly what it looks like.
+
+First, log in once, as the user that Claude should run as. Start `claude` in a
+terminal over SSH and follow the login steps, then exit. The service uses the
+same login.
+
+Then let that user's services run without an open SSH session:
+
+```bash
+sudo loginctl enable-linger $USER
+```
+
+Find out where `claude` is installed, with `command -v claude`, and create
+`~/.config/systemd/user/claude-remote-control.service`:
+
+```ini
+[Unit]
+Description=Claude Code Remote Control
+
+[Service]
+WorkingDirectory=%h
+ExecStart=/usr/local/bin/claude remote-control --name %H
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=default.target
+```
+
+`%h` is the user's home directory, so sessions start there and pick up
+`~/CLAUDE.md`. `%H` is the host name, so each server shows up with its own name
+in the app. If `claude` was installed with a Node version manager, its path is
+not in systemd's `PATH`, so use the full path in `ExecStart`, and add an
+`Environment=PATH=...` line that includes the directory of `node`.
+
+Then start it, and check that it runs:
+
+```bash
+systemctl --user daemon-reload
+systemctl --user enable --now claude-remote-control
+journalctl --user -u claude-remote-control -f
+```
+
+After that, the server shows up in the Claude app, and you can start a session
+there from the phone.
+
+A few options are worth knowing about:
+
+- `--permission-mode` sets the permission mode for new sessions. I leave it at
+  the default, which asks before anything that changes something.
+- `--settings <file>` gives new sessions a fixed settings file, with
+  permission rules for example. It is read once at start, so restart the service
+  when you change it. Put it somewhere the sessions can't write to, or Claude
+  could loosen its own rules.
+- `--spawn` and `--capacity` control how new sessions are started, and how many
+  can run at the same time. The defaults are fine for a server.
+- `--allow-unattended-tool-calls` lets cloud sessions run commands in the folder
+  without asking. It is off by default, and I keep it off on a server.
+
 ### One file that remembers
 
 Claude Code reads a file called `CLAUDE.md` at the start of every session: the
@@ -184,6 +249,11 @@ run commands as the user Claude runs as. Treat the account like an SSH key:
 a strong password, two-factor authentication, and log out of devices you don't
 use. If you can't protect the account well, don't run Remote Control on a
 server that matters.
+
+**Protect the service's settings.** If Remote Control runs with a
+`--settings` file, it should be owned by root, or at least be outside every
+directory Claude can write to. The same goes for the unit file: a session that
+can edit its own unit file can give itself new flags at the next restart.
 
 **Least privilege.** Run Claude as a normal user, never as root, and preferably
 as a user that only has access to what it needs. Everything that needs root
