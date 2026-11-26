@@ -180,7 +180,7 @@ layout: head.njk
           <a class="nav-link" href="https://github.com/hexagon"><i class="fab fa-github me-2"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/hexagon/sponsors"><i class="fas fa-hand-holding-usd me-2"></i></a>
+          <a class="nav-link" href="https://github.com/sponsors/hexagon"><i class="fas fa-hand-holding-usd me-2"></i></a>
         </li>
       </ul>
     </div>
