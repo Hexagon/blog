@@ -7,11 +7,11 @@ title: Hexagon's Blog - Archive
 
     {% if tag %}
         <hgroup>
-            <h1>Archive - Tagged with '{{ tag }}'</h1>
-            <p><a href="/archive/">&lt; Back</a></p>
+            <h1 class="hello">archive <span class="tag-filter">#{{ tag }}</span></h1>
+            <p class="cd-back"><a href="/archive/">cd ..</a></p>
         </hgroup>
     {% else %}
-        <h1>Archive</h1>
+        <h1 class="hello">archive</h1>
     {% endif %}
 
     <hr />
@@ -31,7 +31,7 @@ title: Hexagon's Blog - Archive
     {% for post in articles %}  
         <section>
             <hgroup>
-                <h2 class="post-title"><a href="{{ post.url }}" class="link-secondary">{{post.title | title }}</a></h2>
+                <h2 class="post-title"><a href="{{ post.url }}" class="link-secondary">{{ post.title }}</a></h2>
                 <p>
                     <!-- Author -->
                     {% if post.author %}

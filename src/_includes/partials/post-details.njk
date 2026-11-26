@@ -17,7 +17,7 @@
     {% endif %}
     
     <!-- Reading time -->
-    <span class="badge badge-alt"> {{ page.data.readingInfo.minutes }} minutes read</span>
+    <span class="badge badge-alt">{{ page.data.readingInfo.minutes }} min read</span>
 
     <!-- License -->
     <!--
@@ -29,7 +29,7 @@
     <!-- Tags -->
     {% for tag in tags %}
       {% if tag not in ["standalone","index","guide-to-js","post"] %}
-        <a href="/archive/{{ tag }}"><span class="badge text-bg-dark">{{tag}}</span></a>
+        <a href="/archive/{{ tag }}"><span class="badge tag">{{tag}}</span></a>
       {% endif %}
     {% endfor %}
   </p>
