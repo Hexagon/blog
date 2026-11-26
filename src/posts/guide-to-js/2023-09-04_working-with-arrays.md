@@ -2,6 +2,7 @@
 title: "Working with Arrays in JavaScript"
 title_short: "Working with Arrays"
 part: 5
+updated: "2026-11-26T12:00:00Z"
 intro: "In this section, we will explore arrays in JavaScript. You'll learn how to create arrays, access their elements, manipulate array data, and work with common array methods like push, pop, shift, and unshift. Understanding arrays is crucial as they are used extensively in JavaScript for storing and managing collections of data."
 ---
 
@@ -97,9 +98,19 @@ within an array using various methods:
 The indexOf() method returns the index of the first occurrence of a specified
 value. If the value is not found, it returns -1.
 
-### `includes()`
+```javascript
+const pets = ["cat", "dog", "bat"];
 
-This is another, more recent way of checking if an item exists in a array.
+console.log(pets.indexOf("dog"));
+// Expected output: 1
+
+console.log(pets.indexOf("cow"));
+// Expected output: -1
+```
+
+#### `includes()`
+
+This is another, more recent way of checking if an item exists in an array.
 
 ```javascript
 const pets = ["cat", "dog", "bat"];
@@ -111,7 +122,7 @@ console.log(pets.includes("at"));
 // Expected output: false
 ```
 
-### `find()`
+#### `find()`
 
 The find() method allows you to search for an element based on a provided
 condition. It returns the first element in the array that satisfies the
@@ -127,7 +138,7 @@ let students = [
 let highScorer = students.find((student) => student.score > 90); // { name: 'Bob', score: 92 }
 ```
 
-There is also various ways to find an item by iterating, but that will be
+There are also various ways to find an item by iterating, but that will be
 covered in a separate section below.
 
 ## Modifying arrays
@@ -153,7 +164,7 @@ fruits.push("cherry");
 let fruits = ["apple", "banana"];
 
 fruits.unshift("cherry");
-// fruits is now ['apple', 'banana', 'cherry']
+// fruits is now ['cherry', 'apple', 'banana']
 ```
 
 3. Splice: The splice() method can add elements at a specific index and/or
@@ -178,7 +189,7 @@ let removedFruit = fruits.pop();
 ```
 
 2. Shift: The shift() method removes the first element from an array and returns
-   i
+   it.
 
 ```javascript
 let fruits = ["apple", "banana", "cherry"];
@@ -210,7 +221,7 @@ fruits[1] = "grape";
 
 ### Multiple operations at once
 
-Splice allow you to both insert and remove in the same operation:
+Splice allows you to both insert and remove in the same operation:
 
 ```javascript
 let fruits = ["apple", "banana", "cherry", "date"];
@@ -220,7 +231,8 @@ fruits.splice(1, 2, "grape", "fig");
 // fruits is now ['apple', 'grape', 'fig', 'date']
 ```
 
-The splice() method in JavaScript takes three arguments:
+The splice() method takes a start index, a delete count, and any number of
+items to insert:
 
 ```javascript
 array.splice(startIndex, deleteCount, item1, item2, ...);
@@ -241,9 +253,10 @@ array.splice(startIndex, deleteCount, item1, item2, ...);
 
 ### Sorting elements
 
-Arrays have a build in method for sorting arrays, called `sort()`. By default,
-it sorts the array in place, sorting the elements by their string representation
-in alphabetical order. To use a custom order, you can pass a function taking two
+Arrays have a built-in method for sorting arrays, called `sort()`. It sorts the
+array in place. By default, it converts the elements to strings and compares
+them character by character, which works for simple words but not for numbers:
+`[10, 9, 1].sort()` gives `[1, 10, 9]`. To use a custom order, you can pass a function taking two
 arguments and returning a number indicating sort order. Let's take a few
 examples:
 
@@ -326,8 +339,8 @@ for (let fruit of fruits) {
 
 3. **forEach() Method**
 
-The forEach() method is for exectuting a provided function once for each array
-item;
+The forEach() method is for executing a provided function once for each array
+item.
 
 ```javascript
 let colors = ["red", "green", "blue"];
@@ -338,7 +351,8 @@ colors.forEach(function (color) {
 ```
 
 **Note:** Be extra careful with this if using asynchronous functions, as it
-doesn't await each call before running the next.
+doesn't await each call before running the next. Use a `for...of` loop with
+`await` inside instead.
 
 ## Copying arrays
 

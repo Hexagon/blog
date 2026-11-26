@@ -2,6 +2,7 @@
 title: Strings and Numbers in JavaScript
 title_short: Strings and Numbers
 part: 7
+updated: "2026-11-26T12:00:00Z"
 intro: "In this post, we will explore two of the most common data types in JavaScript:
 strings and numbers. Strings are used to store text, while numbers are used to
 store numerical values. We will also learn how to manipulate strings and numbers
@@ -20,15 +21,14 @@ and take on the advanced stuff when you're ready.
 Strings are sequences of characters enclosed by quotation marks. For normal
 strings, you can use single quotes (' ') or double quotes (" ") to create them.
 
-Let's take a simple example showing the first two alternatives that essentialy
-works the same.
+Single and double quotes work exactly the same, pick one and stick to it.
 
 ```javascript
 let name = "Alice";
 let greeting = "Hello";
 ```
 
-To contatenate (join) strings, you use `+`.
+To concatenate (join) strings, you use `+`.
 
 ```javascript
 let message = greeting + ", " + name;
@@ -36,12 +36,12 @@ console.log(message); // Output: "Hello, Alice"
 ```
 
 You can also use template literals to create strings with placeholders. Template
-literals are enclosed by backticks (\`\`) and allow you to use `${variableName}`
+literals are enclosed by backticks (`` ` ``) and allow you to use `${variableName}`
 to insert values.
 
 Template literals make code a lot cleaner as soon as you need to piece together
 many things, the only downside (that you don't really have to care about
-nowadays) is that it isn't supported by older enviroments pre ES6. More on this
+nowadays) is that it isn't supported by older environments from before ES6. More on this
 later.
 
 ```javascript
@@ -71,7 +71,7 @@ let name = "Alice";
 console.log(name.length); // Output: 5
 console.log(name.toUpperCase()); // Output: "ALICE"
 console.log(name.toLowerCase()); // Output: "alice"
-console.log(name.indexOf("c")); // Output: 2
+console.log(name.indexOf("c")); // Output: 3
 console.log(name.slice(1, 4)); // Output: "lic"
 console.log(name.split("")); // Output: ["A", "l", "i", "c", "e"]
 console.log(name.replace("c", "k")); // Output: "Alike"
@@ -80,7 +80,7 @@ console.log(name.replace("c", "k")); // Output: "Alike"
 ## Numbers
 
 Numbers in JavaScript are numerical values that can be integers or decimals. You
-can use the standard arithmetic operators (`+`, `-`, `*`, `/\`,`%`) to perform
+can use the standard arithmetic operators (`+`, `-`, `*`, `/`, `%`) to perform
 calculations with numbers.
 
 ```javascript
@@ -108,7 +108,8 @@ console.log(Math.ceil(3.6)); // Output: 4
 ### Number Methods
 
 Numbers have some built-in methods that allow you to convert them to other
-formats or perform other operations on them. Here are some examples:
+formats, and there are global functions to go the other way, from string to
+number. Here are some examples:
 
 - **toString**: returns a string representation of a number.
 - **toFixed**: returns a string representation of a number with a fixed number
@@ -132,15 +133,21 @@ floating-point values. This means that there is a limit to how large or small a
 number can be, and how precise it can be.
 
 The largest possible number in JavaScript is `Number.MAX_VALUE`, which is
-approximately `1.7976931348623157e+308`. The smallest possible number is
+approximately `1.7976931348623157e+308`. The smallest positive number is
 `Number.MIN_VALUE`, which is approximately `5e-324`.
 
-If you try to use a number larger than `Number.MAX_VALUE` or `Number.MIN_VALUE`,
-the result is not deterministic. Never trust values outside of range.
+Going beyond these limits doesn't throw an error. Instead, results are rounded
+to the nearest number that can be represented. For example,
+`Number.MAX_VALUE + 2` is still `Number.MAX_VALUE`, because the `2` is far too
+small to make a difference at that size, while `Number.MAX_VALUE * 2` becomes
+`Infinity`. In the same way, a number smaller than `Number.MIN_VALUE` becomes
+`0`.
 
-For example, in Chrome, `Number.MAX_VALUE + 2` become `1.7976931348623157e+308`
-while `Number.MAX_VALUE * 2` become `Infinity`. Additionally
-`(Number.MAX_VALUE + 2)>Number.MAX_VALUE` resolve to `false`, which is wrong.
+A more practical limit is `Number.MAX_SAFE_INTEGER`, which is `9007199254740991`
+(2^53 - 1). Above it, not every whole number can be represented, so
+`9007199254740992 + 1` gives you `9007199254740992` back. If you work with IDs,
+timestamps in nanoseconds or other large integers, this is where things start to
+go wrong.
 
 The precision of a number is limited by the number of bits used to store its
 fractional part. This can cause some very unexpected results when performing
@@ -177,9 +184,10 @@ console.log(y); // Output: 10n
 console.log(z); // Output: 10n
 ```
 
-You can use the same arithmetic operators with BigInts as with numbers, except
-for the division operator (/). To divide two BigInts, you have to use the floor
-division operator (/) instead, which returns the quotient without the remainder.
+You can use the same arithmetic operators with BigInts as with numbers. The
+difference is in division: as a BigInt is always a whole number, `/` drops the
+fractional part of the result. You also can't mix BigInts and regular numbers in
+the same operation, you have to convert one of them first.
 
 ```javascript
 let x = 10n;
@@ -188,8 +196,8 @@ let y = 3n;
 console.log(x + y); // Output: 13n
 console.log(x - y); // Output: 7n
 console.log(x * y); // Output: 30n
-console.log(x / 3); // Output: Error: Cannot mix BigInt and other types
-console.log(x / y); // Output: 3n
+console.log(x / y); // Output: 3n, not 3.3333333333333335
+console.log(x / 3); // TypeError: Cannot mix BigInt and other types
 ```
 
 ### Hexadecimal and Binary Representation of Numbers
@@ -224,15 +232,17 @@ console.log(y.toString(2)); // Output: "1010"
 ### Binary Operators
 
 Binary operators are used to perform arithmetic or logical operations on two
-operands. For example, the addition operator
-(``+) adds the values of its operands, while the equality operator (`==``)
-compares the values of its operands and returns true or false.
+operands. For example, the addition operator (`+`) adds the values of its
+operands, while the equality operator (`==`) compares the values of its operands
+and returns true or false. A few operators, like `!` and `~`, only take one
+operand, and are called unary operators. They are included below, as they belong
+to the same families.
 
 There are different types of binary operators in JavaScript, such as:
 
 - **Arithmetic operators**: perform basic mathematical operations, such as
-  addition (`+`), subtraction (`-`), multiplication
-  (``*`), division (`/`), and modulus (`%``).
+  addition (`+`), subtraction (`-`), multiplication (`*`), division (`/`), and
+  remainder (`%`).
 - **Assignment operators**: assign the value of the right operand to the left
   operand, such as equal (`=`), plus equal (`+=`), minus equal (`-=`), and so
   on.

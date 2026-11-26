@@ -5,7 +5,7 @@ Contact: hexagon [at] 56k.guru
 Murmo: Hexagon#DNTT@murmo.org (https://murmo.org/#add=Hexagon%23DNTT%40murmo.org)
 GitHub: https://github.com/hexagon
 rootcard: https://rootcard.org/card?h=Hexagon%23DNTT
-Patreon: https://www.patreon.com/Hexagon56k
+Sponsor: https://github.com/sponsors/hexagon
 
 /* THANKS */
 Guest authors: https://hexagon.56k.guru/posts/guest-blogging-using-github/

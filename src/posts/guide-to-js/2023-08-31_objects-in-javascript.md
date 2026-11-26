@@ -2,7 +2,8 @@
 title: "Working with Objects in JavaScript"
 title_short: "Objects"
 part: 8
-intro: "After mastering control structures and arrays, the next step is to understand another cornerstone of JavaScript: objects. Objects are essential for bundling related data and functions together, which makes your code more organized and manageable. This extended article will explore objects in more depth, covering not just the basics but also advanced concepts like JSON, object constructors, prototypes, inheritance, and ES6 features for objects."
+updated: "2026-11-26T12:00:00Z"
+intro: "After mastering control structures and arrays, the next step is to understand another cornerstone of JavaScript: objects. Objects are essential for bundling related data and functions together, which makes your code more organized and manageable. This article covers the basics, object constructors, and modern syntax for working with objects. Prototypes and inheritance get their own article later in the series."
 ---
 
 #### What Are Objects?
@@ -177,9 +178,9 @@ let bob = new Person("Bob", 40);
 When you create a new object using `new`, the constructor function is called,
 and `this` refers to the new object.
 
-#### ES6 Features for Objects
+#### Modern Features for Objects
 
-JavaScript ES6 introduced several new features to make object manipulation
+ES6 and later versions introduced several features to make object manipulation
 easier and more intuitive.
 
 ##### Object Destructuring
@@ -193,7 +194,7 @@ const { name, age } = person;
 
 ##### Spread Operator
 
-The spread operator allows you to create a new object by spreading the
+Object spread arrived a bit later than ES6, in ES2018. The spread operator allows you to create a new object by spreading the
 properties of an existing object.
 
 ```javascript
@@ -209,14 +210,14 @@ another.
 let anotherPerson = Object.assign({}, person, { job: "Engineer" });
 ```
 
-These ES6 features make it easier to work with objects, helping you write
+These features make it easier to work with objects, helping you write
 cleaner and more efficient code.
 
 #### Conclusion
 
 Understanding objects is crucial for effective JavaScript programming. This
-article has covered the basics like object properties, methods, and ES6
-features. For those interested in diving deeper into advanced topics like
+article has covered the basics like object properties, methods, and modern
+object syntax. For those interested in diving deeper into advanced topics like
 prototypes and inheritance, check out my dedicated article on
 [Prototypes and Inheritance in JavaScript](/posts/guide-to-js/prototypes-and-inheritance/).
 Mastering these concepts will enable you to write more organized, reusable, and

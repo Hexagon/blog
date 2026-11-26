@@ -8,6 +8,7 @@ const blocked = [
   "index",
   "guide-to-js",
   "deno-tetris-guide",
+  "guide-to-rust",
 ];
 
 export default function* ({ search }) {

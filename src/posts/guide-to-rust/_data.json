@@ -1,0 +1,19 @@
+{
+  "layout": "post.njk",
+  "title": "The guide to Rust by Hexagon",
+  "description": "Hexagon's guide to Rust, learn Rust from the ground up.",
+  "header": "/img/rust_guide_header.webp",
+  "metas": {
+    "image": "https://hexagon.56k.guru/img/rust_guide_og.webp",
+    "description": "=intro"
+  },
+  "series": {
+    "title": "The guide to Rust",
+    "tag": "guide-to-rust"
+  },
+  "tags": [
+    "rust",
+    "guide",
+    "guide-to-rust"
+  ]
+}

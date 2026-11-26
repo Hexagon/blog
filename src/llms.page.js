@@ -17,7 +17,7 @@ export default async function* ({ search, metas }) {
   const posts = search.pages("post", "date=desc");
   const title = metas?.site || "Hexagon's Blog";
   const summary =
-    "Hexagon's blog about JavaScript, TypeScript, Deno, Bun, Node.js, Linux and open source projects like Croner.";
+    "Hexagon's blog about open source projects like Croner, rootcard and Murmo, and about Rust, JavaScript, TypeScript, Deno, Linux servers, security and AI-assisted operations.";
 
   const header = [`# ${title}`, "", `> ${summary}`, ""];
 

@@ -2,18 +2,19 @@
 title: Asynchronous code with JavaScript
 title_short: Asynchronous Code
 part: 9
-intro: "In this lesson, we will explore asynchronous code in JavaScript, learn what promises is, and how they relate to async/await."
+updated: "2026-11-26T12:00:00Z"
+intro: "In this lesson, we will explore asynchronous code in JavaScript, learn what promises are, and how they relate to async/await."
 ---
 
 Asynchronous operations are those that do not block the current code path, such
-as fetching data from an API, reading a file, or performing a computation.
+as fetching data from an API, reading a file, or waiting for a timer.
 
 There are two ways of handling asynchronous operations in JavaScript:
 
 - **Promises:** objects that represent the eventual completion or failure of an
   asynchronous operation.
-- **Async/await:** convenience features to manage promises without getting into
-  callback hell.
+- **Async/await:** convenience features to work with promises without chaining
+  `.then()` calls.
 
 ## The History of Asynchronous Code in JavaScript
 
@@ -33,13 +34,13 @@ Using promises, you can write code like this:
 ```javascript
 fetchData()
   .then((data) => {
-    // Promise were fulfilled (resolved), we got data!
+    // The promise was fulfilled (resolved), we got data!
   })
   .catch((error) => {
-    // An error were catched (rejected), we got an error insted of data.
+    // The promise was rejected, we got an error instead of data.
   })
   .finally(() => {
-    // This is called whether the promise do resolve, or reject
+    // This is called whether the promise resolves or rejects
   });
 ```
 
@@ -48,8 +49,8 @@ compared to the fully callback-based code.
 
 ## The Rise of Async/Await
 
-While promises were a great addition to javascript, they didn't really invite to
-writing clean code. Async/await was introduced in ES8, also known as ECMAScript
+While promises were a great addition to JavaScript, long chains of `.then()`
+could still get hard to follow. Async/await was introduced in ES8, also known as ECMAScript
 2017, which was finalized in 2017. This feature built upon promises and aimed to
 simplify asynchronous code even further. Async functions, denoted by the async
 keyword, allow developers to write asynchronous code that looks almost
@@ -70,8 +71,8 @@ async function simulatedFetch(url) {
   });
 }
 
-// Now, we fetch data using uor simulated fetch method. Pay attention to the await keyword
-// which do block the progress until the simulated fetch are done
+// Now, we fetch data using our simulated fetch method. Pay attention to the await keyword,
+// which pauses this code until the simulated fetch is done. Other code can still run meanwhile.
 try {
   console.log("Fetching data from 'https://api.example.com/data' ...");
   const response = await simulatedFetch("https://api.example.com/data");
@@ -85,6 +86,10 @@ try {
 This will output the following, with one second delay between the first and
 second row.
 
+Note that the example uses `await` outside of a function, called top-level
+`await`. It works in ES modules, which is the default in Deno and in the browser
+console. In Node.js, save the file as `example.mjs` to run it as a module.
+
 ```
 Fetching data from 'https://api.example.com/data' ...
 Data received: Data from https://api.example.com/data
@@ -96,8 +101,8 @@ I personally prefer `async`/`await` to the callback-based nature of Promises.
 Despite that, there absolutely are scenarios where you may need to utilize them
 both together.
 
-Here is an example, where we fetch data from three api's simultaneously, and
-continue when all three are done, or an error occurr. This is a whole lot
+Here is an example, where we fetch data from three APIs simultaneously, and
+continue when all three are done, or an error occurs. This is a whole lot
 cleaner than making it with promises only, and wouldn't really work the same if
 only using `async`/`await`.
 
@@ -144,7 +149,12 @@ async function fetchAllData() {
     console.error("An error occurred:", error);
   }
 }
+
+fetchAllData();
 ```
+
+All three requests run at the same time, so this takes about two seconds in
+total, instead of four and a half if we awaited them one by one.
 
 ## Async/await and promises are single threaded
 
@@ -152,11 +162,12 @@ Async/await and promises are great to keep a website responsive while waiting
 for requests to finish, or in the back-end waiting for a disk write to be done.
 However, it's crucial to note that JavaScript's event loop operates on a single
 thread. This means that even with asynchronous constructs, the code execution
-remains single-threaded, as an example - if you block javascript with a
+remains single-threaded. As an example, if you block JavaScript with a
 while-loop, nothing else will happen until the loop is done.
 
-For true parallelism and utilization of multi-core processors there is Web
-Workers, which will be covered in a later article.
+For true parallelism and utilization of multi-core processors there are Web
+Workers, which are touched on in the article about the
+[event loop](/posts/guide-to-js/event-loop-and-concurrency/).
 
 ## Importance of Proper Error Handling
 
@@ -179,8 +190,8 @@ additional tips:
   and fully portable between browsers and runtimes like Deno and Node.js.
 
 - Try to be consistent. If you use async/await, use it as far as possible and
-  only work with pure promises when you need to. If you primarily use the
-  Promise/callback pattern in a project, never mix in async/await.
+  only work with promises directly when you need to, like with `Promise.all()`
+  above. Mixing styles at random makes code harder to follow.
 
 For a deep dive into these topics, check out the MDN Reference on
 [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)

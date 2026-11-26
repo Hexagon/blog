@@ -2,6 +2,7 @@
 title: "Prototypes and Inheritance in JavaScript"
 title_short: "Prototypes and Inheritance"
 part: 13
+updated: "2026-11-26T12:00:00Z"
 intro: "In this article, we'll delve into prototypes and inheritance in JavaScript, explaining how they provide a powerful way to create and manage objects. We'll also compare them with other forms of inheritance, particularly the class-based approach seen in languages like Java and C++."
 ---
 
@@ -9,8 +10,9 @@ intro: "In this article, we'll delve into prototypes and inheritance in JavaScri
 
 Prototypes and inheritance are fundamental aspects of JavaScript that often
 perplex beginners. Unlike languages like Java and C++, which use class-based
-inheritance, JavaScript relies on prototypes. This article aims to demystify
-these concepts.
+inheritance, JavaScript relies on prototypes. Even the `class` keyword, which
+we'll get to at the end, is built on top of prototypes. This article aims to
+demystify these concepts.
 
 ## Prototype, Function, and Object: What's the Difference?
 
@@ -19,17 +21,18 @@ terms: prototype, function, and object.
 
 - **Prototype**: A prototype is essentially a "parent" object that other objects
   can inherit properties and methods from.
-- **Function**: Functions in JavaScript can be constructors. They can create
-  objects and also have properties, including their own "prototype."
-- **Object**: Objects are instances of functions created using the `new`
-  keyword. They can have their own properties and methods, and they also inherit
-  from their function's "prototype."
+- **Function**: Functions in JavaScript can be used as constructors, called with
+  the `new` keyword. Every regular function has a `prototype` property, which
+  becomes the prototype of the objects it constructs.
+- **Object**: Objects can be created in many ways, for example with an object
+  literal (`{}`) or with `new` and a constructor function. They have their own
+  properties and methods, and they also inherit from their prototype.
 
 ### What is a prototype?
 
-A prototype is an object from which other objects inherit properties. Every
-object in JavaScript has a prototype, except the base object, which has its
-prototype set to null.
+A prototype is an object from which other objects inherit properties. Almost
+every object in JavaScript has a prototype. At the end of every chain sits
+`Object.prototype`, whose own prototype is `null`.
 
 ```javascript
 // Function: A constructor function
@@ -38,115 +41,169 @@ function Person(name, age) {
   this.age = age;
 }
 
-// Object: An instance of the Person function
+// Object: An instance created by the Person function
 const alice = new Person("Alice", 30);
 
 // Prototype: The "parent" object for all Person objects
-console.log(Person.prototype);
+console.log(Object.getPrototypeOf(alice) === Person.prototype); // Output: true
 ```
 
 ### Accessing an Object's Prototype
 
-You can access an object's prototype in two ways: using the
-`Object.getPrototypeOf()` method or the `__proto__` property.
+The recommended way to get an object's prototype is `Object.getPrototypeOf()`.
+You'll also see the older `__proto__` property in code around the web. It still
+works in browsers, but it's deprecated, so avoid it in new code.
 
 ```javascript
 const john = new Person("John", 30);
-console.log(Object.getPrototypeOf(john)); // Output: Person { ... }
+console.log(Object.getPrototypeOf(john)); // Output: {} (Person.prototype)
 ```
 
-## Prototypes and Memory Efficiency
+## Prototype Members vs. Instance Members
 
-The `prototype` property allows you to add new methods to object constructors.
-These methods will be shared among all instances of the constructor, making your
-code more memory-efficient and easier to manage.
+You can add members (properties or methods) to objects in two primary ways: by
+adding them directly to each object instance, or by adding them to the
+prototype.
 
 ```javascript
-// Adding a member directly to an object instance
 function Person(name, age) {
   this.name = name;
   this.age = age;
+
+  // Instance member: every Person gets its own copy of this function
   this.greet = function () {
     console.log("Hello, my name is " + this.name);
   };
 }
 
-// Adding a member to the object's prototype
+// Prototype member: one function, shared by all Person objects
 Person.prototype.sayGoodbye = function () {
-  console.log("Goodbye, " + this.name);
+  console.log("Goodbye from " + this.name);
 };
+
+const alice = new Person("Alice", 30);
+const bob = new Person("Bob", 40);
+
+console.log(alice.greet === bob.greet); // Output: false, two separate functions
+console.log(alice.sayGoodbye === bob.sayGoodbye); // Output: true, the same function
 ```
 
-### Prototype Members vs. Instance Members
-
-In JavaScript, you can add members (properties or methods) to an object in two
-primary ways: by adding them directly to each object instance or by adding them
-to the object's prototype.
-
-```javascript
-// Adding a member directly to an object instance
-function Person(name, age) {
-  this.name = name;
-  this.age = age;
-  this.greet = function () {
-    console.log("Hello, my name is " + this.name);
-  };
-}
-
-// Adding a member to the object's prototype
-Person.prototype.sayGoodbye = function () {
-  console.log("Goodbye, " + this.name);
-};
-```
+If you create thousands of objects, prototype members save a lot of memory, as
+the method only exists once. They are also easier to change, as updating the
+prototype updates every object at once.
 
 ## The Prototype Chain
 
 The prototype chain is a series of linked prototypes. When you try to access a
 property or method on an object, JavaScript first looks for it on the object
-itself. If it doesn't find it there, it checks the object's prototype, and so on
-up the prototype chain.
+itself. If it doesn't find it there, it checks the object's prototype, then the
+prototype's prototype, and so on, until it reaches `null`.
 
 ### Prototype Chain in Action
 
-Here, we'll look at a practical example that demonstrates the prototype chain.
+```javascript
+const alice = new Person("Alice", 30);
+
+// 'name' is found directly on alice
+console.log(alice.name); // Output: "Alice"
+
+// 'sayGoodbye' is not on alice, but on Person.prototype
+alice.sayGoodbye(); // Output: "Goodbye from Alice"
+
+// 'toString' is not on alice or Person.prototype, but on Object.prototype
+console.log(alice.toString()); // Output: "[object Object]"
+
+// 'fly' is nowhere in the chain
+console.log(alice.fly); // Output: undefined
+
+console.log(alice.hasOwnProperty("name")); // Output: true
+console.log(alice.hasOwnProperty("sayGoodbye")); // Output: false
+```
 
 ## Inheritance in JavaScript
 
 Inheritance allows objects to inherit properties and methods from other objects.
-This is a fundamental concept in object-oriented programming.
+With constructor functions, you link the prototypes yourself:
 
 ```javascript
 function Employee(name, age, position) {
+  // Run the Person constructor on this object
   Person.call(this, name, age);
   this.position = position;
 }
 
+// Make Employee.prototype inherit from Person.prototype
 Employee.prototype = Object.create(Person.prototype);
+Employee.prototype.constructor = Employee;
 
-let charlie = new Employee("Charlie", 50, "Manager");
+Employee.prototype.describe = function () {
+  console.log(this.name + " works as " + this.position);
+};
+
+const charlie = new Employee("Charlie", 50, "Manager");
 charlie.greet(); // Output: "Hello, my name is Charlie"
+charlie.sayGoodbye(); // Output: "Goodbye from Charlie", found on Person.prototype
+charlie.describe(); // Output: "Charlie works as Manager"
+console.log(charlie instanceof Person); // Output: true
 ```
 
-### Inheritance Patterns in JavaScript
+The chain for `charlie` is now: `charlie` → `Employee.prototype` →
+`Person.prototype` → `Object.prototype` → `null`.
 
-JavaScript offers multiple ways to implement inheritance, including prototypal
-inheritance and ES6 classes.
+### ES6 Classes
+
+ES6 introduced the `class` keyword, which gives you the same thing with a much
+cleaner syntax. This will look familiar if you come from Java or C++, but under
+the hood, it's still prototypes.
+
+```javascript
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  // Methods in a class body end up on Person.prototype
+  sayGoodbye() {
+    console.log("Goodbye from " + this.name);
+  }
+}
+
+class Employee extends Person {
+  constructor(name, age, position) {
+    super(name, age); // Calls the Person constructor
+    this.position = position;
+  }
+
+  describe() {
+    console.log(this.name + " works as " + this.position);
+  }
+}
+
+const charlie = new Employee("Charlie", 50, "Manager");
+charlie.sayGoodbye(); // Output: "Goodbye from Charlie"
+charlie.describe(); // Output: "Charlie works as Manager"
+```
+
+For new code, classes are usually the better choice. Knowing how prototypes work
+is still valuable, as it explains what classes actually do, and you'll find
+constructor functions in lots of existing code.
 
 ## Related Articles
 
 For a more comprehensive understanding, you may refer to other related articles
 such as:
 
-- [Working with Objects in JavaScript](#)
-- [ES6 Features in JavaScript](#)
+- [Working with Objects in JavaScript](/posts/guide-to-js/objects-in-javascript/)
+- [The Evolution of JavaScript and Why It Matters](/posts/guide-to-js/evolution-of-javascript/)
 
 ## Further Reading
 
 If you wish to dive deeper into the topics of prototypes and inheritance,
 consider the following resources:
 
-- [JavaScript: The Good Parts by Douglas Crockford](#)
-- [Eloquent JavaScript by Marijn Haverbeke](#)
+- [Inheritance and the prototype chain, on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
+- [Eloquent JavaScript by Marijn Haverbeke](https://eloquentjavascript.net/), free to read online
 
 ## Conclusion
 

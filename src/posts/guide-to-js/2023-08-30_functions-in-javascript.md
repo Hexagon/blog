@@ -2,9 +2,10 @@
 title: "Functions and type guards in JavaScript"
 title_short: "Functions"
 part: 4
+updated: "2026-11-26T12:00:00Z"
 intro: "Now that we've covered control structures, let's step into another cornerstone
 of JavaScript: functions. Functions allow us to bundle code into reusable
-pieces. We will also cover type guards. Functions help reduce repetition and makes our code neater."
+pieces. We will also cover type guards. Functions help reduce repetition and make our code neater."
 ---
 
 ## What's a Function?
@@ -129,23 +130,24 @@ functions.
 let add = (a, b) => a + b;
 ```
 
-Unlike regular functions, arrow functions don't have their own scope. `this` is
-always inherited from where the arrow function was defined. Don't worry if you
+Unlike regular functions, arrow functions don't have their own `this`. Instead,
+`this` is inherited from where the arrow function was defined. Don't worry if you
 don't get 'scope' and 'this' yet. We'll cover these in detail later. But it's
 worth noting that there's more to it than how it looks.
 
-### Constructor Functions:
+### The Function Constructor:
 
-You can also create functions using the Function constructor, though it's less
-common.
+You can also create functions from strings using the `Function` constructor.
+This is rarely a good idea, as it works much like `eval()`, but it's good to
+know that it exists.
 
 ```javascript
 let multiply = new Function("a", "b", "return a * b");
 ```
 
-### Self-invoking Functions:
+### Immediately Invoked Function Expressions (IIFE):
 
-These are functions that call themselves as soon as they're defined.
+These are functions that run as soon as they're defined.
 
 ```javascript
 (function (name) {
@@ -155,7 +157,7 @@ These are functions that call themselves as soon as they're defined.
 
 Each method has its own use cases. Regular functions and function expressions
 are commonly used, while arrow functions are handy for short operations or when
-working with this keyword.
+you want to keep the `this` of the surrounding code.
 
 ## Dealing with Dynamic Types in JavaScript
 

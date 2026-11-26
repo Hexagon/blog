@@ -2,6 +2,7 @@
 title: "Closures and Scopes in JavaScript"
 title_short: "Scopes and Closures"
 part: 12
+updated: "2026-11-26T12:00:00Z"
 intro: "In this article, we explore the important concepts of closures and scopes in JavaScript. Understand how scope works, what closures are, and how to use these features to write cleaner, more maintainable code."
 ---
 
@@ -14,8 +15,9 @@ them is crucial for writing maintainable and efficient JavaScript code.
 ## Understanding Scope
 
 Scope in JavaScript refers to the current context of code, which determines the
-accessibility of variables. There are three types of scope: Global Scope,
-Function Scope, and Block Scope.
+accessibility of variables. There are three main types of scope: Global Scope,
+Function Scope, and Block Scope. ES modules also add a Module Scope, where
+top-level variables in a module are only visible inside that module.
 
 ### Global Scope
 
@@ -35,18 +37,24 @@ function accessGlobalVar() {
 accessGlobalVar();
 ```
 
-#### The global object property
+#### The global object
 
-In JavaScript environments, global variables are actually properties of the
-global object. In browsers, the global object is window, and in Node.js, it's
-global.
+JavaScript environments have a global object. In browsers it's called `window`,
+in Node.js it's `global`, and everywhere, including Deno and Bun, you can reach
+it as `globalThis`.
+
+Variables declared with `var` at the top level of a classic browser script
+become properties of the global object. Variables declared with `let` and
+`const` do not, and neither does anything in an ES module, where top-level
+variables stay in the module scope.
 
 ```javascript
-// In a browser
-console.log(window.globalVar); // Output: "I am a global variable"
+// In a classic browser script
+var oldStyle = "I am on the global object";
+const newStyle = "I am not";
 
-// In Node.js
-console.log(global.globalVar); // Output: "I am a global variable"
+console.log(globalThis.oldStyle); // Output: "I am on the global object"
+console.log(globalThis.newStyle); // Output: undefined
 ```
 
 #### The dangers of global scope
@@ -79,8 +87,9 @@ In JavaScript, each function creates its own scope, also known as function scope
 or local scope. Variables declared within a function are confined to that
 function and are not accessible outside it.
 
-A variable declared within a function is only accessible within that function
-and is destroyed once the function has been executed. This makes function scope
+A variable declared within a function is only accessible within that function,
+and is normally thrown away once the function has finished. The exception is
+closures, which we'll get to in a moment. This makes function scope
 a useful tool for variable encapsulation and data privacy.
 
 ```javascript
@@ -112,8 +121,8 @@ if (true) {
 ```
 
 Block-scoped variables can also be nested within other blocks, creating a
-hierarchy of scopes. This is particularly useful for complex algorithms and data
-structures like trees and linked lists.
+hierarchy of scopes. Inner blocks can see the variables of outer blocks, but not
+the other way around.
 
 ```javascript
 {
@@ -130,8 +139,8 @@ structures like trees and linked lists.
 ## Variable hoisting
 
 In JavaScript, variable declarations are "hoisted" to the top of their scope
-during compilation. However, only the declarations are hoisted, not the
-initializations
+before the code runs. However, only the declarations are hoisted, not the
+initializations.
 
 ```javascript
 function hoistingExample() {
@@ -156,8 +165,9 @@ block.
 
 ## What Are Closures?
 
-A closure is a function that has access to its own scope, the scope of the outer
-function, and the global scope.
+A closure is a function together with the variables from the scope where it was
+created. The function keeps access to those variables, even after the outer
+function has returned.
 
 ```javascript
 function outerFunction() {
@@ -202,6 +212,21 @@ console.log(myCounter()); // Output: 2
 
 Closures are often used in event handlers and callbacks to preserve state even
 after the executing context has exited.
+
+```javascript
+function startCountdown(seconds) {
+  let remaining = seconds;
+  const timer = setInterval(() => {
+    // The callback still has access to 'remaining' and 'timer',
+    // long after startCountdown has returned
+    remaining--;
+    console.log(remaining);
+    if (remaining === 0) clearInterval(timer);
+  }, 1000);
+}
+
+startCountdown(3); // Outputs 2, 1, 0, one second apart
+```
 
 ### Module Pattern
 
