@@ -24,6 +24,8 @@ import lang_bash from "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/langu
 import lang_xml from "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/xml.min.js";
 import lang_json from "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/json.min.js";
 import lang_yaml from "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/yaml.min.js";
+import lang_rust from "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/rust.min.js";
+import lang_ini from "https://unpkg.com/@highlightjs/cdn-assets@11.6.0/es/languages/ini.min.js";
 
 // Initiate site
 const site = lume({
@@ -44,6 +46,8 @@ site.use(
       xml: lang_xml,
       json: lang_json,
       yaml: lang_yaml,
+      rust: lang_rust,
+      toml: lang_ini,
     },
   }),
 );

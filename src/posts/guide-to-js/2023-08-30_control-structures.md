@@ -2,6 +2,7 @@
 title: "Control Structures in JavaScript"
 title_short: "Control Structures"
 part: 3
+updated: "2026-11-26T12:00:00Z"
 intro: "Control structures in JavaScript dictate how your code runs. They decide the
 flow of operations based on conditions and can repeat sections of code multiple
 times. Let's get a better understanding of these structures and their uses."
@@ -27,6 +28,7 @@ Here are common conditions you'll use:
 - **Logical AND (&&):** Both conditions must be true for the whole condition to
   be true.
 - **Logical OR (||):** If one condition is true, the whole condition is true.
+- **Logical NOT (!):** Flips a condition, `!true` is `false`.
 
 As you can see, in JavaScript, there are two main ways to compare values: `==`
 and `===`. It's important to know the difference.
@@ -65,7 +67,7 @@ Now, let's see how conditional statements help your code make decisions:
 
 ```javascript
 let age = 25;
-if (age > 18) {
+if (age >= 18) {
   console.log("You are an adult");
 }
 ```
@@ -74,7 +76,7 @@ if (age > 18) {
    isn't met, the 'else' part runs.
 
 ```javascript
-if (age > 18) {
+if (age >= 18) {
   console.log("You are an adult");
 } else {
   console.log("You are a minor");
@@ -157,7 +159,8 @@ for (let color of colors) {
 }
 ```
 
-5. **For...in Loop**: Used to iterate over the properties of an object.
+5. **For...in Loop**: Used to iterate over the keys (property names) of an
+   object. Avoid it for arrays, use `for...of` there.
 
 ```javascript
 let person = { name: "John", age: 25, city: "Paris" };

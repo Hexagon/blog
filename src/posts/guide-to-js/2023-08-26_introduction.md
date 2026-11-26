@@ -3,7 +3,7 @@ title: The Guide to JavaScript - Introduction
 title_short: Introduction
 part: 1
 priority: 1.0
-updated: "2023-09-08T14:44:00Z"
+updated: "2026-11-26T12:00:00Z"
 intro: "The aim of this series is to give a thorough understanding of vanilla JavaScript and its many features. We won't be using any external libraries, and all the code will be cross-runtime. It'll work seamlessly whether you're in a browser or using runtimes like Deno, Bun or Node.js."
 ---
 
@@ -27,8 +27,8 @@ to mastering JavaScript.
 - **Anti-Patterns and Best Practices**: Learn what not to do and how to write
   more efficient code.
 
-Each article takes about 5-15 minutes to read, and spare at least 20 minutes for
-exercises after each.
+Each article takes about 5-15 minutes to read. Set aside at least as much time
+again to play around with the examples, that's where the learning happens.
 
 ## Our First Dive into JavaScript
 
@@ -58,5 +58,5 @@ use JavaScript. You can always choose to run the code using:
 Congratulations! You've just written and run your first JavaScript code that
 works across multiple platforms.
 
-That's it for now, you find the next article on the link just below, or at the
+That's it for now, you'll find the next article on the link just below, or at the
 top of the page, under "The guide to JavaScript".

@@ -2,12 +2,13 @@
 title: "Error Handling and Debugging in JavaScript"
 title_short: "Error Handling"
 part: 11
+updated: "2026-11-26T12:00:00Z"
 intro: "In this article, we delve into the essential aspects of error handling and debugging in JavaScript. Learn about different types of errors, advanced debugging techniques, and various error-handling mechanisms to develop robust and maintainable JavaScript applications."
 ---
 
 ## Introduction
 
-In a previous article, we touched the basics of debugging using `console.log()`
+In a previous article, we touched on the basics of debugging using `console.log()`
 and `console.error()`. But debugging is more than that. As your projects grow in
 complexity, you'll need a broader set of tools and techniques to handle errors
 and debug effectively.
@@ -17,10 +18,11 @@ and debug effectively.
 ### Syntax Errors
 
 Syntax errors are straightforward: the code won't even run if there's a syntax
-issue.
+issue. Here, the closing quote is missing:
 
 ```javascript
-let name = "John";
+let name = "John;
+// SyntaxError: Invalid or unexpected token
 ```
 
 ### Runtime Errors
@@ -29,6 +31,7 @@ These errors occur while the program is running.
 
 ```javascript
 let x = undefinedVariable;
+// ReferenceError: undefinedVariable is not defined
 ```
 
 ### Logical Errors
@@ -51,8 +54,10 @@ console.log("Average:", avg);
 ```
 
 Here, the loop goes from 0 to numbers.length instead of numbers.length - 1. This
-won't throw any runtime or syntax errors, but the function will return the wrong
-average because numbers[numbers.length] is undefined.
+won't throw any runtime or syntax errors, but the function will print
+`Average: NaN`. The last round of the loop reads `numbers[numbers.length]`,
+which is `undefined`, and adding `undefined` to a number gives `NaN`. The fix is
+to use `<` instead of `<=`.
 
 ## Advanced `console` Functions
 
@@ -169,7 +174,9 @@ main();
 ```
 
 In this example, `'This will run.'` will be printed, but `'This will NOT run'`
-will not, because the Promise rejection is not caught.
+will not, because the Promise rejection is not caught. Instead, you'll get an
+"unhandled promise rejection". In Deno and Node.js, that stops the whole
+program.
 
 To handle this, you can explicitly catch the Promise:
 
@@ -195,6 +202,28 @@ So, if you're not using `await`, make sure to attach a `.catch()` to the Promise
 to handle any errors.
 
 ## Debugging Best Practices
+
+### Use the Debugger
+
+`console.log()` gets you far, but a real debugger lets you pause the code and
+look at every variable at that point. Add the `debugger` statement where you
+want to stop:
+
+```javascript
+function calculateAverage(numbers) {
+  let sum = 0;
+  for (let i = 0; i <= numbers.length; i++) {
+    debugger; // Execution pauses here when developer tools are open
+    sum += numbers[i];
+  }
+  return sum / numbers.length;
+}
+```
+
+In the browser, open the developer tools (`F12`) before running the code. In
+Deno and Node.js, start your script with `--inspect-brk` and attach Chrome by
+opening `chrome://inspect`. You can also set breakpoints by clicking on a line
+number in the Sources tab, without changing the code at all.
 
 ### Use Version Control
 

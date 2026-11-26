@@ -2,6 +2,7 @@
 title: Fundamental Concepts of JavaScript
 title_short: Fundamental Concepts
 part: 2
+updated: "2026-11-26T12:00:00Z"
 intro: "In this section we'll cover the key elements that are essential to working with
 JavaScript. We'll touch on variables, debugging methods, and core principles.
 Let's dive in!"
@@ -16,33 +17,34 @@ Think of variables in JavaScript as buckets that hold data. JavaScript is
 data will go into the bucket when you create it. The type of data a variable
 holds can also change as you go along.
 
-## How to declare variables?
+### How to declare variables?
 
 You declare variables using one of the keywords `var`, `let`, and `const`.
 
 - `let`: Allows you to declare a block-level variable.
 - `const`: Declares a block-level constant, meaning its value can't be
   reassigned.
-- `var`: The old way to declare variables that is most similar to `let`. Still
-  works, but should be avoided.
+- `var`: The old way to declare variables. It works a lot like `let`, but is
+  scoped to the whole function instead of the block. Still works, but should be
+  avoided.
 
-## Setting and changing the value of variables
+### Setting and changing the value of variables
 
 ```javascript
 let name = "Hexagon"; // Storing a string
 const pi = 3.14159; // Storing a number
 ```
 
-Now, you can change the username variable to a number later if you want:
+Now, you can change the `name` variable to a number later if you want:
 
 ```javascript
 name = 42;
 ```
 
-But `pi` can't change because it's a `const`. If you try to change the value if
+But `pi` can't change because it's a `const`. If you try to change the value of
 a `const`, your program will stop and display a message like
 `Uncaught TypeError: Assignment to constant variable.`. In a later article,
-we'll look in to how you can handle cases like this without the code stopping.
+we'll look into how you can handle cases like this without the code stopping.
 
 ## Comments in JavaScript
 
@@ -77,7 +79,7 @@ without needing a bunch of comments.
 
 `console.log()` is often the first thing you'll learn for debugging. It's a way
 to check variable values or just show messages. And guess what? It works the
-same whether you're coding for a browser, Node.js, or Deno.
+same whether you're coding for a browser, Node.js, Deno or Bun.
 
 ```javascript
 let greeting = "Hello, World!";

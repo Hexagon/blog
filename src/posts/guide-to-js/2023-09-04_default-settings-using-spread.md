@@ -2,7 +2,8 @@
 title: Building a Default Settings System Using the Spread Operator
 title_short: Default Settings System
 part: 10
-intro: "Today, We'll have a look at how the spread operator works by building a small system for managing default settings and overrides."
+updated: "2026-11-26T12:00:00Z"
+intro: "Today, we'll have a look at how the spread operator works by building a small system for managing default settings and overrides."
 ---
 
 In many applications, you often need a set of default settings as a baseline
@@ -33,7 +34,7 @@ URL, timeout duration, and a debug mode flag.
 
 ## Building the Default Settings System
 
-Now, let's create a function that merge in user-defined settings while
+Now, let's create a function that merges in user-defined settings while
 preserving the defaults:
 
 ```javascript
@@ -73,6 +74,23 @@ object with merged settings:
     apiUrl: 'https://api.example.com',
     timeout: 10000,
     debugMode: false,
+}
+```
+
+## A note on nested settings
+
+The spread operator makes a shallow merge. If a setting is itself an object,
+like `retry: { attempts: 3, delay: 1000 }`, a user that passes
+`retry: { attempts: 5 }` replaces the whole `retry` object, and `delay` is lost.
+For settings like that, spread them one level down as well:
+
+```javascript
+function applySettings(defaultSettings, userSettings) {
+  return {
+    ...defaultSettings,
+    ...userSettings,
+    retry: { ...defaultSettings.retry, ...userSettings.retry },
+  };
 }
 ```
 

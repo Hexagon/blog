@@ -2,6 +2,7 @@
 title: "Design Patterns in JavaScript"
 title_short: "Design Patterns"
 part: 14
+updated: "2026-11-26T12:00:00Z"
 intro: "In this article, we'll explore common design patterns in JavaScript and how they can help you write clean, maintainable, and efficient code."
 ---
 
@@ -183,7 +184,7 @@ should avoid.
 
 ### Resolving the God Object
 
-Bad practise
+Bad practice
 
 ```javascript
 class GodObject {
@@ -205,7 +206,7 @@ class GodObject {
 }
 ```
 
-Good practise
+Good practice
 
 ```javascript
 class DataReader {
@@ -229,7 +230,7 @@ class UI {
 
 ### Resolving spaghetti code
 
-Bad Practise (Spaghetti Code)
+Bad Practice (Spaghetti Code)
 
 ```javascript
 function doEverything() {
@@ -240,7 +241,7 @@ function doEverything() {
 }
 ```
 
-Good Practise (Modular Code)
+Good Practice (Modular Code)
 
 ```javascript
 function initialize() {
@@ -255,21 +256,24 @@ function renderUI() {
   // UI rendering
 }
 
-function handleError() {
+function handleError(error) {
   // Error handling
 }
 
 function main() {
-  initialize();
-  processData();
-  renderUI();
-  handleError();
+  try {
+    initialize();
+    processData();
+    renderUI();
+  } catch (error) {
+    handleError(error);
+  }
 }
 ```
 
 ### Callback Hell
 
-Bad practise
+Bad practice
 
 ```javascript
 getData(function (a) {
@@ -281,7 +285,7 @@ getData(function (a) {
 });
 ```
 
-Good Practises
+Good Practices
 
 ```javascript
 // Using Promises

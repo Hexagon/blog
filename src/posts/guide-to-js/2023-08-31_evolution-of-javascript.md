@@ -2,6 +2,7 @@
 title: The Evolution of JavaScript and Why It Matters
 title_short: The Evolution
 part: 6
+updated: "2026-11-26T12:00:00Z"
 intro: "Understanding the past and how we got here can give us good hints about where
 we're going. Let's dig into JavaScript's history and how it's grown over time.
 Knowing this stuff will help us when we move on to more complicated topics like
@@ -12,8 +13,9 @@ Promises, template literals, async/await, and the latest JavaScript features."
 
 JavaScript was created back in 1995 by Brendan Eich while he was working at
 Netscape. It was meant to be a simple language to add interactivity to websites.
-Eich put together the first version in just 10 days. Since then, it quickly
-became a cornerstone for both front-end and back-end web development.
+Eich put together the first version in just 10 days. It quickly became a
+cornerstone of front-end web development, and with Node.js in 2009, it moved to
+the back-end as well.
 
 ## ECMAScript: The Rule Book
 
@@ -32,24 +34,28 @@ language.
 - **ES6 / ES2015:** Big update that added `let` and `const`, arrow functions,
   template literals, and more.
 
-- **ES2016:** Introduced the exponentiation operator `(**)` and
-  `Array.prototype.includes`
+- **ES2016:** Introduced the exponentiation operator (`**`) and
+  `Array.prototype.includes`.
 
 - **ES2017:** Added `async`/`await`, `Object.values`, `Object.entries`,
-  `String.padStart`/`padEnd`
+  `String.prototype.padStart`/`padEnd`.
 
-- **ES2018:** Brought in rest/spread properties, `Promise.finally`, and
+- **ES2018:** Brought in rest/spread properties, `Promise.prototype.finally`, and
   asynchronous iteration.
 
-- **ES2019**: Added `Array.flat`/`flatMap`, `Object.fromEntries`,
-  `String.trimStart`/`trimEnd`, and optional catch binding.
+- **ES2019:** Added `Array.prototype.flat`/`flatMap`, `Object.fromEntries`,
+  `String.prototype.trimStart`/`trimEnd`, and optional catch binding.
 
-- **ES11 / ES2020**: Introduced optional chaining (`?.`), nullish coalescing
-  operator (``??`),`BigInt``, and dynamic import.
+- **ES2020:** Introduced optional chaining (`?.`), the nullish coalescing
+  operator (`??`), `BigInt`, and dynamic `import()`.
 
-A great way for you to check feature compability with your intended
-runtime/browser is to check MDN, this is an example of `async` browser/runtime
-compability
+- **ES2021 and later:** A new version is released every year, with smaller
+  additions like `String.prototype.replaceAll`, top-level `await`, `Array.prototype.at`
+  and `Object.groupBy`.
+
+A great way for you to check feature compatibility with your intended
+runtime/browser is to check MDN. This is an example of `async` browser/runtime
+compatibility:
 [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function#browser_compatibility](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function#browser_compatibility)
 
 ## CommonJS to ES Modules: Time to Switch
