@@ -1,15 +1,15 @@
 {% if enable_toc %}
-    {% if toc.length %}  
+    {% if toc | length %}  
         <h2>Table of Contents</h2>
         <ol class="toc">
         {% for item in toc %}
             <li>
-                <a href="#{{ item.data.url }}">{{ item.text }}</a>
-                {% if item.children.length %}
+                <a href="#{{ item.id }}">{{ item.text }}</a>
+                {% if item.children | length %}
                 <ul>
                 {% for child in item.children %}
                 <li>
-                    <a href="#{{ child.data.url }}">{{ child.text }}</a>
+                    <a href="#{{ child.id }}">{{ child.text }}</a>
                 </li>
                 {% endfor %}
                 </ul>

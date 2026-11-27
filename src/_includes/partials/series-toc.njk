@@ -1,9 +1,9 @@
 <!-- Current Series TOC -->
-{% if page.data.series %}
+{% if page.series %}
     <nav>
-        <h4>{{ page.data.series.title }}</h4>
+        <h4>{{ page.series.title }}</h4>
         <ul>
-            {% for subpost in search.pages(page.data.series.tag, "part") %}
+            {% for subpost in search.pages(page.series.tag, "part") %}
                 <li><a class="{% if subpost.url == url %}link-secondary{% endif %}" href="{{ subpost.url }}">{{subpost.part}}. {{ subpost.title_short or subpost.title }}</a></li>
             {% endfor %}
         </ul>

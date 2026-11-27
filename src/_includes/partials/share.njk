@@ -1,9 +1,9 @@
-{% set shareUrl = page.data.url | url(true) %}
+{% set shareUrl = url | url(true) %}
 {% set u = shareUrl | urlencode %}
-{% set t = page.data.title | urlencode %}
+{% set t = page.title | urlencode %}
 <div class="share" aria-label="Share this post">
   <span class="share-prompt">$ share</span>
-  <button type="button" class="share-native" data-url="{{ shareUrl }}" data-title="{{ page.data.title }}" title="Share or copy link"><i class="fas fa-share-nodes"></i> <span>share</span></button>
+  <button type="button" class="share-native" data-url="{{ shareUrl }}" data-title="{{ page.title }}" title="Share or copy link"><i class="fas fa-share-nodes"></i> <span>share</span></button>
   <a href="https://news.ycombinator.com/submitlink?u={{ u }}&amp;t={{ t }}" target="_blank" rel="noopener" title="Submit to Hacker News"><i class="fab fa-hacker-news"></i> hn</a>
   <a href="https://www.reddit.com/submit?url={{ u }}&amp;title={{ t }}" target="_blank" rel="noopener" title="Share on Reddit"><i class="fab fa-reddit-alien"></i> reddit</a>
   <a href="https://bsky.app/intent/compose?text={{ t }}%20{{ u }}" target="_blank" rel="noopener" title="Share on Bluesky"><i class="fas fa-cloud"></i> bsky</a>

@@ -47,7 +47,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Highlightjs Customization */
-.hljs {
+.hl-code {
   border-radius: 3px;
 }
 
@@ -260,7 +260,7 @@ a .badge, a.badge {
 .header-image {
   border-radius: 12px;
 }
-.hljs {
+.hl-code {
   border-radius: 8px;
 }
 
@@ -402,7 +402,7 @@ pre {
   border: 1px solid var(--code-border);
   border-radius: 6px;
 }
-.hljs { border-radius: 6px; }
+.hl-code { border-radius: 6px; }
 :not(pre) > code {
   border-radius: 3px;
   padding: 0.1em 0.35em;

@@ -1,0 +1,16 @@
+# {{ metas.site }}
+
+> Hexagon's blog about open source projects like Croner, rootcard and Murmo, and about Rust, JavaScript, TypeScript, Deno, Linux servers, security and AI-assisted operations.
+
+Full text of all posts: {{ "/llms-full.txt" | url(true) }}
+
+## Posts
+
+{% for p in search.pages("post", "date=desc") -%}
+{% set desc = (p.description or p.intro) | one_line -%}
+- [{{ p.title | one_line }}]({{ p.url | url(true) }}){% if desc %}: {{ desc }}{% endif %}
+{% endfor %}
+## Optional
+
+- [Archive]({{ "/archive/" | url(true) }}): All posts grouped by tag
+- [RSS feed]({{ "/feed.rss" | url(true) }}): Latest posts

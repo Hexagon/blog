@@ -10,7 +10,7 @@ tags: index
     <p class="lead-text">I've been building things for the web since 1996, and releasing them as open source for most of that time. My best-known project is <a href="https://croner.56k.guru" target="_blank">Croner</a>, a cron scheduler that started in JavaScript and now exists for Rust, Python, .NET and C++, all following the <a href="https://github.com/open-source-cron/ocps" target="_blank">Open Cron Pattern Standard</a>. Lately I've been working on <a href="https://github.com/rootcard/rootcard" target="_blank">rootcard</a>, a federated identity where the server never sees your password, and <a href="https://murmo.org" target="_blank">Murmo</a>, an end-to-end encrypted messenger built on top of it.</p>
     <p>The blog covers what I happen to be working on: Rust and JavaScript, runtimes like Deno, Linux servers, security and identity, and letting AI help out with the day-to-day running of things. I'm all about Open Source, portable code and minimal bloat.</p>
     <p>Looking for something longer? Check out the series <a href="/posts/guide-to-rust/introduction/">The guide to Rust</a>, <a href="/posts/guide-to-js/introduction/">The guide to JavaScript</a> and <a href="/posts/ssh-keys-passwordless-login/">SSH keys and passwordless login</a>.</p>
-    <p>This blog is built using <a href="https://deno.land" target="_blank">Deno</a> and <a href="https://lume.land" target="_blank">Lume</a>, and the source code is available at <a href="https://github.com/hexagon/blog">github.com/hexagon/blog</a>.</p>
+    <p>This blog is built using <a href="https://ombryt.56k.guru" target="_blank">ombryt</a>, a static site generator I wrote in Rust, and the source code is available at <a href="https://github.com/hexagon/blog">github.com/hexagon/blog</a>.</p>
     <br>
     <hr>
     <h2 class="mb-4 mt-5 section-title">Recent posts</h2>
@@ -27,9 +27,9 @@ tags: index
                         {% endif %}
 
                         <!-- Date -->
-                        <time datetime="{{ subpost.date | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
+                        <time datetime="{{ subpost.date | date('ISO') }}">
                             {{ subpost.date | date }}</time>{% if subpost.updated %}<span>, Updated:</span>
-                        <time datetime="{{ subpost.updated | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
+                        <time datetime="{{ subpost.updated | date('ISO') }}">
                             {{ subpost.updated | date }}
                         </time>
                         {% endif %}

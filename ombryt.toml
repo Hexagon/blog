@@ -1,0 +1,24 @@
+[site]
+url = "https://hexagon.56k.guru"
+title = "Hexagon's Blog"
+description = "Hexagon on JavaScript, TypeScript, Deno, Rust, Linux servers, security and open source."
+language = "en"
+author = { name = "Hexagon", url = "https://hexagon.56k.guru" }
+
+[build]
+src = "src"
+out = "_site"
+strict_links = true
+
+[highlight]
+theme = "OneHalfDark"
+light_theme = "OneHalfLight"
+light_selector = "[data-theme=light]"
+
+[[feeds]]
+query = "post"
+limit = 20
+rss = "/feed.rss"
+json = "/feed.json"
+content = "intro"
+exclude_tags = ["post", "standalone", "index"]

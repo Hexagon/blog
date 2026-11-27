@@ -3,12 +3,13 @@
 ## Introduction
 
 Welcome to the source code repository for my blog -
-[hexagon.56k.guru](https://hexagon.56k.guru), powered by Deno and Lume. Feel
+[hexagon.56k.guru](https://hexagon.56k.guru), built with [ombryt](https://ombryt.56k.guru). Feel
 free to check out the code, contribute, or even guest blog!
 
 ## Getting Started
 
-Make sure Deno is installed on your computer.
+Install [ombryt](https://ombryt.56k.guru/guide/getting-started/) (`cargo install ombryt --locked`, or a release
+binary).
 
 Clone the repo:
 
@@ -20,18 +21,21 @@ cd blog
 To run the blog locally:
 
 ```bash
-deno task serve
+ombryt serve
 ```
 
 ... or to just generate the site to sub-folder `_site`
 
 ```bash
-deno task lume
+ombryt build
 ```
+
+To publish on the server, `scripts/site.sh build`, then `stage` and `deploy` (what `deno task build`, `stage`
+and `deploy` did).
 
 ## Directory Structure
 
-- `/_config.ts`: Lume configuration
+- `/ombryt.toml`: ombryt configuration
 - `/src`: The core source code
   - `/_includes`: Templates for site partials
   - `/css`: Copied to `_site` at build time
