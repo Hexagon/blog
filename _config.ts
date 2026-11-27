@@ -113,6 +113,9 @@ site.copy("css");
 site.copy("img");
 site.copy("robots.txt");
 site.copy("humans.txt");
+site.copy("favicon.svg");
+site.copy("favicon.ico");
+site.copy("apple-touch-icon.png");
 
 // Success!
 export default site;
