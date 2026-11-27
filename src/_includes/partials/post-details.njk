@@ -1,28 +1,28 @@
-{% if page.data.header %}
-  <img src="{{ page.data.header }}" class="header-image" alt="{{ page.data.title }}">
+{% if page.header %}
+  <img src="{{ page.header }}" class="header-image" alt="{{ page.title }}">
 {% endif %}
 <hgroup class="post-header">
-  <h1><a href="{{ page.data.url }}" class="link-secondary">{{page.data.title}}</a></h1>
+  <h1><a href="{{ page.url }}" class="link-secondary">{{page.title}}</a></h1>
   <p>
-    {% if page.data.author %}
-        by <strong>{{ page.data.author.name }}</strong>, 
+    {% if page.author %}
+        by <strong>{{ page.author.name }}</strong>, 
     {% endif %}
 
     <!-- Date -->
-    <time class="mb-1" datetime="{{ page.data.date | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
-        {{ page.data.date | date }}</time>{% if page.data.updated %}<span>, Updated:</span>
-      <time class="mb-1" datetime="{{ page.data.updated | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
-        {{ page.data.updated | date }}
+    <time class="mb-1" datetime="{{ page.date | date('ISO') }}">
+        {{ page.date | date }}</time>{% if page.updated %}<span>, Updated:</span>
+      <time class="mb-1" datetime="{{ page.updated | date('ISO') }}">
+        {{ page.updated | date }}
       </time>
     {% endif %}
     
     <!-- Reading time -->
-    <span class="badge badge-alt">{{ page.data.readingInfo.minutes }} min read</span>
+    <span class="badge badge-alt">{{ page.reading.minutes }} min read</span>
 
     <!-- License -->
     <!--
-    {% if page.data.license %}
-      <span class="badge text-bg-success">{{ page.data.license }}</span>
+    {% if page.license %}
+      <span class="badge text-bg-success">{{ page.license }}</span>
     {% endif %}
     -->
     

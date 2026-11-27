@@ -1,13 +1,12 @@
 ---
 layout: page.njk
-title: Hexagon's Blog - Archive
 ---
 
 <section>
 
-    {% if tag %}
+    {% if term %}
         <hgroup>
-            <h1 class="hello">archive <span class="tag-filter">#{{ tag }}</span></h1>
+            <h1 class="hello">archive <span class="tag-filter">#{{ term }}</span></h1>
             <p class="cd-back"><a href="/archive/">cd ..</a></p>
         </hgroup>
     {% else %}
@@ -17,9 +16,9 @@ title: Hexagon's Blog - Archive
     <hr />
 
     <!-- List of tags -->
-    {% if allTags.length > 0 %}
-        {% for t in allTags %}  
-            <a href="/archive/{{ t }}/" class="badge">{{ t }}</a> 
+    {% if not term and terms %}
+        {% for t in terms %}  
+            <a href="{{ t.url }}" class="badge">{{ t.name }}</a> 
         {% endfor %}
         <hr />
     {% endif %}
@@ -28,7 +27,7 @@ title: Hexagon's Blog - Archive
 
     <!-- List of posts -->
     <div class="post-list">
-    {% for post in articles %}  
+    {% for post in search.pages(query, "date=desc") %}  
         <section>
             <hgroup>
                 <h2 class="post-title"><a href="{{ post.url }}" class="link-secondary">{{ post.title }}</a></h2>
@@ -39,9 +38,9 @@ title: Hexagon's Blog - Archive
                     {% endif %}
 
                     <!-- Date -->
-                    <time class="mb-1" datetime="{{ post.date | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
+                    <time class="mb-1" datetime="{{ post.date | date('ISO') }}">
                         {{ post.date | date }}</time>{% if post.updated %}<span>, Updated:</span>
-                    <time class="mb-1" datetime="{{ post.updated | date("yyyy-MM-dd'T'HH:mm:ss'.000'XX") }}">
+                    <time class="mb-1" datetime="{{ post.updated | date('ISO') }}">
                         {{ post.updated | date }}
                     </time>
                     {% endif %}

@@ -5,14 +5,14 @@ layout: layout/body.njk
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": {{ page.data.title | dump | safe }},
-  "description": {{ ((page.data.intro if page.data.series else page.data.description) or page.data.intro or "") | dump | safe }},
-  "url": {{ (page.data.url | url(true)) | dump | safe }},
-  "mainEntityOfPage": {{ (page.data.url | url(true)) | dump | safe }},
-  "datePublished": "{{ page.data.date | date("yyyy-MM-dd'T'HH:mm:ssXXX") }}",
-  "dateModified": "{{ (page.data.updated or page.data.date) | date("yyyy-MM-dd'T'HH:mm:ssXXX") }}",
-  {% if page.data.metas and page.data.metas.image %}"image": {{ page.data.metas.image | dump | safe }},{% endif %}
-  "keywords": "{% for t in page.data.tags %}{% if t not in ["standalone", "post", "index"] %}{{ t }},{% endif %}{% endfor %}",
+  "headline": {{ page.title | dump | safe }},
+  "description": {{ ((page.intro if page.series else page.description) or page.intro or "") | dump | safe }},
+  "url": {{ (url | url(true)) | dump | safe }},
+  "mainEntityOfPage": {{ (url | url(true)) | dump | safe }},
+  "datePublished": "{{ page.date | date('ISO') }}",
+  "dateModified": "{{ (page.updated or page.date) | date('ISO') }}",
+  {% if page.metas and page.metas.image %}"image": {{ page.metas.image | dump | safe }},{% endif %}
+  "keywords": "{% for t in page.tags %}{% if t not in ["standalone", "post", "index"] %}{{ t }},{% endif %}{% endfor %}",
   "author": {
     "@type": "Person",
     "name": "Hexagon",

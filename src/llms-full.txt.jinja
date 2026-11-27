@@ -1,0 +1,13 @@
+# {{ metas.site }}
+
+> Hexagon's blog about open source projects like Croner, rootcard and Murmo, and about Rust, JavaScript, TypeScript, Deno, Linux servers, security and AI-assisted operations.
+{% for p in search.pages("post", "date=desc") %}
+---
+
+# {{ p.title | one_line }}
+
+URL: {{ p.url | url(true) }}
+Date: {{ p.date | date }}
+
+{{ p.source }}
+{% endfor %}
